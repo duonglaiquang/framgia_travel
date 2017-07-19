@@ -18,7 +18,7 @@ class CreatePlansTable extends Migration
                 $table->increments('id');
                 $table->integer('user_id')->unsigned();
                 $table->string('title');
-                $table->string('description')->nullable()->default(null);
+                $table->string('description')->nullable();
                 $table->string('time');
                 $table->timestamps();
             });

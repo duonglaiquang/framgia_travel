@@ -17,7 +17,7 @@ class CreateServiceGallerysTable extends Migration
             Schema::create('service_gallerys', function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('service_id')->unsigned();
-                $table->string('img_url')->nullable()->default(null);
+                $table->string('img_url')->nullable();
                 $table->timestamps();
             });
         }

@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration
                 $table->string('name');
                 $table->date('date_of_birth');
                 $table->string('gender');
-                $table->string('phone')->nullable()->default(null);
-                $table->string('address')->nullable()->default(null);
-                $table->string('self_describe')->nullable()->default(null);
+                $table->string('phone')->nullable();
+                $table->string('address')->nullable();
+                $table->string('self_describe')->nullable();
                 $table->integer('level')->default(0);
                 $table->integer('follower')->default(0);
                 $table->integer('following')->default(0);
