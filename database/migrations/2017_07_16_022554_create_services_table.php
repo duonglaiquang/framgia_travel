@@ -19,10 +19,10 @@ class CreateServicesTable extends Migration
                 $table->integer('category_id')->unsigned();
                 $table->integer('province_id')->unsigned();
                 $table->string('name');
-                $table->string('description')->nullable();
-                $table->string('address')->nullable();
-                $table->string('open_time')->nullable();
-                $table->string('expected_price')->nullable();
+                $table->string('description')->nullable()->default(null);
+                $table->string('address')->nullable()->default(null);
+                $table->string('open_time')->nullable()->default(null);
+                $table->string('expected_price')->nullable()->default(null);
                 $table->float('rate_average')->default(0);
                 $table->timestamps();
             });

@@ -17,7 +17,7 @@ class CreateUserGallerysTable extends Migration
             Schema::create('user_gallerys', function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('user_id')->unsigned();
-                $table->string('img_url')->nullable();
+                $table->string('img_url')->nullable()->default(null);
                 $table->timestamps();
             });
         }

@@ -20,11 +20,11 @@ class CreateRequestedServicesTable extends Migration
                 $table->integer('category_id')->unsigned();
                 $table->integer('province_id')->unsigned();
                 $table->string('name');
-                $table->time('description')->nullable();
-                $table->string('address')->nullable();
-                $table->string('open_time')->nullable();
-                $table->string('expected_price')->nullable();
-                $table->string('status');
+                $table->time('description')->nullable()->default(null);
+                $table->string('address')->nullable()->default(null);
+                $table->string('open_time')->nullable()->default(null);
+                $table->string('expected_price')->nullable()->default(null);
+                $table->string('status')->default('Pending');
                 $table->timestamps();
             });
         }
