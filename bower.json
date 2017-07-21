@@ -1,0 +1,25 @@
+{
+  "name": "framgia_travel",
+  "description": "custom_layout",
+  "main": "index.html",
+  "authors": [
+    "Pho Duc Dat <phoducdat@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Orangee1247/framgia_travel",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "bootstrap": "^3.3.7",
+    "jquery-colorbox": "colorbox#^1.6.4",
+    "FourBoxes": "https://github.com/codrops/FourBoxes.git",
+    "ResponsiveSlides": "https://github.com/viljamis/ResponsiveSlides.js.git"
+  }
+}
