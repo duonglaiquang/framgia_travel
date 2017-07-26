@@ -19,6 +19,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {{ HTML::style('bower_components/FourBoxes/css/component.css', array('rel' => 'stylesheet', 'type' => 'text/css' )) }}
     {{ HTML::style('css/colorbox.css', array('rel' => 'stylesheet')) }}
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 <!-- slider -->
@@ -58,16 +60,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a class="active" href="/home">Home</a></li>
                     <li><a class="scroll" href="#w3-agile-about">About</a></li>
                     <li><a class="scroll" href="#agileits-specials">Specials</a></li>
-                    <li><a class="scroll" href="#agileinfo-news">News</a></li>
                     <li><a class="scroll" href="#wthree-gallery">Gallery</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="scroll" href="#w3layouts-team">Team</a></li>
-                            <li><a class="scroll" href="#w3ls-testimonials">Testimonials</a></li>
-                        </ul>
-                    </li>
+                    <li><a class="scroll" href="#agileinfo-news">News</a></li>
+                    {{--<li class="dropdown">--}}
+                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>--}}
+                        {{--<ul class="dropdown-menu">--}}
+                            {{--<li><a class="scroll" href="#w3layouts-team">Team</a></li>--}}
+                            {{--<li><a class="scroll" href="#w3ls-testimonials">Testimonials</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
                     <li><a class="scroll" href="#w3-contact">Contact</a></li>
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -75,11 +101,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- //navigation -->
     </div>
 </header>
-<div id="wrap">
-    <form action="" autocomplete="on">
-        <input id="search" name="search" type="text" placeholder="Where are you looking for ?"><input id="search_submit" value="Rechercher" type="submit">
-    </form>
-</div>
 <!-- //header -->
 @yield('content')
 
