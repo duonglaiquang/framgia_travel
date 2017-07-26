@@ -32,7 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="panel"><img src="images/1.jpg" alt="Image 4"/></div>
     </div>
     <div class="w3layouts-header-title">
-        <h2>We always be there for you wherever you go</h2>
+        <h2> {{ trans('label.we') }}</h2>
     </div>
 </div><!-- /container -->
 <!-- header -->
@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </button>
                 <div class="w3-logo">
                     <img src="/images/framgia_logo.png" style="height: 50px; width: 50px">
-                    <h1 style="float: right"><a href="#">Framgia Trip</a></h1>
+                    <h1 style="float: right"><a href="home">Framgia Trip</a></h1>
                 </div>
             </div>
 
