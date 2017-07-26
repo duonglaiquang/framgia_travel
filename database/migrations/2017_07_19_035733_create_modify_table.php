@@ -60,7 +60,7 @@ class CreateModifyTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('phone')->default(false)->change();
             $table->string('address')->default(false)->change();
-            $table->string('self_discribe')->default(false)->change();
+            $table->string('self_describe')->default(false)->change();
         });
 
         Schema::table('user_gallerys', function (Blueprint $table) {
