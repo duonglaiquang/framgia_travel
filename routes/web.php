@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/','HomeController@index');
+Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user/profile/{id}', ['as' => 'user.profile', 'uses' => 'PagesController@showProfile']);
+Route::post('/user/profile/{id}', ['as' => 'user.update', 'uses' => 'PagesController@updateProfile']);
+
+Route::get('/provinces/{name}',['as' =>'province.profile','uses'=>'PagesController@showProfile']);

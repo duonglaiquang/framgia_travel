@@ -4,15 +4,15 @@
     <div class="w3-agileits-about-section" id="w3-agile-about">
         <div class="container">
             <div class="w3agile-about-section-head text-center">
-                <h3>About us</h3>
+                <h3>{{ trans('label.about_us') }}</h3>
                 <span></span>
             </div>
             <div class="about-section-grids">
                 <div class="col-md-4 wthree-about-section-grid">
-                    <img src="images/abt_pic.jpg" alt=""/>
+                    <img src="{{ asset('images/abt_pic.jpg') }}" alt=""/>
                 </div>
                 <div class="col-md-4 wthree-about-section-grid">
-                    <h5>Why choose us</h5>
+                    <h5>{{ trans('label.why_choose_us') }}</h5>
                     <p>Travel is the movement of people between relatively distant geographical locations, and can
                         involve travel by foot, bicycle, automobile, train, boat, airplane, or other means, with or
                         without luggage, and can be one way or round trip.</p>
@@ -22,7 +22,7 @@
                         good characteristics. Enjoy your trip of the lifetime.</p>
                 </div>
                 <div class="col-md-4 wthree-about-section-grid">
-                    <h5>Your benefits</h5>
+                    <h5>{{ trans('label.benefits') }}</h5>
                     <p>Contrary to our low cost demand, you will be offered with best quality of services. Your
                         relaxation is our happiness. <em>Here are some benefits you may take:</em></p>
                     <p>+ Fair price with discount<br>
@@ -44,7 +44,7 @@
         <div class="special-grids">
             <div class="col-md-6 special-left l-grids">
                 <figure class="effect-bubba">
-                    <img src="images/4.jpg" alt=""/>
+                    <img src="{{ asset('images/4.jpg') }}" alt=""/>
                     <figcaption>
                         <h4>Tour</h4>
                         <p>She is free in her wildness, she is a wanderess, a drop of free water. She knows nothing of
@@ -76,7 +76,7 @@
             </div>
             <div class="col-md-6 special-left l-right l-grids">
                 <figure class="effect-bubba">
-                    <img src="images/1.jpg" alt=""/>
+                    <img src="{{ asset('images/1.jpg') }}" alt=""/>
                     <figcaption>
                         <h4>Tour</h4>
                         <p>In sit amet sapien eros quibusdam et aut officiis debitis aut rerum Integer in tincidunt
@@ -89,7 +89,7 @@
         <div class="spl-bot">
             <div class="col-md-6 special-left spl-bot-right l-grids">
                 <figure class="effect-bubba">
-                    <img class="img-responsive" src="images/2.jpg" alt=" "/>
+                    <img class="img-responsive" src="{{ asset('images/2.jpg') }}" alt=""/>
                     <figcaption>
                         <h4>Tour</h4>
                         <p>In sit amet sapien eros quibusdam labore et dolore magna aliqua</p>
@@ -116,7 +116,7 @@
             </div>
             <div class="news-section-grids">
                 <div class="col-md-4 w3ls-news-section-grid">
-                    <img src="images/n1.jpg" alt=""/>
+                    <img src="{{ asset('images/n1.jpg') }}" alt=""/>
                     <div class="info">
                         <h5>News post title1</h5>
                         <label>september 12</label>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 w3ls-news-section-grid">
-                    <img src="images/n2.jpg" alt=""/>
+                    <img src="{{ asset('images/n2.jpg') }}" alt=""/>
                     <div class="info">
                         <h5>News post title2</h5>
                         <label>October 25</label>
@@ -196,7 +196,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 w3ls-news-section-grid">
-                    <img src="images/n3.jpg" alt=""/>
+                    <img src="{{ asset('images/n3.jpg') }}" alt=""/>
                     <div class="info">
                         <h5>News post title3</h5>
                         <label>october 30</label>
@@ -258,7 +258,7 @@
                             <div class="agileinfo_gallery_grid">
                                 <a class="group1" href="images/g1.jpg" title="Road trip">
                                     <div class="hovereffect">
-                                        <img src="images/g1.jpg" alt=" " class="img-responsive"/>
+                                        <img src="{{asset('images/g1.jpg')}}" alt=" " class="img-responsive"/>
                                         <div class="overlay">
                                             <p class="info">Road trip</p>
                                         </div>
@@ -270,7 +270,7 @@
                             <div class="agileinfo_gallery_grid">
                                 <a class="group1" href="images/g2.jpg" title="Road trip">
                                     <div class="hovereffect">
-                                        <img src="images/g2.jpg" alt=" " class="img-responsive"/>
+                                        <img src="{{asset('images/g2.jpg')}}" alt=" " class="img-responsive"/>
                                         <div class="overlay">
                                             <p class="info">Road trip</p>
                                         </div>
@@ -282,7 +282,7 @@
                             <div class="agileinfo_gallery_grid">
                                 <a class="group1" href="images/g3.jpg" title="Road trip">
                                     <div class="hovereffect">
-                                        <img src="images/g3.jpg" alt=" " class="img-responsive"/>
+                                        <img src="{{asset('images/g3.jpg')}}" alt=" " class="img-responsive"/>
                                         <div class="overlay">
                                             <p class="info">Road trip</p>
                                         </div>
@@ -294,7 +294,7 @@
                             <div class="agileinfo_gallery_grid">
                                 <a class="group1" href="images/g4.jpg" title="Road trip">
                                     <div class="hovereffect">
-                                        <img src="images/g4.jpg" alt=" " class="img-responsive"/>
+                                        <img src="{{asset('images/g4.jpg')}}" alt=" " class="img-responsive"/>
                                         <div class="overlay">
                                             <p class="info">Road trip</p>
                                         </div>
@@ -306,7 +306,7 @@
                             <div class="agileinfo_gallery_grid">
                                 <a class="group1" href="images/g5.jpg" title="Road trip">
                                     <div class="hovereffect">
-                                        <img src="images/g5.jpg" alt=" " class="img-responsive"/>
+                                        <img src="{{asset('images/g5.jpg')}}" alt=" " class="img-responsive"/>
                                         <div class="overlay">
                                             <p class="info">Road trip</p>
                                         </div>
@@ -318,7 +318,7 @@
                             <div class="agileinfo_gallery_grid">
                                 <a class="group1" href="images/g6.jpg" title="Road trip">
                                     <div class="hovereffect">
-                                        <img src="images/g6.jpg" alt=" " class="img-responsive"/>
+                                        <img src="{{asset('images/g6.jpg')}}" alt=" " class="img-responsive"/>
                                         <div class="overlay">
                                             <p class="info">Road trip</p>
                                         </div>
@@ -330,7 +330,7 @@
                             <div class="agileinfo_gallery_grid">
                                 <a class="group1" href="images/g7.jpg" title="Road trip">
                                     <div class="hovereffect">
-                                        <img src="images/g7.jpg" alt=" " class="img-responsive"/>
+                                        <img src="{{asset('images/g7.jpg')}}" alt=" " class="img-responsive"/>
                                         <div class="overlay">
                                             <p class="info">Road trip</p>
                                         </div>
@@ -342,7 +342,7 @@
                             <div class="agileinfo_gallery_grid">
                                 <a class="group1" href="images/g8.jpg" title="Road trip">
                                     <div class="hovereffect">
-                                        <img src="images/g8.jpg" alt=" " class="img-responsive"/>
+                                        <img src="{{asset('images/g8.jpg')}}" alt=" " class="img-responsive"/>
                                         <div class="overlay">
                                             <p class="info">Road trip</p>
                                         </div>
@@ -354,7 +354,7 @@
                             <div class="agileinfo_gallery_grid">
                                 <a class="group1" href="images/g9.jpg" title="Road trip">
                                     <div class="hovereffect">
-                                        <img src="images/g9.jpg" alt=" " class="img-responsive"/>
+                                        <img src="{{asset('images/g9.jpg')}}" alt=" " class="img-responsive"/>
                                         <div class="overlay">
                                             <p class="info">Road trip</p>
                                         </div>
@@ -427,7 +427,7 @@
             <div class="team-w3ls-row">
                 <div class="col-md-3 team-grids"></div>
                 <div class="col-md-3 team-grids">
-                    <img src="images/t1.jpg" alt="" style="height: 344px; width: 255px"/>
+                    <img src="{{ asset('images/t1.jpg') }}" alt="" style="height: 344px; width: 255px"/>
                     <div class="img-caption">
                         <div class="img-text">
                             <h4>Dat Pho Duc</h4>
@@ -448,7 +448,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 team-grids">
-                    <img src="images/t2.jpg" alt=""/>
+                    <img src="{{asset('images/t2.jpg')}}" alt=""/>
                     <div class="img-caption">
                         <div class="img-text">
                             <h4>Duong Lai Quang</h4>
