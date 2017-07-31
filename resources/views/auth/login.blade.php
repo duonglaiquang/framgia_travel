@@ -46,7 +46,7 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
-                                        {!! Form::checkbox('remember', old('remember')); !!}
+                                        {!! Form::checkbox('remember', old('remember')) !!}
                                         {{--<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>--}}
                                         Remember Me
                                     </label>
