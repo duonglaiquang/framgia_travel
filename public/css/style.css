@@ -447,7 +447,8 @@ p.sp-para {
 }
 
 .team-grids img {
-    width: 100%;
+    height: 344px;
+    width: 255px;
 }
 
 .team h4 {
@@ -2162,30 +2163,98 @@ footer {
     margin: 0px 70px 0px 0px;
 }
 
-.nav-mini-wrapper a{
+.nav-mini-wrapper a {
     font-size: 18px;
     color: #ffffff;
     font-weight: 500;
     text-decoration: none;
 }
 
-.nav-login{
+.nav-login {
     width: 300px;
     height: 30px;
     float: right;
     margin-top: 14px;
 }
 
-.nav-login li{
+.nav-login li {
     float: right;
 }
 
-.nav-login .dropdown-menu{
-    min-width:100px;
+.nav-login .dropdown-menu {
+    min-width: 100px;
     float: right;
 }
 
-.nav-login .dropdown-menu li{
-    min-width:100px;
+.nav-login .dropdown-menu li {
+    min-width: 100px;
     float: left;
+}
+
+#stickyribbon {
+    height: 80px;
+}
+
+#stickyribbon .container {
+    width: 1000px;
+    margin-left: 180px;
+    float: left;
+}
+
+#stickyribbon .container .navbar-default .navbar-header .w3-logo img {
+    height: 50px;
+    width: 50px;
+}
+
+#stickyribbon .container .navbar-default .navbar-header .w3-logo h1 {
+    float: right;
+}
+
+#stickyribbon .container .navbar-default .navbar-collapse #bs-example-navbar-collapse-1 {
+    float: right;
+}
+
+.nav-mini-wrapper #register {
+    float: right;
+}
+
+.nav-mini-wrapper #login {
+    margin-right: 30px;
+}
+
+.nav-mini-wrapper ul li img {
+    height: 20px;
+    width: 20px;
+}
+
+.agileits-w3layouts-specials #agileits-specials {
+    margin-top: -60px;
+}
+
+.news-section #agileinfo-news .container {
+    margin-top: -30px;
+}
+
+.see-more {
+    float: right;
+    margin-top: 30px;
+    margin-right: 80px;
+    color: black;
+    font-size: 150%;
+}
+
+.see-more-1 {
+    float: right;
+    margin-top: 30px;
+    margin-right: 80px;
+    color: white;
+    font-size: 150%;
+}
+
+.team #w3layouts-team .container {
+    margin-top: 30px;
+}
+
+#logout-form{
+    display: none;
 }

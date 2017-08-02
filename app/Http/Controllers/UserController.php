@@ -14,9 +14,10 @@ class UserController extends Controller
         $user->date_of_birth = $request->inputDob;
         $user->gender = $request->gender;
         $user->address = $request->inputAddress;
-        $user->phone=$request->inputPhone;
-        $user->self_describe=$request->inputBio;
+        $user->phone = $request->inputPhone;
+        $user->self_describe = $request->inputBio;
         $user->save();
-        return redirect(route('user.update',Auth::user()->id));
+
+        return redirect(route('user.update', Auth::user()->id));
     }
 }
