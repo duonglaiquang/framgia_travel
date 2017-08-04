@@ -24,3 +24,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
+

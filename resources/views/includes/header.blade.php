@@ -55,18 +55,19 @@
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
+                        @if(Auth::user() -> level == 1)
+                            <li><a href="{{ route('admin') }}"><strong>ADMIN</strong></a></li>
+                        @endif
                         <li><a href="{{ route('user.profile', [Auth::user()->id]) }}">{{ trans('label.profile') }}</a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" id="logout-1">
                                 {{trans('label.logout')}}
                             </a>
-
                             {!! Form::open(['role'=>'form', 'route'=> 'logout', 'method'=>'POST', 'id'=>'logout-form']) !!}
                             {{ csrf_field() }}
                             {!! Form::close() !!}
                         </li>
-
                     </ul>
                 </li>
             @endif
@@ -76,3 +77,4 @@
     <!-- //navigation -->
     @yield('search')
 </header>
+

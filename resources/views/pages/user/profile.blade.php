@@ -13,7 +13,6 @@
     <div class="container" id="content">
         <!-- Main content -->
         <section class="content">
-
             <div class="row">
                 <div class="col-md-3">
 
@@ -279,3 +278,4 @@
     {{ HTML::script('bower_components/AdminLTE/dist/js/app.min.js') }}
     {{ HTML::script('js/userPF.js', ['type' => 'text/javascript']) }}
 @endsection
+
