@@ -1,4 +1,14 @@
 @extends('layouts.master')
+
+@section('slide')
+    @include('includes.slide')
+@endsection
+
+@section('header')
+    @include('includes.header')
+    @include('includes.searchBar')
+@endsection
+
 @section('content')
     <!-- about-section -->
     <div class="w3-agileits-about-section" id="w3-agile-about">
@@ -243,8 +253,6 @@
     </div>
     </div>
     <!-- //news-section -->
-
-    <!-- gallery -->
     <div class="gallery text-center" id="wthree-gallery">
         <div class="container">
             <h3 class="agileits_head">Gallery</h3>
@@ -368,51 +376,6 @@
         </div>
         <a class="see-more-1" href="#">{{trans('label.seemore')}}</a>
     </div>
-    {{ HTML::script('bower_components/jquery-colorbox/jquery.colorbox.js') }}
-    <script>
-        $(document).ready(function () {
-            //Examples of how to assign the Colorbox event to elements
-            $(".group1").colorbox({rel: 'group1'});
-            $(".group2").colorbox({rel: 'group2', transition: "fade"});
-            $(".group3").colorbox({rel: 'group3', transition: "none", width: "75%", height: "75%"});
-            $(".group4").colorbox({rel: 'group4', slideshow: true});
-            $(".ajax").colorbox();
-            $(".youtube").colorbox({iframe: true, innerWidth: 640, innerHeight: 390});
-            $(".vimeo").colorbox({iframe: true, innerWidth: 500, innerHeight: 409});
-            $(".iframe").colorbox({iframe: true, width: "80%", height: "80%"});
-            $(".inline").colorbox({inline: true, width: "50%"});
-            $(".callbacks").colorbox({
-                onOpen: function () {
-                    alert('onOpen: colorbox is about to open');
-                },
-                onLoad: function () {
-                    alert('onLoad: colorbox has started to load the targeted content');
-                },
-                onComplete: function () {
-                    alert('onComplete: colorbox has displayed the loaded content');
-                },
-                onCleanup: function () {
-                    alert('onCleanup: colorbox has begun the close process');
-                },
-                onClosed: function () {
-                    alert('onClosed: colorbox has completely closed');
-                }
-            });
-
-            $('.non-retina').colorbox({rel: 'group5', transition: 'none'})
-            $('.retina').colorbox({rel: 'group5', transition: 'none', retinaImage: true, retinaUrl: true});
-
-            //Example of preserving a JavaScript event for inline calls.
-            $("#click").click(function () {
-                $('#click').css({
-                    "background-color": "#f00",
-                    "color": "#fff",
-                    "cursor": "inherit"
-                }).text("Open this window again and this message will still be here.");
-                return false;
-            });
-        });
-    </script>
     <!-- //gallery -->
 
     <!-- team -->
@@ -526,4 +489,12 @@
         </div>
     </div>
     <!-- //contact-section -->
-@stop
+@endsection
+<!-- //js required for banner slider -->
+
+@section('script')
+    {{ HTML::script('bower_components/jquery-colorbox/jquery.colorbox.js') }}
+    {{ HTML::script('js/move-top.js', ['type' => 'text/javascript']) }}
+    {{ HTML::script('js/easing.js', ['type' => 'text/javascript']) }}
+    {{ HTML::script('js/home.js', ['type' => 'text/javascript']) }}
+@endsection
