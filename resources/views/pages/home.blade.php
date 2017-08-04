@@ -261,120 +261,26 @@
                 <div class="bs-example bs-example-tabs wthree_example_tab" role="tabpanel"
                      data-example-id="togglable-tabs">
                     <div class="w3l_gallery_grids1">
-                        <div class="col-md-4 w3l_gallery_grid">
-                            <div class="agileinfo_gallery_grid">
-                                <a class="group1" href="images/g1.jpg" title="Road trip">
-                                    <div class="hovereffect">
-                                        <img src="{{asset('images/g1.jpg')}}" alt=" " class="img-responsive"/>
-                                        <div class="overlay">
-                                            <p class="info">Road trip</p>
+                        @foreach($provinces as $province)
+                            <div class="col-md-4 w3l_gallery_grid">
+                                <div class="agileinfo_gallery_grid">
+                                    <a href={{ route('provincePF', $province->name) }}>
+                                        <div class="hovereffect">
+                                            <img src="{{url($province->img_url)}}" alt=" " class="img-responsive"/>
+                                            <div class="overlay">
+                                                <p class="info">{{$province->name}}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 w3l_gallery_grid">
-                            <div class="agileinfo_gallery_grid">
-                                <a class="group1" href="images/g2.jpg" title="Road trip">
-                                    <div class="hovereffect">
-                                        <img src="{{asset('images/g2.jpg')}}" alt=" " class="img-responsive"/>
-                                        <div class="overlay">
-                                            <p class="info">Road trip</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 w3l_gallery_grid">
-                            <div class="agileinfo_gallery_grid">
-                                <a class="group1" href="images/g3.jpg" title="Road trip">
-                                    <div class="hovereffect">
-                                        <img src="{{asset('images/g3.jpg')}}" alt=" " class="img-responsive"/>
-                                        <div class="overlay">
-                                            <p class="info">Road trip</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 w3l_gallery_grid">
-                            <div class="agileinfo_gallery_grid">
-                                <a class="group1" href="images/g4.jpg" title="Road trip">
-                                    <div class="hovereffect">
-                                        <img src="{{asset('images/g4.jpg')}}" alt=" " class="img-responsive"/>
-                                        <div class="overlay">
-                                            <p class="info">Road trip</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 w3l_gallery_grid">
-                            <div class="agileinfo_gallery_grid">
-                                <a class="group1" href="images/g5.jpg" title="Road trip">
-                                    <div class="hovereffect">
-                                        <img src="{{asset('images/g5.jpg')}}" alt=" " class="img-responsive"/>
-                                        <div class="overlay">
-                                            <p class="info">Road trip</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 w3l_gallery_grid">
-                            <div class="agileinfo_gallery_grid">
-                                <a class="group1" href="images/g6.jpg" title="Road trip">
-                                    <div class="hovereffect">
-                                        <img src="{{asset('images/g6.jpg')}}" alt=" " class="img-responsive"/>
-                                        <div class="overlay">
-                                            <p class="info">Road trip</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 w3l_gallery_grid">
-                            <div class="agileinfo_gallery_grid">
-                                <a class="group1" href="images/g7.jpg" title="Road trip">
-                                    <div class="hovereffect">
-                                        <img src="{{asset('images/g7.jpg')}}" alt=" " class="img-responsive"/>
-                                        <div class="overlay">
-                                            <p class="info">Road trip</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 w3l_gallery_grid">
-                            <div class="agileinfo_gallery_grid">
-                                <a class="group1" href="images/g8.jpg" title="Road trip">
-                                    <div class="hovereffect">
-                                        <img src="{{asset('images/g8.jpg')}}" alt=" " class="img-responsive"/>
-                                        <div class="overlay">
-                                            <p class="info">Road trip</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 w3l_gallery_grid">
-                            <div class="agileinfo_gallery_grid">
-                                <a class="group1" href="images/g9.jpg" title="Road trip">
-                                    <div class="hovereffect">
-                                        <img src="{{asset('images/g9.jpg')}}" alt=" " class="img-responsive"/>
-                                        <div class="overlay">
-                                            <p class="info">Road trip</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <a class="see-more-1" href="#">{{trans('label.seemore')}}</a>
+        <a class="see-more-1" href="{{ route('provinceList') }}">{{trans('label.seemore')}}</a>
     </div>
     <!-- //gallery -->
 
@@ -489,6 +395,7 @@
         </div>
     </div>
     <!-- //contact-section -->
+
 @endsection
 <!-- //js required for banner slider -->
 

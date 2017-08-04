@@ -27,4 +27,9 @@ class PagesController extends Controller
         $provinces = Province::where('id', '=', $request->id)->first();
         return view('pages.province',compact('provinces'));
     }
+
+    public function showAdmin()
+    {
+        return view('admin.admin_template');
+    }
 }
