@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get( '/home', 'HomeController@index' )->name( 'home' );
 
-Route::get('/', 'HomeController@index');
+Route::get( '/', 'HomeController@index' );
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/user/profile/{id}', 'PagesController@showProfile')->name('user.profile');
-Route::post('/user/profile/{id}', ['as' => 'user.update', 'uses' => 'UserController@updateProfile']);
+Route::get( '/user/profile/{id}', 'PagesController@showProfile' )->name( 'user.profile' );
+Route::post( '/user/profile/{id}', [ 'as' => 'user.update', 'uses' => 'UserController@updateProfile' ] );
+
+Route::get( '/provinces', 'PagesController@provinces' );
+Route::get( '/provinces/{name}', [ 'as' => 'provincePF', 'uses' => 'PagesController@provincePF' ] );
