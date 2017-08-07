@@ -15,8 +15,8 @@
                             <th>ID</th>
                             <th>Province</th>
                             <th>Description</th>
-                            <th>Name</th>
-                            <th>URL</th>
+                            <th>BG URL</th>
+                            <th>IMG URL</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -26,7 +26,7 @@
                                 <td>{{$province->id}}</td>
                                 <td>{{$province->name}}</td>
                                 <td>{{$province->description}}</td>
-                                <td>{{$province->img_name}}</td>
+                                <td>{{$province->bg_url}}</td>
                                 <td>{{$province->img_url}}</td>
                                 <td><a href="{{ route('provinceDelete', $province->id) }}" title="Delete"><i
                                                 class="fa fa-fw fa-ban fa-pull-left"></i></a>

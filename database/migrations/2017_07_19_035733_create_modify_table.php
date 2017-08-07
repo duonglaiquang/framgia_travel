@@ -57,40 +57,6 @@ class CreateModifyTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->default(false)->change();
-            $table->string('address')->default(false)->change();
-            $table->string('self_describe')->default(false)->change();
-        });
-
-        Schema::table('user_gallerys', function (Blueprint $table) {
-            $table->string('img_url')->default(false)->change();
-        });
-
-        Schema::table('provinces', function (Blueprint $table) {
-            $table->string('description')->default(false)->change();
-        });
-
-        Schema::table('services', function (Blueprint $table) {
-            $table->string('description')->default(false)->change();
-            $table->string('address')->default(false)->change();
-            $table->string('open_time')->default(false)->change();
-            $table->string('expected_price')->default(false)->change();
-        });
-
-        Schema::table('service_gallerys', function (Blueprint $table) {
-            $table->string('img_url')->default(false)->change();
-        });
-
-        Schema::table('plans', function (Blueprint $table) {
-            $table->string('description')->default(false)->change();
-        });
-
-        Schema::table('requested_services', function (Blueprint $table) {
-            $table->string('description')->default(false)->change();
-            $table->string('address')->default(false)->change();
-            $table->string('open_time')->default(false)->change();
-            $table->string('expected_price')->default(false)->change();
-        });
+        //
     }
 }

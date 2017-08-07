@@ -5,22 +5,17 @@ Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/', 'HomeController@index');
 Auth::routes();
 
-
-Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
-    Route::get('/admin', ['as' => 'admin', 'uses' => 'PagesController@showAdmin']);
-});
-
 Route::group(['prefix' => 'provinces'], function () {
     Route::get('/', ['as' => 'provinceList', 'uses' => 'PagesController@provinces']);
     Route::get('/{name}', ['as' => 'provincePF', 'uses' => 'PagesController@provincePF']);
 });
 
-Route::group(['prefix' => '/user'], function () {
+Route::group(['prefix' => '/user', 'middleware' => ['IsUser', 'auth']], function () {
     Route::get('profile/{id}', ['as' => 'user.profile', 'uses' => 'UserController@showProfile']);
     Route::post('profile/{id}', ['as' => 'user.update', 'uses' => 'UserController@updateProfile']);
 });
 
-Route::group(['prefix' => '/admin'], function () {
+Route::group(['prefix' => '/admin', 'middleware' => ['IsAdmin', 'auth']], function () {
     Route::get('/', ['as' => 'admin', 'uses' => 'PagesController@showAdmin']);
     Route::get('/user_list', ['as' => 'userList', 'uses' => 'AdminController@userList']);
     Route::get('/user_list/{id}', ['as' => 'block', 'uses' => 'AdminController@blockUser']);

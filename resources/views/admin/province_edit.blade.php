@@ -14,22 +14,22 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
                             <label>Province</label>
-                            <input class="form-control" name="inputPro" required autocomplete="off"
+                            <input class="form-control" name="name" required autocomplete="off"
                                    value="{{ $province->name }}"/>
                         </div>
                         <div class="form-group">
-                            <label>Image Name</label>
-                            <input class="form-control" name="inputName" autocomplete="off"
-                                   value="{{ $province->img_name }}"/>
+                            <label>Background URL</label>
+                            <input class="form-control" name="bg_url" autocomplete="off"
+                                   value="{{ $province->bg_url }}"/>
                         </div>
                         <div class="form-group">
                             <label>Image URL</label>
-                            <input class="form-control" name="inputUrl" required autocomplete="off"
+                            <input class="form-control" name="img_url" required autocomplete="off"
                                    value="{{ $province->img_url }}"/>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" rows="3" name="inputDes" autocomplete="off">{{ $province->description }}
+                            <textarea class="form-control" rows="3" name="description" autocomplete="off">{{ $province->description }}
                             </textarea>
                         </div>
                         <div class="form-group">
