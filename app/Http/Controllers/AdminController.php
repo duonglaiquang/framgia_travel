@@ -11,6 +11,7 @@ class AdminController extends Controller
         $users = User::where('level', '<>', -1)->get();
 
         return view('admin.users.list', compact('users'));
+
     }
 
     public function userBlock()

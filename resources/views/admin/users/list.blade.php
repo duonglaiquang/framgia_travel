@@ -5,7 +5,11 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
+<<<<<<< HEAD:resources/views/admin/users/list.blade.php
                     <h3 class="box-title"><b>Users List</b></h3>
+=======
+                    <h3 class="box-title"><b>Users Table</b></h3>
+>>>>>>> a196e498ffb3214db6c0d5d5c975020f3218073f:resources/views/admin/user_list.blade.php
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
