@@ -7,7 +7,8 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
+                <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}" class="img-circle"
+                     alt="User Image"/>
             </div>
             <div class="pull-left info">
                 <p>{{Auth::user()->name}}</p>
@@ -31,12 +32,21 @@
         <ul class="sidebar-menu">
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="/admin/user_list"><span>User List</span></a></li>
             <li class="treeview">
-                <a href="#"><span>Province List</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-circle-o fa-pull-left"></i><span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Show list</a></li>
-                    <li><a href="#">Add list</a></li>
+                    <li><a href="{{ route('userList') }}"><i class="fa fa-user fa-pull-left"></i>Show users</a></li>
+                    <li><a href="{{ route('userBlock') }}"><i class="fa fa-user-times fa-pull-left"></i>Blocked
+                            users</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-circle-o fa-pull-left"></i><span>Provinces</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('provinceShowList') }}"><i class="fa fa-list fa-pull-left"></i>Show provinces</a>
+                    </li>
+                    <li><a href="{{ route('provinceGetAdd') }}"><i class="fa fa-plus-square fa-pull-left"></i>Add
+                            province</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

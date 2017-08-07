@@ -15,27 +15,27 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="skin-blue">
-    <div class="wrapper">
+<div class="wrapper">
 
-        @include('admin.header')
+    @include('admin.header')
 
-        @include('admin.sidebar')
+    @include('admin.sidebar')
 
-        <div class="content-wrapper">
-            <section class="content-header">
-                <h1>
-                    Welcome <b><em>{{ Auth::user()->name }}</em></b>
-                    <small>{{ $page_description or null }}</small>
-                </h1>
-            </section>
-            <section class="content">
-                @yield('contents')
-            </section>
-        </div>
-
-        @include('admin.footer')
-
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Welcome <b><em>{{ Auth::user()->name }}</em></b>
+                <small>{{ $page_description or null }}</small>
+            </h1>
+        </section>
+        <section class="content">
+            @yield('contents')
+        </section>
     </div>
+
+    @include('admin.footer')
+
+</div>
     {{ HTML::script('bower_components/Respond/dest/respond.min.js') }}
     {{ HTML::script('bower_components/Html5shiv/dist/html5shiv.min.js') }}
     {{ HTML::script('bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}
@@ -45,24 +45,23 @@
     {{ HTML::script('bower_components/AdminLTE/plugins/fastclick/fastclick.js') }}
     {{ HTML::script('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}
     {{ HTML::script('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js') }}
-    {{ HTML::script('bower_components/AdminLTE//dist/js/demo.js') }}
-    <script>
-        $(function () {
-            $("#example1").DataTable();
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false
-            });
-
-            $('#logout-1').on('click', function () {
-                $('#logout-form').submit();
-            });
-            $().UItoTop({easingType: 'easeOutQuart'});
+<script>
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
         });
-    </script>
+
+        $('#logout-1').on('click', function () {
+            $('#logout-form').submit();
+        });
+        $().UItoTop({easingType: 'easeOutQuart'});
+    });
+</script>
 </body>
 </html>
