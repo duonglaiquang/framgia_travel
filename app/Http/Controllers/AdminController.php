@@ -10,14 +10,14 @@ class AdminController extends Controller
     {
         $users = User::where('level', '<>', -1)->get();
 
-        return view('admin.user_list', compact('users'));
+        return view('admin.users.list', compact('users'));
     }
 
     public function userBlock()
     {
         $users = User::where('level', -1)->get();
 
-        return view('admin.user_block', compact('users'));
+        return view('admin.users.blocked', compact('users'));
     }
 
     public function blockUser(Request $request)
@@ -25,7 +25,6 @@ class AdminController extends Controller
         $block = User::find($request->id);
         $block->level = -1;
         $block->update();
-        $users = User::where('level', '>', -1)->get();
 
         return redirect()->route('userBlock');
     }
@@ -35,7 +34,6 @@ class AdminController extends Controller
         $unblock = User::find($request->id);
         $unblock->level = 0;
         $unblock->update();
-        $users = User::where('level', -1)->get();
 
         return redirect()->route('userList');
     }
@@ -44,12 +42,12 @@ class AdminController extends Controller
     {
         $provinces = Province::all();
 
-        return view('admin.province_list', compact('provinces'));
+        return view('admin.provinces.list', compact('provinces'));
     }
 
     public function provinceGetAdd()
     {
-        return view('admin.province_add');
+        return view('admin.provinces.add');
     }
 
     public function provincePostAdd(Request $request)
@@ -73,7 +71,7 @@ class AdminController extends Controller
     {
         $province = Province::find($request->id);
 
-        return view('admin.province_edit', compact('province'));
+        return view('admin.provinces.edit', compact('province'));
     }
 
     public function provincePostEdit(Request $request)

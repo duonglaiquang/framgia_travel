@@ -11,18 +11,18 @@ class PagesController extends Controller
     {
         $provinces = Province::all();
 
-        return view('pages.provinces', compact('provinces'));
+        return view('pages.province.list', compact('provinces'));
     }
 
     public function provincePF(Request $request)
     {
-        $provinces = Province::where('id', '=', $request->id)->first();
+        $provinces = Province::where('name', '=', $request->name)->first();
 
-        return view('pages.province', compact('provinces'));
+        return view('pages.province.profile', compact('provinces'));
     }
 
     public function showAdmin()
     {
-        return view('admin.admin_template');
+        return view('admin.layouts.master');
     }
 }

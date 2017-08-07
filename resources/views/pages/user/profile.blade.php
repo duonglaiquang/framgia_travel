@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
-    {{ HTML::style('css/gallery.css', ['rel' => 'stylesheet']) }}
+    {{ HTML::style('css/userPF.css', ['rel' => 'stylesheet']) }}
     {{ HTML::style('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}
 @endsection
 
@@ -275,7 +275,6 @@
 @section('script')
     {{ HTML::script('bower_components/AdminLTE/dist/js/app.min.js') }}
     {{ HTML::script('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}
-    {{ HTML::script('bower_components/AdminLTE/dist/js/app.min.js') }}
     {{ HTML::script('js/userPF.js', ['type' => 'text/javascript']) }}
 @endsection
 
