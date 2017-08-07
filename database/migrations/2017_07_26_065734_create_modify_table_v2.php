@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateModifyTableV2 extends Migration
 {
@@ -34,15 +34,6 @@ class CreateModifyTableV2 extends Migration
     public
     function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('gender')->nullable(false)->change();
-            $table->string('name')->nullable(false)->change();
-            $table->date('date_of_birth')->nullable(false)->change();
-        });
-
-        Schema::table('provinces', function (Blueprint $table) {
-            $table->string('img_name')->nullable(false)->change();
-            $table->string('img_url')->nullable(false)->change();
-        });
+        //
     }
 }

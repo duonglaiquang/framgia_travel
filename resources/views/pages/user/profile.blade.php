@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
-    {{ HTML::style('css/gallery.css', ['rel' => 'stylesheet']) }}
+    {{ HTML::style('css/userPF.css', ['rel' => 'stylesheet']) }}
     {{ HTML::style('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}
 @endsection
 
@@ -172,21 +172,21 @@
                                 <!-- /.tab-content -->
                             </div>
                             <div class="tab-pane" id="settings">
-                                <form class="form-horizontal" method="POST" action="user.profile">
+                                <form class="form-horizontal" method="POST" action="">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
-                                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                        <label for="name" class="col-sm-2 control-label">Name</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="inputName"
+                                            <input type="text" class="form-control" name="name"
                                                    value="{{Auth::user()->name}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                                        <label for="email" class="col-sm-2 control-label">Email</label>
 
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" name="inputEmail"
+                                            <input type="email" class="form-control" name="email"
                                                    value="{{Auth::user()->email}}" readonly="true">
                                         </div>
                                     </div>
@@ -211,34 +211,34 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputDob" class="col-sm-2 control-label">Birthday</label>
+                                        <label for="date_of_birth" class="col-sm-2 control-label">Birthday</label>
                                         <div class="col-sm-10">
-                                            <input type="text" id="pickyDate" class="form-control" name="inputDob"
+                                            <input type="text" id="pickyDate" class="form-control" name="date_of_birth"
                                                    value="{{ Auth::user()->date_of_birth }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+                                        <label for="address" class="col-sm-2 control-label">Address</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="inputAddress"
+                                            <input type="text" class="form-control" name="address"
                                                    value="{{Auth::user()->address}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+                                        <label for="phone" class="col-sm-2 control-label">Phone</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="inputPhone"
+                                            <input type="text" class="form-control" name="phone"
                                                    value="{{Auth::user()->phone}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputBio" class="col-sm-2 control-label">Biography</label>
+                                        <label for="self_describe" class="col-sm-2 control-label">Biography</label>
 
                                         <div class="col-sm-10">
     <textarea class="form-control"
-              name="inputBio">{{Auth::user()->self_describe}}</textarea>
+              name="self_describe">{{Auth::user()->self_describe}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -275,7 +275,6 @@
 @section('script')
     {{ HTML::script('bower_components/AdminLTE/dist/js/app.min.js') }}
     {{ HTML::script('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}
-    {{ HTML::script('bower_components/AdminLTE/dist/js/app.min.js') }}
     {{ HTML::script('js/userPF.js', ['type' => 'text/javascript']) }}
 @endsection
 

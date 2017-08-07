@@ -262,6 +262,7 @@
                      data-example-id="togglable-tabs">
                     <div class="w3l_gallery_grids1">
                         @foreach($provinces as $province)
+                            {{--@if($province->id <= 8)--}}
                             <div class="col-md-4 w3l_gallery_grid">
                                 <div class="agileinfo_gallery_grid">
                                     <a href={{ route('provincePF', $province->name) }}>
@@ -274,6 +275,7 @@
                                     </a>
                                 </div>
                             </div>
+                            {{--@endif--}}
                         @endforeach
                         <div class="clearfix"></div>
                     </div>

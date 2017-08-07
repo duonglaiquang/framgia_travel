@@ -25,7 +25,7 @@
                     <li><a class="scroll" href="#w3-agile-about">About</a></li>
                     <li><a class="scroll" href="#agileits-specials">Specials</a></li>
                     <li><a class="scroll" href="#wthree-gallery">Gallery</a></li>
-                    <li><a href="/provinces">Provinces</a></li>
+                    <li><a href="{{ route('provinceList') }}">Provinces</a></li>
                     <li><a class="scroll" href="#w3-contact">Contact</a></li>
                     <!-- Authentication Links -->
                 </ul>

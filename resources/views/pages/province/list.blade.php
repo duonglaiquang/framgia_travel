@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
-    {{ HTML::style('css/provinces.css', ['rel' => 'stylesheet']) }}
+    {{ HTML::style('css/provinceList.css', ['rel' => 'stylesheet']) }}
 @endsection
 
 @section('header')

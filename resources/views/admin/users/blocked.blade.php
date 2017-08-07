@@ -1,11 +1,11 @@
-@extends('admin.admin_template')
+@extends('admin.layouts.master')
 
 @section('contents')
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Data Table With Full Features</h3>
+                    <h3 class="box-title"><b>Blocked Users</b></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -17,6 +17,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -27,6 +28,13 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>
                                 <td>{{$user->address}}</td>
+                                <td><a href="{{ route('unblock', $user->id) }}"><i class="fa fa-fw fa-unlock"></i></a>
+                                @if($user->level == 0)
+                                    <td><a href="{{ route('block', $user->id) }}"><i class="fa fa-fw fa-lock"></i></a>
+                                    </td>
+                                @else
+                                    <td><b>Can't block</b></td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
