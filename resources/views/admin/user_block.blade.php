@@ -28,11 +28,7 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>
                                 <td>{{$user->address}}</td>
-                                @if($user->level == 0)
-                                    <td><a href="{{ route('block', $user->id) }}"><i class="fa fa-fw fa-lock"></i></a></td>
-                                @else
-                                    <td><b>Can't block</b></td>
-                                @endif
+                                <td><a href="{{ route('unblock', $user->id) }}"><i class="fa fa-fw fa-unlock"></i></a>
                             </tr>
                         @endforeach
                         </tbody>

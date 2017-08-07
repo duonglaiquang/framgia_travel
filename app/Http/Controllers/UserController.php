@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+    public function showProfile()
+    {
+        $user = Auth::user();
+
+        return view('pages.user.profile', compact('user'));
+    }
+
     public function updateProfile(Request $request)
     {
         $user = Auth::user();

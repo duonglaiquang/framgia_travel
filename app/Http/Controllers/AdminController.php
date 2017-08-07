@@ -2,16 +2,97 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Province;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
     public function userList()
     {
-        $users = User::all();
+        $users = User::where('level', '<>', -1)->get();
 
-        return view('admin.user_list', compact('users', $users));
+        return view('admin.user_list', compact('users'));
+    }
+
+    public function userBlock()
+    {
+        $users = User::where('level', -1)->get();
+
+        return view('admin.user_block', compact('users'));
+    }
+
+    public function blockUser(Request $request)
+    {
+        $block = User::find($request->id);
+        $block->level = -1;
+        $block->update();
+        $users = User::where('level', '>', -1)->get();
+
+        return redirect()->route('userBlock');
+    }
+
+    public function unblockUser(Request $request)
+    {
+        $unblock = User::find($request->id);
+        $unblock->level = 0;
+        $unblock->update();
+        $users = User::where('level', -1)->get();
+
+        return redirect()->route('userList');
+    }
+
+    public function provinceList()
+    {
+        $provinces = Province::all();
+
+        return view('admin.province_list', compact('provinces'));
+    }
+
+    public function provinceGetAdd()
+    {
+        return view('admin.province_add');
+    }
+
+    public function provincePostAdd(Request $request)
+    {
+        $province = new Province();
+        $province->name = $request->inputPro;
+        $province->img_name = $request->inputName;
+        $province->img_url = $request->inputUrl;
+        $province->description = $request->inputDes;
+        $province->save();
+
+        return redirect(route('provinceShowList'));
+    }
+
+    public function provinceDelete(Request $request)
+    {
+        $province = Province::find($request->id);
+        $province->delete();
+
+        return redirect(route('provinceShowList'));
+    }
+
+    public function provinceGetEdit(Request $request)
+    {
+        $province = Province::find($request->id);
+
+        return view('admin.province_edit', compact('province'));
+    }
+
+    public function provincePostEdit(Request $request)
+    {
+        $province = Province::find($request->id);
+        $province->name = $request->inputPro;
+        $province->img_name = $request->inputName;
+        $province->img_url = $request->inputUrl;
+        $province->description = $request->inputDes;
+        $province->save();
+
+        return redirect(route('provinceShowList'));
     }
 }

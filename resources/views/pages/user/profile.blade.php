@@ -172,7 +172,7 @@
                                 <!-- /.tab-content -->
                             </div>
                             <div class="tab-pane" id="settings">
-                                <form class="form-horizontal" method="POST" action="user.profile">
+                                <form class="form-horizontal" method="POST" action="">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <label for="inputName" class="col-sm-2 control-label">Name</label>
