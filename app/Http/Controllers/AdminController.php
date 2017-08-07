@@ -1,13 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Province;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -60,10 +55,7 @@ class AdminController extends Controller
     public function provincePostAdd(Request $request)
     {
         $province = new Province();
-        $province->name = $request->inputPro;
-        $province->img_name = $request->inputName;
-        $province->img_url = $request->inputUrl;
-        $province->description = $request->inputDes;
+        $province->fill($request->all());
         $province->save();
 
         return redirect(route('provinceShowList'));
@@ -87,10 +79,7 @@ class AdminController extends Controller
     public function provincePostEdit(Request $request)
     {
         $province = Province::find($request->id);
-        $province->name = $request->inputPro;
-        $province->img_name = $request->inputName;
-        $province->img_url = $request->inputUrl;
-        $province->description = $request->inputDes;
+        $province->update($request->all());
         $province->save();
 
         return redirect(route('provinceShowList'));
