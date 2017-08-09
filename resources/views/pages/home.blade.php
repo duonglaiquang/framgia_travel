@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')
+    @include('includes.submenu')
     <!-- about-section -->
     <div class="w3-agileits-about-section" id="w3-agile-about">
         <div class="container">
@@ -255,7 +256,7 @@
     <!-- //news-section -->
     <div class="gallery text-center" id="wthree-gallery">
         <div class="container">
-            <h3 class="agileits_head">Gallery</h3>
+            <h3 class="agileits_head">Provinces</h3>
             <span class="w3-line"></span>
             <div class="w3l_gallery_grids">
                 <div class="bs-example bs-example-tabs wthree_example_tab" role="tabpanel"

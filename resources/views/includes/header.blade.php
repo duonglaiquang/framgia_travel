@@ -22,16 +22,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a class="active" href="http://localhost:8000/home">{{ trans('label.home') }}</a></li>
-                    <li><a class="scroll" href="#w3-agile-about">About</a></li>
-                    <li><a class="scroll" href="#agileits-specials">Specials</a></li>
-                    <li><a class="scroll" href="#wthree-gallery">Gallery</a></li>
                     <li><a href="{{ route('provinceList') }}">Provinces</a></li>
-                    <li><a class="scroll" href="#w3-contact">Contact</a></li>
+                    <li><a class="scroll" href="#w3-agile-about">Hotels</a></li>
+                    <li><a class="scroll" href="#agileits-specials">Restaurants</a></li>
+                    <li><a class="scroll" href="#wthree-gallery">Activities</a></li>
                     <!-- Authentication Links -->
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
     </div>
+
     <div class="nav-mini-wrapper">
         <!-- Authentication Links -->
         {{--<ul class="nav navbar-nav">--}}
