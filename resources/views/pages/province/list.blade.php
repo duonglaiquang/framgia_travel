@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
-    {{ HTML::style('css/provinceList.css', ['rel' => 'stylesheet']) }}
+    {{ HTML::style('css/provinceList.css') }}
 @endsection
 
 @section('header')
@@ -13,18 +13,23 @@
         <div class="container">
             <h3 class="agileits_head">Choose your place to go</h3>
             <span class="w3-line"></span>
+            {{--<div class="row">--}}
+            {{--<div id="custom-search-input">--}}
+            {{--<div class="input-group col-md-12">--}}
+            {{--<input type="text" class="search-query form-control"--}}
+            {{--placeholder=" eg: Ha Noi, Da Nang, TP HCM"/>--}}
+            {{--<span class="input-group-btn">--}}
+            {{--<button class="btn btn-danger" type="submit">--}}
+            {{--<span class="glyphicon glyphicon-search"></span>--}}
+            {{--</button>--}}
+            {{--</span>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
             <div class="row">
-                <div id="custom-search-input">
-                    <div class="input-group col-md-12">
-                        <input type="text" class="  search-query form-control"
-                               placeholder=" eg: Ha Noi, Da Nang, TP HCM"/>
-                        <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                    </div>
-                </div>
+                <form method="post" action="" id="search1">
+                    <input name="inputSearch" type="text" size="40" placeholder="Where to go..."/>
+                </form>
             </div>
             <div class="w3l_gallery_grids">
                 <div class="bs-example bs-example-tabs wthree_example_tab" role="tabpanel"
@@ -49,5 +54,6 @@
                 </div>
             </div>
         </div>
+        <div class="page">{{ $provinces->links() }}</div>
     </div>
 @endsection
