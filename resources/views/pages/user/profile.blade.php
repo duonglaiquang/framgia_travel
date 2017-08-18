@@ -172,7 +172,7 @@
                                 <!-- /.tab-content -->
                             </div>
                             <div class="tab-pane" id="settings">
-                                <form class="form-horizontal" method="POST" action="">
+                                <form is="ajax-form" class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <label for="name" class="col-sm-2 control-label">Name</label>
@@ -276,5 +276,6 @@
     {{ HTML::script('bower_components/AdminLTE/dist/js/app.min.js') }}
     {{ HTML::script('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}
     {{ HTML::script('js/userPF.js', ['type' => 'text/javascript']) }}
+    {{ HTML::script('bower_components/ajax-form/ajax-form.js') }}
 @endsection
 

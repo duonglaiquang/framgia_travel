@@ -10,6 +10,11 @@ Route::group(['prefix' => 'provinces'], function () {
     Route::get('/{name}', ['as' => 'provincePF', 'uses' => 'PagesController@provincePF']);
 });
 
+Route::group(['prefix' => 'services'], function () {
+    Route::get('/hotels', ['as' => 'hotelList', 'uses' => 'PagesController@hotelsList']);
+    Route::post('/hotels', ['as' => 'hotelList', 'uses' => 'PagesController@hotels']);
+});
+
 Route::group(['prefix' => '/user', 'middleware' => ['IsUser', 'auth']], function () {
     Route::get('profile/{id}', ['as' => 'user.profile', 'uses' => 'UserController@showProfile']);
     Route::post('profile/{id}', ['as' => 'user.update', 'uses' => 'UserController@updateProfile']);
@@ -27,4 +32,9 @@ Route::group(['prefix' => '/admin', 'middleware' => ['IsAdmin', 'auth']], functi
     Route::get('/province_delete/{id}', ['as' => 'provinceDelete', 'uses' => 'AdminController@provinceDelete']);
     Route::get('/province_edit/{id}', ['as' => 'provinceGetEdit', 'uses' => 'AdminController@provinceGetEdit']);
     Route::post('/province_edit/{id}', ['as' => 'provincePostEdit', 'uses' => 'AdminController@provincePostEdit']);
+});
+
+Route::group(['prefix' => '/action', 'middleware' => ['IsUser', 'auth']], function () {
+    Route::get('/request', ['as' => 'requestGet', 'uses' => 'PagesController@requestGet']);
+    Route::post('/request', ['as' => 'requestPost', 'uses' => 'PagesController@requestPost']);
 });
