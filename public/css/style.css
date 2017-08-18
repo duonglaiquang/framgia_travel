@@ -2262,3 +2262,47 @@ footer {
     width: 350px;
     height: 262.5px;
 }
+
+.page {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.pagination li a {
+    color: #000000;
+}
+
+.pagination .active span {
+    font-size: 110%;
+    background-color: #34bf49;
+    border-color: #34bf49;
+}
+
+#search1 {
+    margin-top: 30px;
+}
+
+#search1 input[type="text"] {
+    background: url(../images/search-white.png) no-repeat 10px 6px #fcfcfc;
+    border: 3px solid #34bf49;
+    font-size: 15px;
+    color: #464646;
+    width: 400px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 5px;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+}
+
+#search1 input[type="text"]:focus {
+    width: 800px;
+    border-radius: 5px;
+}
+
+.dropdown-item {
+    font-size: large;
+}

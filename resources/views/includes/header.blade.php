@@ -23,9 +23,18 @@
                 <ul class="nav navbar-nav">
                     <li><a class="active" href="http://localhost:8000/home">{{ trans('label.home') }}</a></li>
                     <li><a href="{{ route('provinceList') }}">Provinces</a></li>
-                    <li><a class="scroll" href="#w3-agile-about">Hotels</a></li>
+                    <li><a href="{{ route('hotelList') }}">Hotels</a></li>
                     <li><a class="scroll" href="#agileits-specials">Restaurants</a></li>
                     <li><a class="scroll" href="#wthree-gallery">Activities</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Tour Offer</a></li>
+                            <li><a class="dropdown-item" href="{{ route('requestGet') }}">Tour Request</a></li>
+                        </ul>
+                    </li>
                     <!-- Authentication Links -->
                 </ul>
             </div><!-- /.navbar-collapse -->
