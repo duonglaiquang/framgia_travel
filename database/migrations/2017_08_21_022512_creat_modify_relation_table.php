@@ -26,7 +26,7 @@ class CreatModifyRelationTable extends Migration
     public function down()
     {
         Schema::table('province_gallery', function ($table) {
-            $table->dropForeign(['province_name']);
+            $table->dropForeign(['province_id']);
         });
     }
 }
