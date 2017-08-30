@@ -17,6 +17,7 @@ class CreateModifyTableV5 extends Migration
             $table->float('expected_price')->default(0)->change();
             $table->integer('comment')->nullable()->default(0);
             $table->string('phone')->nullable()->default(null);
+            $table->float('rate_average')->nullable()->default(null)->change();
         });
 
         Schema::table('provinces', function ($table) {
@@ -35,11 +36,14 @@ class CreateModifyTableV5 extends Migration
         });
 
         Schema::table('comments', function ($table) {
+            $table->text('content')->nullable()->default(null)->change();
             $table->text('title')->nullable()->default(null);
+            $table->float('rate_point')->nullable()->default(0)->change();
         });
 
         Schema::table('comments', function ($table) {
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->change();
+            $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->change();
         });
 
         Schema::table('users', function ($table) {

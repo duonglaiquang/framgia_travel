@@ -9,7 +9,6 @@ body {
 
 .text-center {
     padding: 30px;
-    margin-top: 50px;
 }
 
 .service-content {
@@ -129,4 +128,44 @@ body {
 
 .list-shortlist {
     margin-right: 15px;
+}
+
+#link {
+    height: 95px;
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.box1 {
+    float: left;
+    margin-left: 20px;
+    padding-right: 20px;
+}
+
+.box1 a {
+    text-decoration: none;
+    color: black;
+}
+
+.box1 a:hover {
+    color: green;
+}
+
+#link span {
+    float: left;
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+.box1 .dropdown-menu{
+    position: inherit;
+    float: none;
+    min-width: 100px;
+    background: whitesmoke;
+    border: none;
+    -webkit-box-shadow:none;
+    margin-left: -20px;
+    font-size: 18px;
+    font-weight: 400;
 }
