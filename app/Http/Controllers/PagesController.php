@@ -26,11 +26,26 @@ class PagesController extends Controller
     {
         $provinces = Province::where('name', '=', $request->name)->first();
 
-        $hotels = Service::where('category_id', '=', 1)
+        $type = $request->id;
+
+        $hotels = Service::where('category_id', '=', $type)
             ->where('province_id', '=', $provinces->id)
             ->get();
 
-        return view('pages.service.hotels.list', compact('hotels', 'provinces'));
+
+        foreach ($hotels as $hotel) {
+            $hotel->rate_average = Comment::where('service_id', '=', $hotel->id)
+                ->where('rate_point', '>', '0')
+                ->avg('rate_point');
+
+            $hotel->comment = Comment::where('service_id', '=', $hotel->id)
+                ->get()
+                ->count();
+
+            $hotel->save();
+        }
+
+        return view('pages.service.hotels.list', compact('hotels', 'provinces', 'type'));
     }
 
     public function hotels(Request $request)
@@ -43,18 +58,33 @@ class PagesController extends Controller
 
     public function hotelPF(Request $request)
     {
+        $type = $request->id;
+
         $hotel = Service::where('name', '=', $request->name1)->first();
 
         $images = ServiceGallery::where('service_id', '=', $hotel->id)->get();
 
-        $comments = Comment::where('service_id', '=', $hotel->id)->get();
+        $comments = Comment::where('service_id', '=', $hotel->id)->orderBy('id', 'DESC')->get();
+
+        $hotel->rate_average = Comment::where('service_id', '=', $hotel->id)
+            ->where('rate_point', '>', '0')
+            ->avg('rate_point');
+
+        $hotel->comment = Comment::where('service_id', '=', $hotel->id)
+            ->get()
+            ->count();
+
+        $hotel->save();
 
         $users = User::join('comments', 'users.id', '=', 'comments.user_id')
-            ->where('comments.service_id', '=', $hotel->id)->get();
+            ->where('comments.service_id', '=', $hotel->id)
+            ->select('user_id', 'profile_pic', 'name')
+            ->distinct()
+            ->get();
 
         $province = $request->name;
 
-        return view('pages.service.hotels.profile', compact('hotel', 'images', 'province', 'comments', 'users'));
+        return view('pages.service.hotels.profile', compact('hotel', 'images', 'province', 'comments', 'users', 'type'));
     }
 
     public function provincePF(Request $request)
@@ -125,5 +155,55 @@ class PagesController extends Controller
         }
 
         return redirect(route('user.profile', Auth::user()->id));
+    }
+
+    public function comment(Request $request)
+    {
+        $type = $request->id1;
+
+        $hotel = Service::where('name', '=', $request->name1)->first();
+
+        $user = Auth::user();
+
+        $comment = new Comment();
+        $comment->user_id = $user->id;
+        $comment->service_id = $hotel->id;
+        $comment->title = $request->title;
+        $comment->content = $request->content;
+        $comment->rate_point = $request->rate_point;
+        $comment->save();
+
+        switch ($type) {
+            case 1:
+                return redirect(route('hotelPF', [$request->name, $type, $request->name1]));
+                break;
+
+            case 2:
+                return redirect(route('restaurantPF', [$request->name, $type, $request->name1]));
+                break;
+
+            case 3:
+                return redirect(route('activityPF', [$request->name, $type, $request->name1]));
+                break;
+        }
+    }
+
+    public function editComment(Request $request)
+    {
+        $type = $request->id1;
+        $comment = Comment::find($request->id);
+        $comment->title = $request->title;
+        $comment->content = $request->content;
+        $comment->save();
+
+        return redirect(route('hotelPF', [$request->name, $type, $request->name1]));
+    }
+
+    public function deleteComment(Request $request)
+    {
+        $type = $request->id1;
+        Comment::destroy($request->id);
+
+        return redirect(route('hotelPF', [$request->name, $type, $request->name1]));
     }
 }
