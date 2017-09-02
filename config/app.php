@@ -177,6 +177,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        AdvanceSearch\AdvanceSearchProvider\AdvanceSearchProvider::class,
 
     ],
 
@@ -228,7 +229,7 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
         'Form'         => Collective\Html\FormFacade::class,
         'HTML'         => Collective\Html\HtmlFacade::class,
-
+        'Search'       => AdvanceSearch\AdvanceSearchProvider\Facades\SearchFacades::class,
     ],
 
 ];

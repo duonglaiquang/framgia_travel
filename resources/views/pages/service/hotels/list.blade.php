@@ -94,13 +94,13 @@
             <div class="service-content">
                 @foreach($hotels as $hotel)
                     <div class='list-card'>
-                        {{ --<div class='list-label'>NEW LAUNCH</div>-- }}
+                        {{--{{ --<div class='list-label'>NEW LAUNCH</div>-- }}--}}
                         <img alt='' src={{ $hotel->profile_pic }}>
                         <div class='list-details'>
                             <div class='list-name'>
-                                    <a href="{{ route($route_name, [$provinces->name, $type, $hotel->name]) }}">
-                                        <strong>{{ $hotel->name }}</strong>
-                                    </a>
+                                <a href="{{ route($route_namePF, [$provinces->name, $type, $hotel->name]) }}">
+                                    <strong>{{ $hotel->name }}</strong>
+                                </a>
                             </div>
 
                             <div class='list-location'>

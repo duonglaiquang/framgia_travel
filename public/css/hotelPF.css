@@ -325,6 +325,7 @@ body {
     -moz-box-shadow: none;
     box-shadow: none;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .edit1:focus {

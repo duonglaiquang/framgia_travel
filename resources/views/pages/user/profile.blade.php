@@ -82,40 +82,13 @@
                 <div class="col-md-9">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#plans" data-toggle="tab">Plans</a></li>
                             <li><a href="#gallery" data-toggle="tab">Gallery</a></li>
+                            <li class="active"><a href="#plans" data-toggle="tab">Plans</a></li>
+                            <li><a href="#RS" data-toggle="tab">Requested Service</a></li>
                             <li><a href="#settings" data-toggle="tab">Settings</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div class="active tab-pane" id="plans">
-                                <div class="wrap">
-                                    @foreach($plans as $plan)
-                                        @php
-                                            $img = '';
-                                            $location = $plan->plan_location->random(1)->first();
-                                            if ($location) {
-                                                $img = $location->province->img_url;
-                                            }
-                                        @endphp
-                                        <a href="{{ route('requestEditGet', $plan->id) }}">
-                                            <div class="tile">
-                                                <img src='{{ $img }}'/>
-                                                <div class="text">
-                                                    <h2>{{ $plan->title }}</h2>
-                                                    <h5 class="animate-text">{{ $plan->time }}</h5>
-                                                    @foreach($plan->plan_location as $planLocaltion)
-                                                        <h5 class="animate-text">
-                                                            <i class="fa fa-hand-o-right"></i>
-                                                            {{ $planLocaltion->province->name }}
-                                                        </h5>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="gallery">
+                            <div class="active tab-pane" id="gallery">
                                 <div class="container">
                                     <div class="row">
                                         <div class="gallery">
@@ -189,6 +162,90 @@
                                     <!-- /.tab-pane -->
                                 </div>
                                 <!-- /.tab-content -->
+                            </div>
+                            <div class="tab-pane" id="plans">
+                                <div class="wrap">
+                                    @foreach($plans as $plan)
+                                        @php
+                                            $img = '';
+                                            $location = $plan->plan_location->random(1)->first();
+                                            if ($location) {
+                                                $img = $location->province->img_url;
+                                            }
+                                        @endphp
+                                        <a href="{{ route('requestEditGet', $plan->id) }}">
+                                            <div class="tile">
+                                                <img src='{{ $img }}'/>
+                                                <div class="text">
+                                                    <h2>{{ $plan->title }}</h2>
+                                                    <h5 class="animate-text">{{ $plan->time }}</h5>
+                                                    @foreach($plan->plan_location as $planLocaltion)
+                                                        <h5 class="animate-text">
+                                                            <i class="fa fa-hand-o-right"></i>
+                                                            {{ $planLocaltion->province->name }}
+                                                        </h5>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="RS">
+                                <div class="item">
+                                    <div class='list-card'>
+                                        <div class='list-label' id="hotel">Hotel</div>
+                                        <div class='list-label' id="restaurant">Restaurant</div>
+                                        <div class='list-label' id="activity">Activity</div>
+                                        <div class='list-label' id="pending">Pending</div>
+                                        <div class='list-label' id="cancel">Cancel</div>
+                                        <div class='list-label' id="approved">Approved</div>
+                                        <div class='list-label' id="modified">Modified</div>
+                                        <img alt='' src=>
+                                        <div class='list-details'>
+                                            <div class='list-name'>
+                                                {{--<a href="{{ route($route_namePF, [$provinces->name, $type, $hotel->name]) }}">--}}
+                                                    {{--<strong>{{ $hotel->name }}</strong>--}}
+                                                {{--</a>--}}
+                                            </div>
+
+                                            <div class='list-location'>
+                                                <span class="fa fa-map-marker"></span>
+                                                {{--{{ $hotel->address }}--}}
+                                            </div>
+
+                                            {{--@if($type == 1 || $type == 2)--}}
+                                                {{--<div class='list-location'>--}}
+                                                    {{--<span class="fa fa-phone"></span>--}}
+                                                    {{--{{ $hotel->phone }}--}}
+                                                {{--</div>--}}
+                                            {{--@endif--}}
+
+                                            {{--@if($type == 2 || $type == 3)--}}
+                                                {{--<div class='list-location'>--}}
+                                                    {{--<span class="fa  fa-clock-o"></span>--}}
+                                                    {{--{{ $hotel->open_time }}--}}
+                                                {{--</div>--}}
+                                            {{--@endif--}}
+
+                                            {{--<div class='list-price'>{{ $hotel->description }}</div>--}}
+                                            {{--<div class='list-bottom'>--}}
+                                                {{--<div class='list-bottom-section'>--}}
+                                                    {{--<span>{{ $hotel->expected_price }} $</span>--}}
+                                                    {{--<span>Avg Price</span>--}}
+                                                {{--</div>--}}
+                                                {{--<div class='list-bottom-section'>--}}
+                                                    {{--<span>{{ round($hotel->rate_average,2) }} /5</span>--}}
+                                                    {{--<span>Rating</span>--}}
+                                                {{--</div>--}}
+                                                {{--<div class='list-bottom-section'>--}}
+                                                    {{--<span>{{ $hotel->comment }}</span>--}}
+                                                    {{--<span>Comment</span>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane" id="settings">
                                 <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">

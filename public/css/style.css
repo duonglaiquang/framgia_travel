@@ -2196,7 +2196,7 @@ footer {
 }
 
 .nav-login .dropdown-menu li {
-    min-width: 100px;
+    width: 100%;
     float: left;
 }
 

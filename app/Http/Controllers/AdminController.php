@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Province;
+use App\Models\RequestedService;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -83,5 +84,12 @@ class AdminController extends Controller
         $province->save();
 
         return redirect(route('provinceShowList'));
+    }
+
+    public function serviceRequested()
+    {
+        $RS = RequestedService::all();
+
+        return view('admin.services.requested', compact('RS'));
     }
 }
