@@ -26,8 +26,8 @@ class CreateModifyTableV5 extends Migration
 
         Schema::table('plans', function ($table) {
             $table->dropColumn('time');
-            $table->date('time_from')->nullable()->default(null);
-            $table->date('time_to')->nullable()->default(null);
+            $table->string('time_from')->nullable()->default(null);
+            $table->string('time_to')->nullable()->default(null);
         });
 
         Schema::table('service_gallerys', function ($table) {
