@@ -26,8 +26,8 @@ class CreateModifyTableV5 extends Migration
 
         Schema::table('plans', function ($table) {
             $table->dropColumn('time');
-            $table->date('time_from')->nullable()->default(null);
-            $table->date('time_to')->nullable()->default(null);
+            $table->string('time_from')->nullable()->default(null);
+            $table->string('time_to')->nullable()->default(null);
         });
 
         Schema::table('service_gallerys', function ($table) {
@@ -48,6 +48,18 @@ class CreateModifyTableV5 extends Migration
 
         Schema::table('users', function ($table) {
             $table->string('profile_pic')->default('profile_pic.png')->change();
+        });
+
+        Schema::dropIfExists('follows');
+
+        Schema::table('users', function ($table) {
+            $table->dropColumn('follower');
+            $table->dropColumn('following');
+        });
+
+        Schema::table('requested_services', function ($table) {
+            $table->string('phone')->nullable()->default(null);
+            $table->string('profile_pic')->nullable()->default(null);
         });
     }
 

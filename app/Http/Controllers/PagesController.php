@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Plan;
 use App\Models\PlanLocation;
 use App\Models\Province;
 use App\Models\ProvinceGallery;
+use App\Models\RequestedService;
 use App\Models\Service;
 use App\Models\ServiceGallery;
 use App\Models\User;
@@ -28,10 +30,8 @@ class PagesController extends Controller
 
         $type = $request->id;
 
-        $hotels = Service::where('category_id', '=', $type)
-            ->where('province_id', '=', $provinces->id)
-            ->get();
 
+        $hotels = Service::all();
 
         foreach ($hotels as $hotel) {
             $hotel->rate_average = Comment::where('service_id', '=', $hotel->id)
@@ -45,15 +45,54 @@ class PagesController extends Controller
             $hotel->save();
         }
 
+        $hotels = Service::where('category_id', '=', $type)
+            ->where('province_id', '=', $provinces->id)
+            ->orderBy('rate_average', 'DESC')
+            ->get();
+
         return view('pages.service.hotels.list', compact('hotels', 'provinces', 'type'));
     }
 
-    public function hotels(Request $request)
+    public function provinceSearch(Request $request)
     {
         $key = $request->inputSearch;
         $provinces = Province::where('name', 'like', "%$key%")->take(30)->paginate(5);
 
-        return view('pages.service.hotels.search', compact('provinces', 'key'));
+        return view('pages.province.search', compact('provinces', 'key'));
+    }
+
+    public function serviceList(Request $request)
+    {
+        $type = $request->id;
+
+        return view('pages.service.provinceSearch', compact('type'));
+    }
+
+    public function serviceListSearch(Request $request)
+    {
+        $key = $request->inputSearch;
+        $type = $request->id;
+        $provinces = Province::where('name', 'like', "%$key%")->take(30)->paginate(5);
+
+        return view('pages.service.search', compact('provinces', 'key', 'type'));
+    }
+
+    public function PFsearch(Request $request)
+    {
+        $key = $request->inputSearch;
+        $type = $request->id;
+        $province = $request->id1;
+
+        $items = Service::where('name', 'like', "%$key%")
+            ->where('category_id', '=', $type)
+            ->where('province_id', '=', $province)
+            ->get();
+
+        foreach ($items as $item) {
+            $resultSearch[] = $item->name;
+        }
+
+        return $resultSearch;
     }
 
     public function hotelPF(Request $request)
@@ -157,6 +196,14 @@ class PagesController extends Controller
         return redirect(route('user.profile', Auth::user()->id));
     }
 
+    public function requestDelete(Request $request)
+    {
+        $delete = Plan::find($request->id);
+        $delete->delete();
+
+        return redirect(route('user.profile', Auth::user()->id));
+    }
+
     public function comment(Request $request)
     {
         $type = $request->id1;
@@ -206,4 +253,25 @@ class PagesController extends Controller
 
         return redirect(route('hotelPF', [$request->name, $type, $request->name1]));
     }
+
+    public function requestService()
+    {
+        $provinces = Province::all();
+        $categories = Category::all();
+
+        return view('pages.service.request', compact('provinces', 'categories'));
+    }
+
+    public function requestServicePost(Request $request)
+    {
+        $RS = new RequestedService();
+
+        $RS->fill($request->all());
+        $RS->user_id = Auth::user()->id;
+        $RS->status = '0';
+        $RS->save();
+
+        return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'RS']);;
+    }
 }
+

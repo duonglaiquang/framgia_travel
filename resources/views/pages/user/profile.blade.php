@@ -29,10 +29,10 @@
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>Followers</b> <a class="pull-right">{{Auth::user()->follower}}</a>
+                                    <b>Plan</b> <a class="pull-right"></a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Following</b> <a class="pull-right">{{Auth::user()->following}}</a>
+                                    <b>Gallery</b> <a class="pull-right"></a>
                                 </li>
                             </ul>
                         </div>
@@ -81,41 +81,14 @@
                 <!-- /.col -->
                 <div class="col-md-9">
                     <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#plans" data-toggle="tab">Plans</a></li>
-                            <li><a href="#gallery" data-toggle="tab">Gallery</a></li>
+                        <ul class="nav nav-tabs" id="tabMenu">
+                            <li class="active"><a href="#gallery" data-toggle="tab">Gallery</a></li>
+                            <li><a href="#plans" data-toggle="tab">Plans</a></li>
+                            <li><a href="#RS" data-toggle="tab">Requested Service</a></li>
                             <li><a href="#settings" data-toggle="tab">Settings</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div class="active tab-pane" id="plans">
-                                <div class="wrap">
-                                    @foreach($plans as $plan)
-                                        @php
-                                            $img = '';
-                                            $location = $plan->plan_location->random(1)->first();
-                                            if ($location) {
-                                                $img = $location->province->img_url;
-                                            }
-                                        @endphp
-                                        <a href="{{ route('requestEditGet', $plan->id) }}">
-                                            <div class="tile">
-                                                <img src='{{ $img }}'/>
-                                                <div class="text">
-                                                    <h2>{{ $plan->title }}</h2>
-                                                    <h5 class="animate-text">{{ $plan->time }}</h5>
-                                                    @foreach($plan->plan_location as $planLocaltion)
-                                                        <h5 class="animate-text">
-                                                            <i class="fa fa-hand-o-right"></i>
-                                                            {{ $planLocaltion->province->name }}
-                                                        </h5>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="gallery">
+                            <div class="active tab-pane" id="gallery">
                                 <div class="container">
                                     <div class="row">
                                         <div class="gallery">
@@ -189,6 +162,107 @@
                                     <!-- /.tab-pane -->
                                 </div>
                                 <!-- /.tab-content -->
+                            </div>
+                            <div class="tab-pane" id="plans">
+                                <div class="wrap">
+                                    @foreach($plans as $plan)
+                                        @php
+                                            $img = '';
+                                            $location = $plan->plan_location->random(1)->first();
+                                            if ($location) {
+                                                $img = $location->province->img_url;
+                                            }
+                                        @endphp
+                                        <a href="{{ route('requestEditGet', $plan->id) }}">
+                                            <div class="tile">
+                                                <img src='{{ $img }}'/>
+                                                <div class="text">
+                                                    <h2>{{ $plan->title }}</h2>
+                                                    <h5 class="animate-text">{{ $plan->time }}</h5>
+                                                    @foreach($plan->plan_location as $planLocaltion)
+                                                        <h5 class="animate-text">
+                                                            <i class="fa fa-hand-o-right"></i>
+                                                            {{ $planLocaltion->province->name }}
+                                                        </h5>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="RS">
+                                <input type="checkbox" class="checkbox1" id="all" value="all">All
+                                <input type="checkbox" class="checkbox1" id="hotel" value="hotel">Hotel
+                                <input type="checkbox" class="checkbox1" id="restaurant" value="restaurant">Restaurant
+                                <input type="checkbox" class="checkbox1" id="activity" value="activity">Activity<br>
+                                <input type="checkbox" class="checkbox1" id="all1" value="all1">All
+                                <input type="checkbox" class="checkbox1" id="pending" value="pending">Pending
+                                <input type="checkbox" class="checkbox1" id="approved" value="approved">Approved
+                                <input type="checkbox" class="checkbox1" id="canceled" value="canceled">Canceled
+                                @foreach($RServices as $RService)
+                                    <div class="item">
+                                        <div class='list-card'>
+                                            <input type="hidden" class="categoryID"
+                                                   value={{$RService->category_id}}>
+                                            <input type="hidden" class="status"
+                                                   value={{$RService->status}}>
+                                            <button type="button" class="abc"></button>
+                                            <button type="button" class="abcd"></button>
+                                            <div class='list-label hotel'>Hotel</div>
+                                            <div class='list-label restaurant'>Restaurant</div>
+                                            <div class='list-label activity'>Activity</div>
+                                            <div class='list-label pending'>Pending</div>
+                                            <div class='list-label canceled'>Cancel</div>
+                                            <div class='list-label approved'>Approved</div>
+                                            <div class='list-label modified'>Modified</div>
+                                            <img alt='' src={{$RService->profile_pic}}>
+                                            <div class='list-details' id="list-details">
+                                                <div class='list-location'>
+                                                    {{ $RService->address }}
+                                                </div>
+                                                <div class='list-name'>
+                                                    <a>
+                                                        <strong>{{ $RService->name }}</strong>
+                                                    </a>
+                                                </div>
+
+                                                <div class='list-location'>
+                                                    <span class="fa fa-map-marker"></span>
+                                                    {{ $RService->address }}
+                                                </div>
+
+                                                <div class='list-location'>
+                                                    <span class="fa fa-map"></span>
+                                                    @foreach($provinces as $province)
+                                                        @if($province->id == $RService->province_id)
+                                                            {{ $province->name }}
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+
+                                                @if($RService->category_id == 1 || $RService->category_id == 2)
+                                                    <div class='list-location'>
+                                                        <span class=" fa fa-phone"></span>
+                                                        {{ $RService->phone }}
+                                                    </div>
+                                                @endif
+
+                                                @if($RService->category_id == 2 || $RService->category_id == 3)
+                                                    <div class='list-location'>
+                                                        <span class="fa  fa-clock-o"></span>
+                                                        {{ $RService->open_time }}
+                                                    </div>
+                                                @endif
+
+                                                <div class='list-price'>{{ $RService->description }}</div>
+                                                <div class='list-location'>
+                                                    <span>{{ $RService->expected_price }} $ AVG</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                             <div class="tab-pane" id="settings">
                                 <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
@@ -294,5 +368,10 @@
     {{ HTML::script('bower_components/AdminLTE/dist/js/app.min.js') }}
     {{ HTML::script('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}
     {{ HTML::script('js/userPF.js', ['type' => 'text/javascript']) }}
+    <script>
+        //redirect to specific tab
+        $(document).ready(function () {
+            $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show')
+        });
+    </script>
 @endsection
-

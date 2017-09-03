@@ -125,6 +125,7 @@ body {
     line-break: auto;
     width: 70%;
     font-size: 17px;
+    word-wrap: break-word;
 }
 
 .line {
@@ -325,6 +326,7 @@ body {
     -moz-box-shadow: none;
     box-shadow: none;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .edit1:focus {

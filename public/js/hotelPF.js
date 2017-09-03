@@ -230,7 +230,7 @@ $(document).ready(function () {
 
             $('.btn-div').slideUp("slow");
             $('.edit1').removeAttr('disabled');
-            $('.edit1').css('cursor','auto');
+            $('.edit1').css('cursor','pointer');
         });
 
     })
