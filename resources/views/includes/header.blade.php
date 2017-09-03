@@ -23,9 +23,15 @@
                 <ul class="nav navbar-nav">
                     <li><a class="active" href="http://localhost:8000/home">{{ trans('label.home') }}</a></li>
                     <li><a href="{{ route('provinceList') }}">Provinces</a></li>
+<<<<<<< 07cc42535cc58e10be26e9b35f9000adbf42422f
                     <li><a href="{{ route('serviceList',1) }}">Hotels</a></li>
                     <li><a href="{{ route('serviceList',2) }}">Restaurants</a></li>
                     <li><a href="{{ route('serviceList',3) }}">Activities</a></li>
+=======
+                    <li><a href="{{ route('hotelList') }}">Hotels</a></li>
+                    <li><a class="scroll" href="#agileits-specials">Restaurants</a></li>
+                    <li><a class="scroll" href="#wthree-gallery">Activities</a></li>
+>>>>>>> Request uncompleted
                 </ul>
             </div>
         </nav>
@@ -55,7 +61,6 @@
                         @endif
                         <li><a href="{{ route('user.profile', [Auth::user()->id]) }}">{{ trans('label.profile') }}</a>
                         </li>
-
                         <li><a href="{{ route('service.request', [Auth::user()->id]) }}">Request Service</a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('requestGet') }}">Add Plan</a></li>
