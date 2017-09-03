@@ -57,4 +57,5 @@ Route::group(['prefix' => '/action', 'middleware' => ['IsUser', 'auth']], functi
     Route::post('/request', ['as' => 'requestPost', 'uses' => 'PagesController@requestPost']);
     Route::get('/request/{id}/edit', ['as' => 'requestEditGet', 'uses' => 'PagesController@requestEditGet']);
     Route::post('/request/{id}/edit', ['as' => 'requestEditPost', 'uses' => 'PagesController@requestEditPost']);
+    Route::get('/request/{id}/delete', ['as' => 'requestDelete', 'uses' => 'PagesController@requestDelete']);
 });

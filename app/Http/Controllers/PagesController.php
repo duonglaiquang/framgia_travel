@@ -157,6 +157,14 @@ class PagesController extends Controller
         return redirect(route('user.profile', Auth::user()->id));
     }
 
+    public function requestDelete(Request $request)
+    {
+        $delete = Plan::find($request->id);
+        $delete->delete();
+
+        return redirect(route('user.profile', Auth::user()->id));
+    }
+    
     public function comment(Request $request)
     {
         $type = $request->id1;
@@ -207,3 +215,4 @@ class PagesController extends Controller
         return redirect(route('hotelPF', [$request->name, $type, $request->name1]));
     }
 }
+
