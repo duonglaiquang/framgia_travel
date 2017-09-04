@@ -154,8 +154,7 @@
             province = $('#province').val();
             $("#tags").autocomplete({
                 source: 'http://localhost:8000/search' + type + province
-            })
-            ;
+            });
         });
     </script>
 @endsection
