@@ -12,6 +12,7 @@
     {{ HTML::style('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css') }}
     {{ HTML::style('bower_components/AdminLTE/dist/css/AdminLTE.min.css') }}
     {{ HTML::style('bower_components/AdminLTE/dist/css/skins/skin-blue.min.css') }}
+    {{ HTML::style('css/admin.css') }}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="skin-blue">

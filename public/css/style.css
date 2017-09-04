@@ -2196,7 +2196,7 @@ footer {
 }
 
 .nav-login .dropdown-menu li {
-    min-width: 100px;
+    width: 100%;
     float: left;
 }
 
@@ -2323,4 +2323,8 @@ ul {
 
 .container {
     overflow: hidden;
+}
+
+.nav-login .dropdown-toggle {
+    margin-right: 44px !important;
 }

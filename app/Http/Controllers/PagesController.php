@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Plan;
 use App\Models\PlanLocation;
 use App\Models\Province;
 use App\Models\ProvinceGallery;
+use App\Models\RequestedService;
 use App\Models\Service;
 use App\Models\ServiceGallery;
 use App\Models\User;
@@ -164,7 +166,7 @@ class PagesController extends Controller
 
         return redirect(route('user.profile', Auth::user()->id));
     }
-    
+
     public function comment(Request $request)
     {
         $type = $request->id1;
@@ -213,6 +215,26 @@ class PagesController extends Controller
         Comment::destroy($request->id);
 
         return redirect(route('hotelPF', [$request->name, $type, $request->name1]));
+    }
+
+    public function requestService()
+    {
+        $provinces = Province::all();
+        $categories = Category::all();
+
+        return view('pages.service.request', compact('provinces', 'categories'));
+    }
+
+    public function requestServicePost(Request $request)
+    {
+        $RS = new RequestedService();
+
+        $RS->fill($request->all());
+        $RS->user_id = Auth::user()->id;
+        $RS->status = '0';
+        $RS->save();
+
+        return redirect(route('user.profile', Auth::user()->id))->withInput(['tab'=>'RS']);;
     }
 }
 

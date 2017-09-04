@@ -1,3 +1,16 @@
+body {
+    height: auto;
+}
+
+.container{
+    margin-bottom: 50px;
+    overflow: visible;
+}
+
+textarea{
+    resize: none;
+}
+
 .text-center h2 {
     color: #FFFFFF;
     margin-top: 40px;
@@ -80,7 +93,6 @@
     margin-top: 10px;
     padding: 10px;
 }
-
 
 .page-wrap {
     margin-bottom: 50px;

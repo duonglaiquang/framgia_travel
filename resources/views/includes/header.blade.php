@@ -55,6 +55,9 @@
                         @endif
                         <li><a href="{{ route('user.profile', [Auth::user()->id]) }}">{{ trans('label.profile') }}</a>
                         </li>
+
+                        <li><a href="{{ route('service.request', [Auth::user()->id]) }}">Request Service</a>
+                        </li>
                         <li><a class="dropdown-item" href="{{ route('requestGet') }}">Add Plan</a></li>
                         <li>
                             <a href="javascript:void(0)" id="logout-1">

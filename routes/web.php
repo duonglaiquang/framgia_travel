@@ -40,16 +40,23 @@ Route::group(['prefix' => '/user', 'middleware' => ['IsUser', 'auth']], function
 
 Route::group(['prefix' => '/admin', 'middleware' => ['IsAdmin', 'auth']], function () {
     Route::get('/', ['as' => 'admin', 'uses' => 'PagesController@showAdmin']);
+
     Route::get('/user_list', ['as' => 'userList', 'uses' => 'AdminController@userList']);
     Route::get('/user_list/{id}', ['as' => 'block', 'uses' => 'AdminController@blockUser']);
     Route::get('/user_block', ['as' => 'userBlock', 'uses' => 'AdminController@userBlock']);
     Route::get('/user_block/{id}', ['as' => 'unblock', 'uses' => 'AdminController@unblockUser']);
+
     Route::get('/province_list', ['as' => 'provinceShowList', 'uses' => 'AdminController@provinceList']);
     Route::get('/province_add', ['as' => 'provinceGetAdd', 'uses' => 'AdminController@provinceGetAdd']);
     Route::post('/province_add', ['as' => 'provincePostAdd', 'uses' => 'AdminController@provincePostAdd']);
     Route::get('/province_delete/{id}', ['as' => 'provinceDelete', 'uses' => 'AdminController@provinceDelete']);
     Route::get('/province_edit/{id}', ['as' => 'provinceGetEdit', 'uses' => 'AdminController@provinceGetEdit']);
     Route::post('/province_edit/{id}', ['as' => 'provincePostEdit', 'uses' => 'AdminController@provincePostEdit']);
+
+    Route::get('/service_list', ['as' => 'serviceShowList', 'uses' => 'AdminController@serviceList']);
+    Route::get('/service_requested', ['as' => 'serviceRequested', 'uses' => 'AdminController@serviceRequested']);
+    Route::get('/approved/{id}', ['as' => 'approved', 'uses' => 'AdminController@approveRequest']);
+    Route::get('/canceled/{id}', ['as' => 'canceled', 'uses' => 'AdminController@cancelRequest']);
 });
 
 Route::group(['prefix' => '/action', 'middleware' => ['IsUser', 'auth']], function () {
@@ -57,5 +64,7 @@ Route::group(['prefix' => '/action', 'middleware' => ['IsUser', 'auth']], functi
     Route::post('/request', ['as' => 'requestPost', 'uses' => 'PagesController@requestPost']);
     Route::get('/request/{id}/edit', ['as' => 'requestEditGet', 'uses' => 'PagesController@requestEditGet']);
     Route::post('/request/{id}/edit', ['as' => 'requestEditPost', 'uses' => 'PagesController@requestEditPost']);
+    Route::get('/request%Service', ['as' => 'service.request', 'uses' => 'PagesController@requestService']);
+    Route::post('/request%Service', ['as' => 'service.request.post', 'uses' => 'PagesController@requestServicePost']);
     Route::get('/request/{id}/delete', ['as' => 'requestDelete', 'uses' => 'PagesController@requestDelete']);
 });

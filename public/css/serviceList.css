@@ -47,7 +47,7 @@ body {
 }
 
 .container .list-card img {
-    width: 240px;
+    width: 29%;
     height: 180px;
     background-color: green;
     border: 0;
@@ -69,12 +69,14 @@ body {
 }
 
 .list-details {
-    float: none;
+    float: right;
+    width: 68%;
 }
 
 .list-name {
     font-size: 20px;
     display: inline-block;
+    word-wrap: break-word;
 }
 
 .list-landmark,
@@ -82,15 +84,18 @@ body {
     font-size: 12px;
     opacity: 0.8;
     margin: 3px;
+    word-wrap: break-word;
 }
 
 .list-rooms {
     font-size: 12px;
+    word-wrap: break-word;
 }
 
 .list-price {
     font-size: 20px;
     margin-top: 16px;
+    word-wrap: break-word;
 }
 
 .list-bottom {
@@ -106,6 +111,7 @@ body {
     font-size: 14px;
     padding: 0 20px;
     border-left: 1px solid #e5e5e5;
+
 }
 
 .list-bottom .list-bottom-section span:last-of-type {
