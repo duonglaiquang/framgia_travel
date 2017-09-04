@@ -14,9 +14,11 @@ class RequestedService extends Model
         'name',
         'description',
         'address',
-        'opentime',
+        'open_time',
         'expected_price',
         'status',
+        'phone',
+        'profile_pic',
     ];
 
     function province()

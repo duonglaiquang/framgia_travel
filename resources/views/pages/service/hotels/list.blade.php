@@ -94,7 +94,7 @@
             <div class="service-content">
                 @foreach($hotels as $hotel)
                     <div class='list-card'>
-                        <div class='list-label'>NEW LAUNCH</div>
+                        {{--{{ --<div class='list-label'>NEW LAUNCH</div>-- }}--}}
                         <img alt='' src={{ $hotel->profile_pic }}>
                         <div class='list-details'>
                             <div class='list-name'>

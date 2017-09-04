@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Province;
+use App\Models\RequestedService;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -83,5 +86,45 @@ class AdminController extends Controller
         $province->save();
 
         return redirect(route('provinceShowList'));
+    }
+
+    public function serviceRequested()
+    {
+        $RS = RequestedService::all();
+        $provinces = Province::all();
+        $categories = Category::all();
+
+        return view('admin.services.requested', compact('RS', 'provinces', 'categories'));
+    }
+
+    public function approveRequest(Request $request)
+    {
+        $Rservice = RequestedService::find($request->id);
+        $Rservice->status = 1;
+        $Rservice->save();
+
+        $service = new Service();
+        $service->category_id = $Rservice->category_id;
+        $service->province_id = $Rservice->province_id;
+        $service->name = $Rservice->name;
+        $service->description = $Rservice->description;
+        $service->address = $Rservice->address;
+        $service->open_time = $Rservice->open_time;
+        $service->expected_price = $Rservice->expected_price;
+        $service->phone = $Rservice->phone;
+        $service->profile_pic = $Rservice->profile_pic;
+
+        $service->save();
+
+        return redirect(route('serviceRequested'));
+    }
+
+    public function cancelRequest(Request $request)
+    {
+        $Rservice = RequestedService::find($request->id);
+        $Rservice->status = 2;
+        $Rservice->save();
+
+        return redirect(route('serviceRequested'));
     }
 }

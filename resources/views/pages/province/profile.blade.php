@@ -107,12 +107,14 @@
                             <div id="hotel">
                             </div>
 
-                            <div id="restaurant">
-                                <h4><strong>Top-rated {{$provinces->name}} Restaurants</strong></h4>
+                            <h4><strong>Top-rated {{$provinces->name}} Restaurants</strong></h4>
+
+                            <div id="hotel">
                             </div>
 
-                            <div id="activity">
-                                <h4><strong>Top-rated {{$provinces->name}} Things to Do</strong></h4>
+                            <h4><strong>Top-rated {{$provinces->name}} Things to Do</strong></h4>
+
+                            <div id="hotel">
                             </div>
 
                         </div>
