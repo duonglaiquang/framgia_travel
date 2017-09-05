@@ -68,3 +68,5 @@ Route::group(['prefix' => '/action', 'middleware' => ['IsUser', 'auth']], functi
     Route::post('/request%Service', ['as' => 'service.request.post', 'uses' => 'PagesController@requestServicePost']);
     Route::get('/request/{id}/delete', ['as' => 'requestDelete', 'uses' => 'PagesController@requestDelete']);
 });
+
+Route::get('/service/{province_id}/{type_id}', ['as' => 'select-ajax', 'uses' => 'AjaxController@selectAjax']);

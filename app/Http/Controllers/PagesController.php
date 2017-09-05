@@ -14,6 +14,7 @@ use App\Models\ServiceGallery;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -130,13 +131,22 @@ class PagesController extends Controller
     public function requestEditGet(Request $request)
     {
         $plann = Plan::with('plan_location')->find($request->id);
+        $details = DB::table('plan_details')
+            ->where('plan_details.plan_id', $request->id)
+            ->leftJoin('services', 'services.id', 'plan_details.service_id')
+            ->leftJoin('categories', 'categories.id', 'services.category_id')
+            ->leftJoin('provinces', 'provinces.id', 'services.province_id')
+            ->select('provinces.name as pro_name', 'services.name as ser_name', 'categories.name as cat_name', 'services.category_id as type')
+            ->get();
         $choices = $plann->plan_location;
         $provinces = Province::all();
+        $types = Category::all();
+        $services = Service::all();
 //        $choices = DB::table('plans')->join('plan_locations', 'plans.id', '=', 'plan_locations.plan_id')
 //            ->join('provinces', 'provinces.id', '=', 'plan_locations.province_id')->where('plans.id', '=', $request->id)
 //            ->get();
 
-        return view('pages.action.request.edit', compact('plann', 'provinces', 'choices'));
+        return view('pages.action.request.edit', compact('plann', 'provinces', 'choices', 'details', 'types', 'services'));
     }
 
     public function requestEditPost(Request $request)
@@ -237,4 +247,3 @@ class PagesController extends Controller
         return redirect(route('user.profile', Auth::user()->id))->withInput(['tab'=>'RS']);;
     }
 }
-
