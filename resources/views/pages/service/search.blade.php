@@ -9,21 +9,22 @@
 @endsection
 
 @section('content')
-    <?php
-    switch ($type) {
-        case 1:
-            $service_name = 'hotels';
-            break;
+    @php
+        $i = 0;
+        switch ($type) {
+            case 1:
+                $service_name = 'hotels';
+                break;
 
-        case 2:
-            $service_name = 'restaurants';
-            break;
+            case 2:
+                $service_name = 'restaurants';
+                break;
 
-        case 3:
-            $service_name = 'activities';
-            break;
-    }
-    ?>
+            case 3:
+                $service_name = 'activities';
+                break;
+        }
+    @endphp
     <div class="wrapper">
         <div class="gallery text-center" id="wthree-gallery">
             <div class="container">
@@ -39,9 +40,6 @@
                     <div class="bs-example bs-example-tabs wthree_example_tab" role="tabpanel"
                          data-example-id="togglable-tabs">
                         <div class="w3l_gallery_grids1">
-                            <?php
-                            $i = 0;
-                            ?>
                             @foreach($provinces as $province)
                                 {{$i++}}
                                 <div class="col-md-4 w3l_gallery_grid">

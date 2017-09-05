@@ -6,7 +6,7 @@
 
 @section('style')
     {{  HTML::style('css/serviceList.css')  }}
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    {{  HTML::style('bower_components/jquery-ui/themes/base/jquery-ui.css', ['rel' => 'stylesheet'])  }}
 @endsection
 
 @section('content')

@@ -29,6 +29,7 @@
     "Html5shiv": "https://github.com/aFarkas/html5shiv.git",
     "Respond": "https://github.com/scottjehl/Respond.git",
     "bootstrap-confirmation": "https://github.com/tavicu/bs-confirmation.git",
-    "bootstrap-star-rating": "^4.0.2"
+    "bootstrap-star-rating": "^4.0.2",
+    "jquery-ui": "https://github.com/components/jqueryui.git"
   }
 }

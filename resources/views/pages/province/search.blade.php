@@ -9,6 +9,9 @@
 @endsection
 
 @section('content')
+    @php
+        $i = 0;
+    @endphp
     <div class="wrapper">
         <div class="gallery text-center" id="wthree-gallery">
             <div class="container">
@@ -24,9 +27,6 @@
                     <div class="bs-example bs-example-tabs wthree_example_tab" role="tabpanel"
                          data-example-id="togglable-tabs">
                         <div class="w3l_gallery_grids1">
-                            <?php
-                            $i = 0;
-                            ?>
                             @foreach($provinces as $province)
                                 {{$i++}}
                                 <div class="col-md-4 w3l_gallery_grid">

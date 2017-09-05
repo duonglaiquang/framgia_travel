@@ -2,7 +2,7 @@
 
 @section('style')
     {{ HTML::style('css/provinceList.css') }}
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    {{  HTML::style('bower_components/jquery-ui/themes/base/jquery-ui.css', ['rel' => 'stylesheet'])  }}
 @endsection
 
 @section('header')
@@ -10,21 +10,21 @@
 @endsection
 
 @section('content')
-    <?php
-    switch ($type) {
-        case 1:
-            $service_name = 'hotels';
-            break;
+    @php
+        switch ($type) {
+            case 1:
+                $service_name = 'hotels';
+                break;
 
-        case 2:
-            $service_name = 'restaurants';
-            break;
+            case 2:
+                $service_name = 'restaurants';
+                break;
 
-        case 3:
-            $service_name = 'activities';
-            break;
-    }
-    ?>
+            case 3:
+                $service_name = 'activities';
+                break;
+        }
+    @endphp
     <div class="wrapper">
         <div class="gallery text-center" id="wthree-gallery">
             <div class="container">
