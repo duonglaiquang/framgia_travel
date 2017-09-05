@@ -23,9 +23,9 @@
                 <ul class="nav navbar-nav">
                     <li><a class="active" href="http://localhost:8000/home">{{ trans('label.home') }}</a></li>
                     <li><a href="{{ route('provinceList') }}">Provinces</a></li>
-                    <li><a href="{{ route('hotelList') }}">Hotels</a></li>
-                    <li><a class="scroll" href="#agileits-specials">Restaurants</a></li>
-                    <li><a class="scroll" href="#wthree-gallery">Activities</a></li>
+                    <li><a href="{{ route('serviceList',1) }}">Hotels</a></li>
+                    <li><a href="{{ route('serviceList',2) }}">Restaurants</a></li>
+                    <li><a href="{{ route('serviceList',3) }}">Activities</a></li>
                 </ul>
             </div>
         </nav>

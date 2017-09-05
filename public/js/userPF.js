@@ -121,6 +121,154 @@ $(document).ready(function () {
                 }
             });
             $('.abcd').trigger('click');
+
+            $('input[type="checkbox"]#pending').on('change', function () {
+                if ($(this).is(":checked")) {
+                    all1++;
+                    if (all1 > 0) {
+                        $('#all1').attr("disabled", true);
+                    }
+
+                    $('.abcd').click(function () {
+                        listcard = $(this).parent('.list-card');
+                        item = $(listcard).parent('.item');
+                        categoryID = listcard.find('.categoryID').val();
+                        status = listcard.find('.status').val();
+                        if (categoryID != 1 || status != 0) {
+                            item.css('display', 'none');
+                        }
+                    });
+                    $('.abcd').trigger('click');
+                }
+
+                else {
+                    all1--;
+                    if (all1 == 0) {
+                        $('#all1').attr("disabled", false);
+                    }
+
+                    $('.abcd').click(function () {
+                        listcard = $(this).parent('.list-card');
+                        item = $(listcard).parent('.item');
+                        categoryID = listcard.find('.categoryID').val();
+                        if (categoryID == 1) {
+                            item.css('display', 'inherit');
+                        }
+                    });
+                    $('.abcd').trigger('click');
+                }
+            });
+
+            $('input[type="checkbox"]#approved').on('change', function () {
+                if ($(this).is(":checked")) {
+                    all1++;
+                    if (all1 > 0) {
+                        $('#all1').attr("disabled", true);
+                    }
+
+                    $('.abcd').click(function () {
+                        listcard = $(this).parent('.list-card');
+                        item = $(listcard).parent('.item');
+                        categoryID = listcard.find('.categoryID').val();
+                        status = listcard.find('.status').val();
+                        if (categoryID != 1 || status != 1) {
+                            item.css('display', 'none');
+                        }
+                    });
+                    $('.abcd').trigger('click');
+                }
+
+                else {
+                    all1--;
+                    if (all1 == 0) {
+                        $('#all1').attr("disabled", false);
+                    }
+
+                    $('.abcd').click(function () {
+                        listcard = $(this).parent('.list-card');
+                        item = $(listcard).parent('.item');
+                        categoryID = listcard.find('.categoryID').val();
+                        if (categoryID == 1) {
+                            item.css('display', 'inherit');
+                        }
+                    });
+                    $('.abcd').trigger('click');
+                }
+            });
+
+            $('input[type="checkbox"]#canceled').on('change', function () {
+                if ($(this).is(":checked")) {
+                    all1++;
+                    if (all1 > 0) {
+                        $('#all1').attr("disabled", true);
+                    }
+
+                    $('.abcd').click(function () {
+                        listcard = $(this).parent('.list-card');
+                        item = $(listcard).parent('.item');
+                        categoryID = listcard.find('.categoryID').val();
+                        status = listcard.find('.status').val();
+                        if (categoryID != 1 || status != 2) {
+                            item.css('display', 'none');
+                        }
+                    });
+                    $('.abcd').trigger('click');
+                }
+
+                else {
+                    all1--;
+                    if (all1 == 0) {
+                        $('#all1').attr("disabled", false);
+                    }
+
+                    $('.abcd').click(function () {
+                        listcard = $(this).parent('.list-card');
+                        item = $(listcard).parent('.item');
+                        categoryID = listcard.find('.categoryID').val();
+                        if (categoryID == 1) {
+                            item.css('display', 'inherit');
+                        }
+                    });
+                    $('.abcd').trigger('click');
+                }
+            });
+
+            $('input[type="checkbox"]#all1').on('change', function () {
+                if ($(this).is(":checked")) {
+                    all1++;
+                    if (all1 > 0) {
+                        $('#all1').attr("disabled", true);
+                    }
+
+                    $('.abcd').click(function () {
+                        listcard = $(this).parent('.list-card');
+                        item = $(listcard).parent('.item');
+                        categoryID = listcard.find('.categoryID').val();
+                        status = listcard.find('.status').val();
+                        if (categoryID != 1 || status != 0) {
+                            item.css('display', 'none');
+                        }
+                    });
+                    $('.abcd').trigger('click');
+                }
+
+                else{
+                    all1--;
+                    if (all1 == 0) {
+                        $('#all1').attr("disabled", false);
+                    }
+
+                    $('.abcd').click(function () {
+                        listcard = $(this).parent('.list-card');
+                        item = $(listcard).parent('.item');
+                        categoryID = listcard.find('.categoryID').val();
+                        if (categoryID == 1) {
+                            item.css('display', 'inherit');
+                        }
+                    });
+                    $('.abcd').trigger('click');
+                }
+            });
         }
 
         else {

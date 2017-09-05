@@ -8,6 +8,7 @@ Auth::routes();
 Route::group(['prefix' => 'provinces'], function () {
     Route::get('/', ['as' => 'provinceList', 'uses' => 'PagesController@provinces']);
     Route::get('/{name}', ['as' => 'provincePF', 'uses' => 'PagesController@provincePF']);
+    Route::post('/', ['as' => 'provinceSearch', 'uses' => 'PagesController@provinceSearch']);
 
     Route::get('{name}{id}/Hotels', ['as' => 'hotels', 'uses' => 'PagesController@hotelsList']);
     Route::get('{name}{id}/Hotels/{name1}', ['as' => 'hotelPF', 'uses' => 'PagesController@hotelPF']);
@@ -23,15 +24,8 @@ Route::group(['prefix' => 'provinces'], function () {
     Route::get('{name}{id1}/Service/{name1}/delete/{id}', ['as' => 'comment.delete', 'uses' => 'PagesController@deleteComment']);
 });
 
-Route::group(['prefix' => 'services'], function () {
-    Route::get('/hotels', ['as' => 'hotelList', 'uses' => 'PagesController@hotelsList']);
-    Route::post('/hotels', ['as' => 'hotelList', 'uses' => 'PagesController@hotels']);
-});
-
-Route::group(['prefix' => 'services'], function () {
-    Route::get('/hotels', ['as' => 'hotelList', 'uses' => 'PagesController@hotelsList']);
-    Route::post('/hotels', ['as' => 'hotelList', 'uses' => 'PagesController@hotels']);
-});
+Route::get('/service{id}', ['as' => 'serviceList', 'uses' => 'PagesController@serviceList']);
+Route::post('/service{id}', ['as' => 'serviceListSearch', 'uses' => 'PagesController@serviceListSearch']);
 
 Route::group(['prefix' => '/user', 'middleware' => ['IsUser', 'auth']], function () {
     Route::get('profile/{id}', ['as' => 'user.profile', 'uses' => 'UserController@showProfile']);
@@ -69,4 +63,4 @@ Route::group(['prefix' => '/action', 'middleware' => ['IsUser', 'auth']], functi
     Route::get('/request/{id}/delete', ['as' => 'requestDelete', 'uses' => 'PagesController@requestDelete']);
 });
 
-Route::get('/service/{province_id}/{type_id}', ['as' => 'select-ajax', 'uses' => 'AjaxController@selectAjax']);
+Route::get('/search{id}{id1}', ['as' => 'PFsearch', 'uses' => 'PagesController@PFsearch']);
