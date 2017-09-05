@@ -2,7 +2,6 @@
 
 @section('style')
     {{ HTML::style('css/provinceList.css') }}
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @endsection
 
 @section('header')
@@ -16,16 +15,20 @@
                 <h3 class="agileits_head">Choose your place to go</h3>
                 <span class="w3-line"></span>
                 <div class="row">
-                    <form method="post" action="{{route('provinceSearch')}}" id="search1">
+                    <form is="ajax-form" method="post" action="" id="search1">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input name="inputSearch" id="tags" type="text" size="40" placeholder="Where to go..."/>
+                        <input name="inputSearch" type="text" size="40" placeholder="Where to go..."/>
                     </form>
                 </div>
                 <div class="w3l_gallery_grids">
                     <div class="bs-example bs-example-tabs wthree_example_tab" role="tabpanel"
                          data-example-id="togglable-tabs">
                         <div class="w3l_gallery_grids1">
+                            <?php
+                            $i = 0;
+                            ?>
                             @foreach($provinces as $province)
+                                {{$i++}}
                                 <div class="col-md-4 w3l_gallery_grid">
                                     <div class="agileinfo_gallery_grid">
                                         <a href={{ route('provincePF', $province->name) }}>
@@ -39,6 +42,10 @@
                                     </div>
                                 </div>
                             @endforeach
+                            @if($i==0)
+                                <h3>Nothing here</h3>
+                                <h4>Search Again?</h4>
+                            @endif
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -47,24 +54,7 @@
         </div>
     </div>
 @endsection
-
 @section('script')
-    <script>
-        $(function () {
-            var availableTags = [
-                "Ha Noi",
-                "Da Nang",
-                "Nha Trang",
-                "TP HCM",
-                "Hue",
-                "Da Lat",
-                "Sapa",
-                "Ha Long",
-                "Phu Quoc"
-            ];
-            $("#tags").autocomplete({
-                source: availableTags
-            });
-        });
-    </script>
+    {{ HTML::script('bower_components/ajax-form/ajax-form.js') }}
+    {{ HTML::script('bower_components/jquery-form/dist/jquery.form.min.js') }}
 @endsection
