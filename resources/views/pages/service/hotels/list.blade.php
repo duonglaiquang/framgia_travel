@@ -6,6 +6,7 @@
 
 @section('style')
     {{  HTML::style('css/serviceList.css')  }}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @endsection
 
 @section('content')
@@ -83,9 +84,11 @@
 
                 <span class="w3-line"></span>
                 <div class="row">
-                    <form is="ajax-form" method="post" action="" id="search1">
+                    <form method="post" action="{{route('PFsearch', [$type, $provinces->id])}}" id="search1">
                         <input type="hidden" name="_token" value="{{  csrf_token()  }}">
-                        <input name="inputSearch" type="text" size="40" placeholder="{{ $placeholder }}"/>
+                        <input type="hidden" id="type" value="{{ $type  }}">
+                        <input type="hidden" id="province" value="{{ $provinces->id}}">
+                        <input name="inputSearch" id="tags" type="text" size="40" placeholder="{{ $placeholder }}"/>
                     </form>
                 </div>
             </div>
@@ -94,7 +97,6 @@
             <div class="service-content">
                 @foreach($hotels as $hotel)
                     <div class='list-card'>
-                        {{--{{ --<div class='list-label'>NEW LAUNCH</div>-- }}--}}
                         <img alt='' src={{ $hotel->profile_pic }}>
                         <div class='list-details'>
                             <div class='list-name'>
@@ -146,4 +148,14 @@
 @endsection
 
 @section('script')
+    <script>
+        $(function () {
+            type = $('#type').val();
+            province = $('#province').val();
+            $("#tags").autocomplete({
+                source: 'http://localhost:8000/search' + type + province
+            })
+            ;
+        });
+    </script>
 @endsection
