@@ -86,12 +86,16 @@ textarea{
     text-decoration: none;
 }
 
-#detail {
+.detail {
     border: solid 1px #aaaaaa;
     border-radius: 5px;
-    width: auto;
-    margin-top: 10px;
-    padding: 10px;
+    padding: 5px;
+}
+
+.detaill {
+    border: solid 1px #aaaaaa;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .page-wrap {
@@ -112,4 +116,25 @@ textarea{
     width: 35px;
     border-radius: 10px;
     outline: none;
+}
+
+.details {
+    border: solid 1px #aaaaaa;
+    border-radius: 5px;
+    width: auto;
+    padding: 10px;
+    line-height: 2.25;
+}
+
+.indent {
+    color: #34bf49;
+    font-size: large;
+}
+
+textarea {
+    resize: none;
+}
+
+.roww {
+    margin-bottom: -20px;
 }
