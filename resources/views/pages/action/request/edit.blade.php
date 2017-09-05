@@ -67,15 +67,46 @@
                                   autocomplete="off">{{ $plann->description }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label>Place</label>
-                        <i class="fa fa-location-arrow"></i> &nbsp;
-                        <select name="choice" class="form-group select2" id="detail" required>
-                            @foreach($provinces as $province)
-                                @if(in_array($province->id, $choiceSArr))
-                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
-                                @endif
+                        <span><b>Detail</b></span> &nbsp;
+                        <i class="fa fa-location-arrow"></i>
+                        @php
+                            $tab = '&nbsp;&nbsp;&nbsp;&nbsp;';
+                        @endphp
+                        <div class="details">
+                            @foreach($details as $detail)
+                                <?php
+                                switch ($detail->type) {
+                                    case 1:
+                                        $route_namePF = 'hotelPF';
+                                        break;
+
+                                    case 2:
+                                        $route_namePF = 'restaurantPF';
+                                        break;
+
+                                    case 3:
+                                        $route_namePF = 'activityPF';
+                                        break;
+
+                                    default:
+                                        $route_namePF = '';
+                                        break;
+                                }
+                                ?>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Province</b>{{ $tab }}{{ $detail->pro_name }}
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>Type</b>{{ $tab }}{{ $detail->cat_name }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Service</b>{{ $tab }}<a target="_blank"
+                                                                   href="{{ route($route_namePF, [$detail->pro_name, $detail->type, $detail->ser_name]) }}">{{ $detail->ser_name }}</a>
+                                    </div>
+                                </div>
                             @endforeach
-                        </select>
+                        </div>
                     </div>
                     <div id="expand"></div>
                     <button type="button" id="add"><i class="fa fa-plus"></i></button>
@@ -121,7 +152,9 @@
                 autoclose: true
             });
         })(jQuery);
-
+        var number = 0;
+        var i = 0;
+        var select = [];
         $("#mySelectBox").change(function () {
             var province = [];
             $.each($("#mySelectBox option:selected"), function () {
@@ -132,20 +165,106 @@
             });
             var change = '';
             for (i = 0; i < province.length; i++) {
-                change += '<option value = "' + province[i].id + '"> ' + province[i].name + '<option>';
+                change += '<option value = "' + province[i].id + '"> ' + province[i].name + '</option>';
             }
-            $("#detail").html(change);
+            $(".detail").html(change);
         });
-        var number = 1;
         $("#add").click(function () {
             var changes = '';
-            changes += '<div class="form-group" id="' + number + '"><h1>' + number + '</h1>' + '</div>';
+            var province = [];
+            $.each($("#mySelectBox option:selected"), function () {
+                province.push({
+                    id: $(this).val(),
+                    name: $(this).text()
+                });
+            });
+            var change = '';
+            for (j = 0; j < province.length; j++) {
+                change += '<option value = "' + province[j].id + '"> ' + province[j].name + '</option>';
+            }
+            var numberr = number + 1;
+            changes += '<div class="indent"><b>Plan ' + numberr + '</b></div>';
+            changes += '<div class="row roww">';
+            changes += '<div class="form-group col-md-3"> <label>Province</label> &nbsp;';
+            changes += '<select name="pro' + number + '" class="form-group select2 detail" id="pro' + number + '" required data-id="' + number + '">';
+            changes += '</select>';
+            changes += '</div>';
+            changes += '<div class="form-group col-md-3"> <label>Type</label> &nbsp;';
+            changes += '<select name="type' + number + '" class="form-group select2 detaill" id="type' + number + '" required data-id="' + number + '">';
+            changes += '@foreach($types as $type)';
+            changes += '<option value="{{ $type->id }}" required>{{ $type->name }}</option>';
+            changes += '@endforeach';
+            changes += '</select>';
+            changes += '</div>';
+            changes += '<div class="form-group col-md-6"> <label>Service</label> &nbsp;';
+            changes += '<select name="ser' + number + '" class="form-group select2 detaill" id="ser' + number + '" required data-id="' + number + '">';
+            changes += '@foreach($services as $service)';
+            changes += '@if($service->category_id == 1)';
+            changes += '<option value="{{ $service->id }}" required>{{ $service->name }}</option>';
+            changes += '@endif';
+            changes += '@endforeach';
+            changes += '</select>';
+            changes += '</div>'
+            changes += '</div>'
+            changes += '<div class="group">';
+            changes += '<div class="form-group"> <label>Title</label> &nbsp;';
+            changes += '<i class="fa fa-pencil"></i>';
+            changes += '<textarea class="form-control" name="tit' + number + ' id="tit' + number + ' rows="1" autocomplete="off"></textarea>';
+            changes += '</div>';
+            changes += '<div class="form-group">';
+            changes += '<label>Detail</label> &nbsp;';
+            changes += '<i class="fa fa-pencil"></i>';
+            changes += '<textarea class="form-control" name="des' + number + ' id="des' + number + ' rows="2" autocomplete="off"></textarea>';
+            changes += '</div>';
+            changes += '</div>'
+            i = number;
             number++;
             $("#expand").append(changes);
-        })
+            $("#pro" + i).html(change);
+        });
         $("#minus").click(function () {
             $("#expand > div").last().remove();
-            number = (number > 1) ? number - 1 : 1;
+            $("#expand > div").last().remove();
+            $("#expand > div").last().remove();
+            number = (number > 0) ? number - 1 : 0;
         })
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+
+        function call_service(province_id, type_id, id) {
+            $.ajax({
+                url: '/service/' + province_id + '/' + type_id,
+                type: 'GET',
+                data: {
+                    province_id: province_id,
+                    type_id: type_id
+                },
+            })
+                .done(function (data) {
+                    var html = '';
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<option value="' + data[i].id + '" required>' + data[i].name + '</option>';
+                    }
+                    $('#ser' + id).html(html);
+                });
+        }
+
+        $(document).on('change', 'select[name^=pro]', function () {
+            var id = $(this).data('id');
+            var province_id = $(this).val();
+            var type_id = $('select[name=type' + id + ']').val();
+
+            call_service(province_id, type_id, id);
+        });
+        $(document).on('change', 'select[name^=type]', function () {
+            var id = $(this).data('id');
+            var type_id = $(this).val();
+            var province_id = $('select[name=pro' + id + ']').val();
+
+            call_service(province_id, type_id, id);
+        });
     </script>
 @endsection
