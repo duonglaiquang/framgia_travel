@@ -55,6 +55,13 @@ class CreateModifyTableV5 extends Migration
         Schema::table('users', function ($table) {
             $table->dropColumn('follower');
             $table->dropColumn('following');
+            $table->integer('plan')->nullable()->default(0);
+            $table->integer('picture')->nullable()->default(0);
+        });
+
+        Schema::table('user_gallerys', function ($table) {
+            $table->dropColumn('img_url');
+            $table->string('filename')->nullable()->default(null);
         });
 
         Schema::table('requested_services', function ($table) {

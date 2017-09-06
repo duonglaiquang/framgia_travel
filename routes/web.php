@@ -69,3 +69,6 @@ Route::get('/service/{province_id}/{type_id}', ['as' => 'select-ajax', 'uses' =>
 // OAuth Routes
 Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('/upload', 'UploadController@uploadForm');
+Route::post('/upload', 'UploadController@uploadSubmit');

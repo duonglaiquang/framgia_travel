@@ -29,10 +29,10 @@
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>Plan</b> <a class="pull-right"></a>
+                                    <b>Plan</b> <a class="pull-right">{{Auth::user()->plan}}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Gallery</b> <a class="pull-right"></a>
+                                    <b>Gallery</b> <a class="pull-right">{{Auth::user()->picture}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -90,73 +90,39 @@
                         <div class="tab-content">
                             <div class="active tab-pane" id="gallery">
                                 <div class="container">
+                                    <form action="/upload" method="post" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <h4 id="upload">Share Your Beautiful Traverling Picture With Us</h4>
+                                        <div class="input-group image-preview">
+                                            <input type="text" class="form-control image-preview-filename"
+                                                   disabled="disabled">
+
+                                            <span class="input-group-btn">
+                                               <button type="button" class="btn btn-default image-preview-clear">
+                                                 <span class="glyphicon glyphicon-remove"></span> Clear
+                                              </button>
+
+                                               <div class="btn btn-default image-preview-input">
+                                                   <span class="glyphicon glyphicon-folder-open"></span>
+                                                     <span class="image-preview-input-title">Browse</span>
+                                                      <input type="file" accept="image/png, image/jpeg, image/gif"
+                                                             name="photo"/>
+                                                </div>
+                                                <button type="submit" class="btn btn-default upload">
+                                                     <span class="glyphicon glyphicon-cloud-upload"></span>
+                                                </button>
+                                           </span>
+                                        </div>
+                                    </form>
+
                                     <div class="row">
                                         <div class="gallery">
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Daytona Beach
-                                                    <small>United States</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Териберка, gorod Severomorsk
-                                                    <small>Russia</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>
-                                                    Bad Pyrmont
-                                                    <small>Deutschland</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Yellowstone National Park
-                                                    <small>United States</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Quiraing, Portree
-                                                    <small>United Kingdom</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Highlands
-                                                    <small>United States</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Daytona Beach
-                                                    <small>United States</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Териберка, gorod Severomorsk
-                                                    <small>Russia</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>
-                                                    Bad Pyrmont
-                                                    <small>Deutschland</small>
-                                                </figcaption>
-                                            </figure>
+                                            @foreach($photos as $photo)
+                                                <figure>
+                                                    <img id="img" src="../storage/app/{{$photo->filename}}"
+                                                         class="resize"/>
+                                                </figure>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <!-- /.tab-pane -->
@@ -371,7 +337,7 @@
     <script>
         //redirect to specific tab
         $(document).ready(function () {
-            $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show')
+            $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show');
         });
     </script>
 @endsection

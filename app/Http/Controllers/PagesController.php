@@ -162,7 +162,7 @@ class PagesController extends Controller
             $pl->save();
         }
 
-        return redirect(route('user.profile', Auth::user()->id));
+        return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'plans']);;
     }
 
     public function requestEditGet(Request $request)
@@ -203,7 +203,7 @@ class PagesController extends Controller
             $pl->save();
         }
 
-        return redirect(route('user.profile', Auth::user()->id));
+        return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'plans']);;
     }
 
     public function requestDelete(Request $request)
@@ -211,7 +211,7 @@ class PagesController extends Controller
         $delete = Plan::find($request->id);
         $delete->delete();
 
-        return redirect(route('user.profile', Auth::user()->id));
+        return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'plans']);;
     }
 
     public function comment(Request $request)
@@ -281,6 +281,6 @@ class PagesController extends Controller
         $RS->status = '0';
         $RS->save();
 
-        return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'RS']);;
+        return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'RS']);
     }
 }
