@@ -289,6 +289,6 @@ class PagesController extends Controller
         $RS->status = '0';
         $RS->save();
 
-        return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'RS']);
+        return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'RS']);;
     }
 }
