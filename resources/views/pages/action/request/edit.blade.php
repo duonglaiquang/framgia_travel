@@ -23,6 +23,7 @@
                 <hr>
                 <form action="" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="text" name="numb" id="numb" value="">
                     <div class="form-group">
                         <label>Tour Name</label> &nbsp;
                         <i class="fa fa-commenting-o"></i>
@@ -182,8 +183,9 @@
             for (j = 0; j < province.length; j++) {
                 change += '<option value = "' + province[j].id + '"> ' + province[j].name + '</option>';
             }
-            var numberr = number + 1;
-            changes += '<div class="indent"><b>Plan ' + numberr + '</b></div>';
+            number++;
+            $("#numb").val(number)
+            changes += '<div class="indent"><b>Plan ' + number + '</b></div>';
             changes += '<div class="row roww">';
             changes += '<div class="form-group col-md-3"> <label>Province</label> &nbsp;';
             changes += '<select name="pro' + number + '" class="form-group select2 detail" id="pro' + number + '" required data-id="' + number + '">';
@@ -197,7 +199,7 @@
             changes += '</select>';
             changes += '</div>';
             changes += '<div class="form-group col-md-6"> <label>Service</label> &nbsp;';
-            changes += '<select name="ser' + number + '" class="form-group select2 detaill" id="ser' + number + '" required data-id="' + number + '">';
+            changes += '<select name="ser[]" class="form-group select2 detaill" id="ser' + number + '" required data-id="' + number + '">';
             changes += '@foreach($services as $service)';
             changes += '@if($service->category_id == 1)';
             changes += '<option value="{{ $service->id }}" required>{{ $service->name }}</option>';
@@ -209,16 +211,15 @@
             changes += '<div class="group">';
             changes += '<div class="form-group"> <label>Title</label> &nbsp;';
             changes += '<i class="fa fa-pencil"></i>';
-            changes += '<textarea class="form-control" name="tit' + number + ' id="tit' + number + ' rows="1" autocomplete="off"></textarea>';
+            changes += '<textarea class="form-control" name="tit[]" id="tit' + number + ' rows="1" autocomplete="off"></textarea>';
             changes += '</div>';
             changes += '<div class="form-group">';
             changes += '<label>Detail</label> &nbsp;';
             changes += '<i class="fa fa-pencil"></i>';
-            changes += '<textarea class="form-control" name="des' + number + ' id="des' + number + ' rows="2" autocomplete="off"></textarea>';
+            changes += '<textarea class="form-control" name="des[]" id="des' + number + ' rows="2" autocomplete="off"></textarea>';
             changes += '</div>';
             changes += '</div>'
             i = number;
-            number++;
             $("#expand").append(changes);
             $("#pro" + i).html(change);
         });
@@ -227,6 +228,7 @@
             $("#expand > div").last().remove();
             $("#expand > div").last().remove();
             number = (number > 0) ? number - 1 : 0;
+            $("#numb").val(number)
         })
         $.ajaxSetup({
             headers: {

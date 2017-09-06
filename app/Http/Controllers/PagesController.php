@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Plan;
+use App\Models\PlanDetail;
 use App\Models\PlanLocation;
 use App\Models\Province;
 use App\Models\ProvinceGallery;
@@ -202,6 +203,14 @@ class PagesController extends Controller
             $pl->plan_id = $request->id;
             $pl->save();
         }
+        for ($i = 0; $i < $request->numb; $i++) {
+            $s1 = new PlanDetail();
+            $s1->plan_id = $plann->id;
+            $s1->service_id = $request->ser[$i];
+            $s1->title = $request->tit[$i];
+            $s1->detail = $request->des[$i];
+            $s1->save();
+        }
 
         return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'plans']);;
     }
@@ -282,5 +291,6 @@ class PagesController extends Controller
         $RS->save();
 
         return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'RS']);
+
     }
 }

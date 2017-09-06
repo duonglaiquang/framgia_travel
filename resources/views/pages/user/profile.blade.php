@@ -144,11 +144,11 @@
                                                 <img src='{{ $img }}'/>
                                                 <div class="text">
                                                     <h2>{{ $plan->title }}</h2>
-                                                    <h5 class="animate-text">{{ $plan->time }}</h5>
-                                                    @foreach($plan->plan_location as $planLocaltion)
+                                                    <h5 class="animate-text">{{ $plan->time_from }} >>> {{ $plan->time_to }}</h5>
+                                                    @foreach($plan->plan_location as $planLocation)
                                                         <h5 class="animate-text">
                                                             <i class="fa fa-hand-o-right"></i>
-                                                            {{ $planLocaltion->province->name }}
+                                                            {{ $planLocation->province->name }}
                                                         </h5>
                                                     @endforeach
                                                 </div>
