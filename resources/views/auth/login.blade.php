@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Login</div>
+                    <div class="panel-heading">WELCOME BACK</div>
                     <div class="panel-body">
 
                         {!! Form::open(['role' => 'form','class'=>'form-horizontal','method' =>'POST','route'=>'login']) !!}
@@ -65,7 +65,15 @@
                                 </a>
                             </div>
                         </div>
-                        {{--</form>--}}
+                        <hr>
+                        <div class="form-group" id="facebook">
+                            Dont Have An Account ?
+                            <a href="{{route('register')}}">Register Here</a>
+                            <p>-OR-</p>
+                            <a href="{{ url('/auth/facebook') }}">
+                                <button class="fb" type="button">Log In With Facebook</button>
+                            </a>
+                        </div>
                         {!! Form::close() !!}
                     </div>
                 </div>

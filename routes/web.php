@@ -65,3 +65,7 @@ Route::group(['prefix' => '/action', 'middleware' => ['IsUser', 'auth']], functi
 
 Route::get('/search{id}{id1}', ['as' => 'PFsearch', 'uses' => 'PagesController@PFsearch']);
 Route::get('/service/{province_id}/{type_id}', ['as' => 'select-ajax', 'uses' => 'AjaxController@selectAjax']);
+
+// OAuth Routes
+Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');

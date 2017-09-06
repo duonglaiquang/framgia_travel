@@ -85,7 +85,7 @@
                             <li class="active"><a href="#gallery" data-toggle="tab">Gallery</a></li>
                             <li><a href="#plans" data-toggle="tab">Plans</a></li>
                             <li><a href="#RS" data-toggle="tab">Requested Service</a></li>
-                            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                            <li><a href="#settings" data-toggle="tab">Update Info</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="active tab-pane" id="gallery">
