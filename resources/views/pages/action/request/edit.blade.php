@@ -184,7 +184,6 @@
             for (j = 0; j < province.length; j++) {
                 change += '<option value = "' + province[j].id + '"> ' + province[j].name + '</option>';
             }
-
             number++;
             $("#numb").val(number)
             changes += '<div class="indent"><b>' + number + '</b></div>';

@@ -284,13 +284,11 @@ class PagesController extends Controller
     public function requestServicePost(Request $request)
     {
         $RS = new RequestedService();
-
         $RS->fill($request->all());
         $RS->user_id = Auth::user()->id;
         $RS->status = '0';
         $RS->save();
 
         return redirect(route('user.profile', Auth::user()->id))->withInput(['tab' => 'RS']);
-
     }
 }
