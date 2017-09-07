@@ -76,8 +76,8 @@
                                 </button>
                             </div>
                         </div>
+                        <hr>
                         {!! Form::close() !!}
-                        {{--</form>--}}
                     </div>
                 </div>
             </div>

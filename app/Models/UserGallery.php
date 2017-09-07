@@ -9,7 +9,9 @@ class UserGallery extends Model
     protected $table = 'user_gallerys';
     protected $fillable = [
         'user_id',
-        'img_url',
+        'filename',
+        'location',
+        'description',
     ];
 
     function user()

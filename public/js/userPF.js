@@ -73,67 +73,29 @@ $(document).ready(function () {
     });
     $('.abc').trigger('click');
 
-    all = 0;
-    all1 = 0;
-    $('#all,#all1').prop('checked', true);
-    $('.item').show();
-    $('#hotel,#restaurant,#activity,#pending,#approved,#canceled').attr("disabled", true);
-
-    $('input[type="checkbox"]#all').on('change', function () {
-        if (!$(this).is(":checked")) {
-            $('#hotel,#restaurant,#activity').attr("disabled", false);
-            if (!$('#all1').is(":checked") && !$('#pending').is(":checked") && !$('#approved').is(":checked") && !$('#canceled').is(":checked"))
-                $('.item').css('display', 'none');
-        }
-
-        else {
-            $('#hotel,#restaurant,#activity').attr("disabled", true);
-            $('.item').css('display', 'inherit');
-        }
-    });
-
-    $('input[type="checkbox"]#all1').on('change', function () {
-        if (!$(this).is(":checked")) {
-            $('#pending,#approved,#canceled').attr("disabled", false);
-            if (!$('#all').is(":checked") && !$('#hotel').is(":checked") && !$('#restaurant').is(":checked") && !$('#activity').is(":checked"))
-                $('.item').css('display', 'none');
-        }
-
-        else {
-            $('#pending,#approved,#canceled').attr("disabled", true);
-            $('.item').css('display', 'inherit');
-        }
-    });
+    $('#hotel,#restaurant,#activity').prop('checked', true);
 
     $('input[type="checkbox"]#hotel').on('change', function () {
         if ($(this).is(":checked")) {
-            all++;
-            if (all > 0) {
-                $('#all').attr("disabled", true);
-            }
 
             $('.abcd').click(function () {
                 listcard = $(this).parent('.list-card');
                 item = $(listcard).parent('.item');
                 categoryID = listcard.find('.categoryID').val();
                 if (categoryID == 1) {
-                    item.css('display', 'inherit');
+                    item.show();
                 }
             });
             $('.abcd').trigger('click');
         }
 
         else {
-            all--;
-            if (all == 0) {
-                $('#all').attr("disabled", false);
-            }
             $('.abcd').click(function () {
                 listcard = $(this).parent('.list-card');
                 item = $(listcard).parent('.item');
                 categoryID = listcard.find('.categoryID').val();
                 if (categoryID == 1) {
-                    item.css('display', 'none');
+                    item.hide();
                 }
             });
             $('.abcd').trigger('click');
@@ -142,33 +104,25 @@ $(document).ready(function () {
 
     $('input[type="checkbox"]#restaurant').on('change', function () {
         if ($(this).is(":checked")) {
-            all++;
-            if (all > 0) {
-                $('#all').attr("disabled", true);
-            }
 
             $('.abcd').click(function () {
                 listcard = $(this).parent('.list-card');
                 item = $(listcard).parent('.item');
                 categoryID = listcard.find('.categoryID').val();
                 if (categoryID == 2) {
-                    item.css('display', 'inherit');
+                    item.show();
                 }
             });
             $('.abcd').trigger('click');
         }
 
         else {
-            all--;
-            if (all == 0) {
-                $('#all').attr("disabled", false);
-            }
             $('.abcd').click(function () {
                 listcard = $(this).parent('.list-card');
                 item = $(listcard).parent('.item');
                 categoryID = listcard.find('.categoryID').val();
                 if (categoryID == 2) {
-                    item.css('display', 'none');
+                    item.hide();
                 }
             });
             $('.abcd').trigger('click');
@@ -177,141 +131,151 @@ $(document).ready(function () {
 
     $('input[type="checkbox"]#activity').on('change', function () {
         if ($(this).is(":checked")) {
-            all++;
-            if (all > 0) {
-                $('#all').attr("disabled", true);
-            }
 
             $('.abcd').click(function () {
                 listcard = $(this).parent('.list-card');
                 item = $(listcard).parent('.item');
                 categoryID = listcard.find('.categoryID').val();
                 if (categoryID == 3) {
-                    item.css('display', 'inherit');
+                    item.show();
                 }
             });
             $('.abcd').trigger('click');
         }
 
         else {
-            all--;
-            if (all == 0) {
-                $('#all').attr("disabled", true);
-            }
             $('.abcd').click(function () {
                 listcard = $(this).parent('.list-card');
                 item = $(listcard).parent('.item');
                 categoryID = listcard.find('.categoryID').val();
                 if (categoryID == 3) {
-                    item.css('display', 'none');
+                    item.hide();
                 }
             });
             $('.abcd').trigger('click');
         }
     });
 
-    $('input[type="checkbox"]#pending').on('change', function () {
-        if ($(this).is(":checked")) {
-            all1++;
-            if (all1 > 0) {
-                $('#all1').attr("disabled", true);
-            }
 
-            $('.abcd').click(function () {
-                listcard = $(this).parent('.list-card');
-                item = $(listcard).parent('.item');
-                status = listcard.find('.status').val();
-                if (status == 0) {
-                    item.css('display', 'inherit');
-                }
-            });
-            $('.abcd').trigger('click');
-        }
-
-        else {
-            all1--;
-            if (all1 == 0) {
-                $('#all1').attr("disabled", false);
+    $(document).on('click', '#close-preview', function () {
+        $('.image-preview').popover('hide');
+        // Hover befor close the preview
+        $('.image-preview').hover(
+            function () {
+                $('.image-preview').popover('show');
+            },
+            function () {
+                $('.image-preview').popover('hide');
             }
-            $('.abcd').click(function () {
-                listcard = $(this).parent('.list-card');
-                item = $(listcard).parent('.item');
-                status = listcard.find('.status').val();
-                if (status == 0) {
-                    item.css('display', 'none');
-                }
-            });
-            $('.abcd').trigger('click');
-        }
+        );
     });
 
-    $('input[type="checkbox"]#approved').on('change', function () {
-        if ($(this).is(":checked")) {
-            all1++;
-            if (all1 > 0) {
-                $('#all1').attr("disabled", true);
-            }
-
-            $('.abcd').click(function () {
-                listcard = $(this).parent('.list-card');
-                item = $(listcard).parent('.item');
-                status = listcard.find('.status').val();
-                if (status == 1) {
-                    item.css('display', 'inherit');
-                }
+    $(function () {
+        // Create the close button
+        var closebtn = $('<button/>', {
+            type: "button",
+            text: 'x',
+            id: 'close-preview',
+            style: 'font-size: initial;',
+        });
+        closebtn.attr("class", "close pull-right");
+        // Set the popover default content
+        $('.image-preview').popover({
+            trigger: 'manual',
+            html: true,
+            title: "<strong>Preview</strong>" + $(closebtn)[0].outerHTML,
+            content: "There's no image",
+            placement: 'bottom'
+        });
+        // Clear event
+        $('.image-preview-clear').click(function () {
+            $('.image-preview').attr("data-content", "").popover('hide');
+            $('.image-preview-filename').val("");
+            $('.image-preview-clear').hide();
+            $('.image-preview-input input:file').val("");
+            $(".image-preview-input-title").text("Browse");
+        });
+        // Create the preview image
+        $(".image-preview-input input:file").change(function () {
+            var img = $('<img/>', {
+                id: 'dynamic',
+                width: 250,
+                height: 200
             });
-            $('.abcd').trigger('click');
-        }
-
-        else {
-            all1--;
-            if (all1 == 0) {
-                $('#all1').attr("disabled", false);
+            var file = this.files[0];
+            var reader = new FileReader();
+            // Set preview image into the popover data-content
+            reader.onload = function (e) {
+                $(".image-preview-input-title").text("Change");
+                $(".image-preview-clear").show();
+                $(".image-preview-filename").val(file.name);
+                img.attr('src', e.target.result);
+                $(".image-preview").attr("data-content", $(img)[0].outerHTML).popover("show");
             }
-            $('.abcd').click(function () {
-                listcard = $(this).parent('.list-card');
-                item = $(listcard).parent('.item');
-                status = listcard.find('.status').val();
-                if (status == 1) {
-                    item.css('display', 'none');
-                }
-            });
-            $('.abcd').trigger('click');
+            reader.readAsDataURL(file);
+        });
+    });
+});
+
+
+$(document).on('click', '#close-preview', function () {
+    $('.image-preview').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview').hover(
+        function () {
+            $('.image-preview').popover('show');
+        },
+        function () {
+            $('.image-preview').popover('hide');
         }
+    );
+});
+
+$(function () {
+    // Create the close button
+    var closebtn = $('<button/>', {
+        type: "button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class", "close pull-right");
+    // Set the popover default content
+    $('.image-preview').popover({
+        trigger: 'manual',
+        html: true,
+        title: "<strong>Preview</strong>" + $(closebtn)[0].outerHTML,
+        content: "There's no image",
+        placement: 'bottom'
+    });
+    // Clear event
+    $('.image-preview-clear').click(function () {
+        $('.image-preview').attr("data-content", "").popover('hide');
+        $('.image-preview-filename').val("");
+        $('.image-preview-clear').hide();
+        $(".upload").hide();
+        $('.image-preview-input input:file').val("");
+        $(".image-preview-input-title").text("Browse");
+    });
+    // Create the preview image
+    $(".image-preview-input input:file").change(function () {
+        var img = $('<img/>', {
+            id: 'dynamic',
+            width: 250,
+            height: 200
+        });
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+            $(".image-preview-input-title").text("Change");
+            $(".image-preview-clear").show();
+            $(".upload").show();
+            $(".image-preview-filename").val(file.name);
+            img.attr('src', e.target.result);
+            $(".image-preview").attr("data-content", $(img)[0].outerHTML).popover("show");
+        }
+        reader.readAsDataURL(file);
     });
 
-    $('input[type="checkbox"]#canceled').on('change', function () {
-        if ($(this).is(":checked")) {
-            all1++;
-            if (all1 > 0) {
-                $('#all1').attr("disabled", true);
-            }
-
-            $('.abcd').click(function () {
-                listcard = $(this).parent('.list-card');
-                item = $(listcard).parent('.item');
-                status = listcard.find('.status').val();
-                if (status == 2) {
-                    item.css('display', 'inherit');
-                }
-            });
-            $('.abcd').trigger('click');
-        }
-
-        else {
-            all1--;
-            if (all1 == 0) {
-                $('#all1').attr("disabled", false);
-            }
-            $('.abcd').click(function () {
-                listcard = $(this).parent('.list-card');
-                item = $(listcard).parent('.item');
-                status = listcard.find('.status').val();
-                if (status == 2) {
-                    item.css('display', 'none');
-                }
-            });
-            $('.abcd').trigger('click');
-        }
-    });
 });

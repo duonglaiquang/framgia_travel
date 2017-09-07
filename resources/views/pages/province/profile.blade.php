@@ -101,23 +101,23 @@
                             <p>{{$provinces->description}}</p>
                         </div>
 
-                        <div class="trending">
-                            <h4><strong>Travellers are talking about these hotels</strong></h4>
+                        {{--<div class="trending">--}}
+                            {{--<h4><strong>Travellers are talking about these hotels</strong></h4>--}}
 
-                            <div id="hotel">
-                            </div>
+                            {{--<div id="hotel">--}}
+                            {{--</div>--}}
 
-                            <h4><strong>Top-rated {{$provinces->name}} Restaurants</strong></h4>
+                            {{--<h4><strong>Top-rated {{$provinces->name}} Restaurants</strong></h4>--}}
 
-                            <div id="hotel">
-                            </div>
+                            {{--<div id="hotel">--}}
+                            {{--</div>--}}
 
-                            <h4><strong>Top-rated {{$provinces->name}} Things to Do</strong></h4>
+                            {{--<h4><strong>Top-rated {{$provinces->name}} Things to Do</strong></h4>--}}
 
-                            <div id="hotel">
-                            </div>
+                            {{--<div id="hotel">--}}
+                            {{--</div>--}}
 
-                        </div>
+                        {{--</div>--}}
                     </div>
 
                 </div>

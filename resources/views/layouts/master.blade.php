@@ -15,6 +15,7 @@
 @include('includes.footer')
 
 {{ HTML::script('bower_components/jquery/dist/jquery.min.js') }}
+{{ HTML::script('bower_components/jquery-ui/jquery-ui.js') }}
 {{ HTML::script('bower_components/vue/dist/vue.min.js') }}
 {{ HTML::script('bower_components/bootstrap/dist/js/bootstrap.min.js') }}
 {{ HTML::script('bower_components/FourBoxes/js/modernizr.custom.js') }}

@@ -15,7 +15,7 @@
 @section('content')
     <div class="container">
         <div class="w3agile-about-section-head text-center">
-            <h2>About Tour Request</h2>
+            <h2>About Your Tour</h2>
             <span></span>
         </div>
         <div class="centeredDiv">
