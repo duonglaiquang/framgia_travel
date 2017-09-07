@@ -29,10 +29,10 @@
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>Plan</b> <a class="pull-right"></a>
+                                    <b>Plan</b> <a class="pull-right">{{Auth::user()->plan}}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Gallery</b> <a class="pull-right"></a>
+                                    <b>Gallery</b> <a class="pull-right">{{Auth::user()->picture}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -85,78 +85,49 @@
                             <li class="active"><a href="#gallery" data-toggle="tab">Gallery</a></li>
                             <li><a href="#plans" data-toggle="tab">Plans</a></li>
                             <li><a href="#RS" data-toggle="tab">Requested Service</a></li>
-                            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                            <li><a href="#settings" data-toggle="tab">Update Info</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="active tab-pane" id="gallery">
                                 <div class="container">
+                                    <form action="/upload" method="post" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <h4 id="upload">Share Your Beautiful Traverling Picture With Us</h4>
+                                        <div class="input-group image-preview">
+                                            <input type="text" class="form-control image-preview-filename"
+                                                   disabled="disabled">
+
+                                            <span class="input-group-btn">
+                                               <button type="button" class="btn btn-default image-preview-clear">
+                                                 <span class="glyphicon glyphicon-remove"></span> Clear
+                                              </button>
+
+                                               <div class="btn btn-default image-preview-input">
+                                                   <span class="glyphicon glyphicon-folder-open"></span>
+                                                     <span class="image-preview-input-title">Browse</span>
+                                                      <input type="file" accept="image/png, image/jpeg, image/gif"
+                                                             name="photo"/>
+                                                </div>
+                                                <button type="submit" class="btn btn-default upload">
+                                                     <span class="glyphicon glyphicon-cloud-upload"></span>
+                                                </button>
+                                           </span>
+                                        </div>
+                                    </form>
+
                                     <div class="row">
                                         <div class="gallery">
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Daytona Beach
-                                                    <small>United States</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Териберка, gorod Severomorsk
-                                                    <small>Russia</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>
-                                                    Bad Pyrmont
-                                                    <small>Deutschland</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Yellowstone National Park
-                                                    <small>United States</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Quiraing, Portree
-                                                    <small>United Kingdom</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Highlands
-                                                    <small>United States</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Daytona Beach
-                                                    <small>United States</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>Териберка, gorod Severomorsk
-                                                    <small>Russia</small>
-                                                </figcaption>
-                                            </figure>
-                                            <figure>
-                                                <img id="img" src="http://lorempixel.com/500/500/nature"
-                                                     class="resize"/>
-                                                <figcaption>
-                                                    Bad Pyrmont
-                                                    <small>Deutschland</small>
-                                                </figcaption>
-                                            </figure>
+                                            @foreach($photos as $photo)
+                                                <figure>
+                                                    <div class="xxx">
+                                                        <a class="remove" href="{{route('deletePic',$photo->id)}}"><i
+                                                                    class="fa fa-fw fa-remove"></i></a>
+                                                        <img id="img" src="/storage/{{$photo->filename}}"
+                                                             class="resize"/>
+                                                    </div>
+
+                                                </figure>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <!-- /.tab-pane -->
@@ -164,6 +135,9 @@
                                 <!-- /.tab-content -->
                             </div>
                             <div class="tab-pane" id="plans">
+                                <div class="add">
+                                    <a href="{{route('requestGet')}}" class="btn"><span>ADD PLAN</span></a>
+                                </div>
                                 <div class="wrap">
                                     @foreach($plans as $plan)
                                         @php
@@ -192,14 +166,9 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="RS">
-                                <input type="checkbox" class="checkbox1" id="all" value="all">All
                                 <input type="checkbox" class="checkbox1" id="hotel" value="hotel">Hotel
                                 <input type="checkbox" class="checkbox1" id="restaurant" value="restaurant">Restaurant
                                 <input type="checkbox" class="checkbox1" id="activity" value="activity">Activity<br>
-                                <input type="checkbox" class="checkbox1" id="all1" value="all1">All
-                                <input type="checkbox" class="checkbox1" id="pending" value="pending">Pending
-                                <input type="checkbox" class="checkbox1" id="approved" value="approved">Approved
-                                <input type="checkbox" class="checkbox1" id="canceled" value="canceled">Canceled
                                 @foreach($RServices as $RService)
                                     <div class="item">
                                         <div class='list-card'>
@@ -371,7 +340,7 @@
     <script>
         //redirect to specific tab
         $(document).ready(function () {
-            $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show')
+            $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show');
         });
     </script>
 @endsection
