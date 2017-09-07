@@ -122,7 +122,7 @@
                                                     <div class="xxx">
                                                         <a class="remove" href="{{route('deletePic',$photo->id)}}"><i
                                                                     class="fa fa-fw fa-remove"></i></a>
-                                                        <img id="img" src="/storage/{{$photo->filename}}"
+                                                        <img id="img" src="/storage/public/{{$photo->filename}}"
                                                              class="resize"/>
                                                     </div>
 
