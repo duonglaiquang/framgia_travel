@@ -23,7 +23,7 @@
                 <hr>
                 <form action="" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="text" name="numb" id="numb" value="">
+                    <input type="hidden" name="numb" id="numb" value="">
                     <div class="form-group">
                         <label>Tour Name</label> &nbsp;
                         <i class="fa fa-commenting-o"></i>
