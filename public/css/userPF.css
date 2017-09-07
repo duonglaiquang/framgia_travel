@@ -497,11 +497,10 @@ footer {
 }
 
 .wrap {
-    margin-left: 100px;
+    margin-left: 50px;
     margin-top: 10px;
-    width: 100%;
+    width: 112%;
     display: flex;
-    max-width: 800px;
     flex-flow: row wrap;
     overflow-y: scroll;
     height: 650px;
@@ -510,16 +509,16 @@ footer {
 .tile {
     border: transparent;
     border-radius: 20px;
-    width: 240px;
+    width: 290px;
     height: 300px;
     margin: 10px;
-    background-color: #34bf49;
+    background-color: rgba(0, 0, 0, 0.7);
     display: inline-block;
     background-size: cover;
     position: relative;
     cursor: pointer;
     transition: all 0.4s ease-out;
-    box-shadow: 0 35px 77px -17px rgba(0, 0, 0, 0.44);
+    box-shadow: 8px 9px 20px 2px #333;
     overflow: hidden;
     color: white;
     font-family: 'Roboto';
@@ -548,7 +547,7 @@ footer {
 
 .tile h2 {
     font-weight: 400;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .tile h5 {
@@ -590,13 +589,6 @@ footer {
 .tile:hover span {
     opacity: 1;
     transform: translateY(0px);
-}
-
-@media (max-width: 1000px) {
-    .wrap {
-        flex-direction: column;
-        width: 400px;
-    }
 }
 
 .container {
@@ -738,7 +730,7 @@ footer {
     font-size: 15px !important;
 }
 
-#all, #all1 {
+#pending, #hotel {
     margin-left: 364px !important;
 }
 
@@ -748,10 +740,6 @@ footer {
 
 #canceled {
     margin-left: 55px !important;
-}
-
-.item {
-    display: none;
 }
 
 .col-md-6 {
@@ -801,4 +789,77 @@ footer {
 #upload {
     margin-left: 280px;
     padding-bottom: 30px;
+}
+
+figure {
+    left: 55% !important;
+    top: 45% !important;
+    z-index: 1;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Patrick+Hand");
+
+.add a span {
+    background: #FFF;
+    display: block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 2px solid #000;
+}
+
+.add a:hover {
+    box-shadow: 0 2px 0 #000, 0 2px 0px 2px #87b201;
+}
+
+.add a:active {
+    top: 4px;
+    padding-bottom: 0px;
+    box-shadow: 0 1px 0 #000;
+}
+
+.add a {
+    position: relative;
+    float: left;
+    font: normal 22px/25px "Patrick Hand", sans-serif;
+    margin-right: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    box-shadow: 0 2px 0 #000;
+    transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+    background-image: url('data:image/gif;base64,R0lGODlhBAAEAIABAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5NUY1OENCRDdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5NUY1OENCRTdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1RjU4Q0JCN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjk1RjU4Q0JDN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAQABAAAAgYEEpdoeQUAOw==');
+}
+
+.add {
+    margin-left: 30%;
+    padding-bottom: 60px;
+}
+
+.add .btn {
+    padding: 0px;
+}
+
+.remove {
+    z-index: 999;
+}
+
+.remove .fa-remove {
+    position: absolute;
+    color: red;
+    margin-top: 5px;
+    margin-left: 27%;
+    font-size: 22px;
+    display: none;
+}
+
+.xxx:hover .fa-remove {
+    display: block;
+}
+
+.gallery {
+    height: 630px;
+    overflow: scroll;
 }

@@ -119,8 +119,13 @@
                                         <div class="gallery">
                                             @foreach($photos as $photo)
                                                 <figure>
-                                                    <img id="img" src="../storage/app/{{$photo->filename}}"
-                                                         class="resize"/>
+                                                    <div class="xxx">
+                                                        <a class="remove" href="{{route('deletePic',$photo->id)}}"><i
+                                                                    class="fa fa-fw fa-remove"></i></a>
+                                                        <img id="img" src="/storage/{{$photo->filename}}"
+                                                             class="resize"/>
+                                                    </div>
+
                                                 </figure>
                                             @endforeach
                                         </div>
@@ -130,6 +135,9 @@
                                 <!-- /.tab-content -->
                             </div>
                             <div class="tab-pane" id="plans">
+                                <div class="add">
+                                    <a href="{{route('requestGet')}}" class="btn"><span>ADD PLAN</span></a>
+                                </div>
                                 <div class="wrap">
                                     @foreach($plans as $plan)
                                         @php
@@ -144,7 +152,8 @@
                                                 <img src='{{ $img }}'/>
                                                 <div class="text">
                                                     <h2>{{ $plan->title }}</h2>
-                                                    <h5 class="animate-text">{{ $plan->time_from }} >>> {{ $plan->time_to }}</h5>
+                                                    <h5 class="animate-text">{{ $plan->time_from }}
+                                                        >>> {{ $plan->time_to }}</h5>
                                                     @foreach($plan->plan_location as $planLocation)
                                                         <h5 class="animate-text">
                                                             <i class="fa fa-hand-o-right"></i>
@@ -158,14 +167,9 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="RS">
-                                <input type="checkbox" class="checkbox1" id="all" value="all">All
                                 <input type="checkbox" class="checkbox1" id="hotel" value="hotel">Hotel
                                 <input type="checkbox" class="checkbox1" id="restaurant" value="restaurant">Restaurant
                                 <input type="checkbox" class="checkbox1" id="activity" value="activity">Activity<br>
-                                <input type="checkbox" class="checkbox1" id="all1" value="all1">All
-                                <input type="checkbox" class="checkbox1" id="pending" value="pending">Pending
-                                <input type="checkbox" class="checkbox1" id="approved" value="approved">Approved
-                                <input type="checkbox" class="checkbox1" id="canceled" value="canceled">Canceled
                                 @foreach($RServices as $RService)
                                     <div class="item">
                                         <div class='list-card'>

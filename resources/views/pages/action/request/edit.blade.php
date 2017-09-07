@@ -15,15 +15,15 @@
     <div class="page-wrap">
         <div class="container">
             <div class="w3agile-about-section-head text-center">
-                <h2>About Tour Request</h2>
+                <h2>Tour Detail</h2>
                 <span></span>
             </div>
             <div class="centeredDiv">
-                <h3>Tell us about your tour requirements</h3>
+                <h3>Plan Your Tour Here </h3>
                 <hr>
                 <form action="" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="text" name="numb" id="numb" value="">
+                    <input type="hidden" name="numb" id="numb" value="">
                     <div class="form-group">
                         <label>Tour Name</label> &nbsp;
                         <i class="fa fa-commenting-o"></i>
@@ -121,7 +121,7 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success" name="btn" id="btnt" disabled>Edit</button>
+                    <button type="submit" class="btn btn-success" name="btn" id="btnt" disabled>Save</button>
                     <button type="reset" class="btn btn-warning">Reset</button>
                     <a id="delete" class="pull-right" href="{{ route('requestDelete', $plann->id) }}">DELETE THIS
                         PLAN</a>
@@ -180,12 +180,14 @@
                 });
             });
             var change = '';
+            change += '<option disabled selected>SELECT</option>';
             for (j = 0; j < province.length; j++) {
                 change += '<option value = "' + province[j].id + '"> ' + province[j].name + '</option>';
             }
+
             number++;
             $("#numb").val(number)
-            changes += '<div class="indent"><b>Plan ' + number + '</b></div>';
+            changes += '<div class="indent"><b>' + number + '</b></div>';
             changes += '<div class="row roww">';
             changes += '<div class="form-group col-md-3"> <label>Province</label> &nbsp;';
             changes += '<select name="pro' + number + '" class="form-group select2 detail" id="pro' + number + '" required data-id="' + number + '">';
@@ -193,6 +195,7 @@
             changes += '</div>';
             changes += '<div class="form-group col-md-3"> <label>Type</label> &nbsp;';
             changes += '<select name="type' + number + '" class="form-group select2 detaill" id="type' + number + '" required data-id="' + number + '">';
+            changes += '<option disabled selected>SELECT</option>';
             changes += '@foreach($types as $type)';
             changes += '<option value="{{ $type->id }}" required>{{ $type->name }}</option>';
             changes += '@endforeach';
@@ -200,6 +203,7 @@
             changes += '</div>';
             changes += '<div class="form-group col-md-6"> <label>Service</label> &nbsp;';
             changes += '<select name="ser[]" class="form-group select2 detaill" id="ser' + number + '" required data-id="' + number + '">';
+            changes += '<option disabled selected>SELECT</option>';
             changes += '@foreach($services as $service)';
             changes += '@if($service->category_id == 1)';
             changes += '<option value="{{ $service->id }}" required>{{ $service->name }}</option>';
@@ -222,6 +226,7 @@
             i = number;
             $("#expand").append(changes);
             $("#pro" + i).html(change);
+
         });
         $("#minus").click(function () {
             $("#expand > div").last().remove();

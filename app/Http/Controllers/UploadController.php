@@ -16,12 +16,22 @@ class UploadController extends Controller
     public function uploadSubmit(Request $request)
     {
         $photo = $request->photo;
-        $filename = $photo->store('public');
+        $user = Auth::user();
+        $id = $user->picture + 1;
+        $filename = $user->name . $id . '.png';
+        $photo->storeAs('public', $filename);
 
         UserGallery::create([
             'user_id'  => Auth::user()->id,
-            'filename' => $filename
+            'filename' => $filename,
         ]);
+
+        return redirect(route('user.profile', Auth::user()->id));
+    }
+
+    public function deletePic(Request $request)
+    {
+        UserGallery::destroy($request->id);
 
         return redirect(route('user.profile', Auth::user()->id));
     }

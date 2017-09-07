@@ -72,3 +72,4 @@ Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallbac
 
 Route::get('/upload', 'UploadController@uploadForm');
 Route::post('/upload', 'UploadController@uploadSubmit');
+Route::get('/delete{id}', ['as' => 'deletePic', 'uses' => 'UploadController@deletePic']);

@@ -206,9 +206,9 @@ class PagesController extends Controller
         for ($i = 0; $i < $request->numb; $i++) {
             $s1 = new PlanDetail();
             $s1->plan_id = $plann->id;
-            $s1->service_id = $request->ser[$i];
-            $s1->title = $request->tit[$i];
-            $s1->detail = $request->des[$i];
+            $s1->service_id = $request->ser[ $i ];
+            $s1->title = $request->tit[ $i ];
+            $s1->detail = $request->des[ $i ];
             $s1->save();
         }
 
