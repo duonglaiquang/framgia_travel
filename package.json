@@ -18,6 +18,9 @@
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
     "vue": "^2.1.10",
-    "bower": "0.6.x"
+    "bower": "^1.5.2"
+  },
+  "dependencies": {
+    "bower": "^1.5.2"
   }
 }
