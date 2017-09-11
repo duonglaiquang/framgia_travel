@@ -10,4 +10,4 @@ Homestead.yaml
 npm-debug.log
 public/bower_components
 .env
-composer.lock
+#composer.lock
