@@ -94,6 +94,17 @@
                                         break;
                                 }
                                 ?>
+                                <hr>
+                                <div><b>Title</b>{{ $tab }}{{ $detail->title }}</div>
+                                <div><b>Detail</b>{{ $tab }}{{ $detail->detail }}</div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Date</b>{{ $tab }}{{ $detail->date }}
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>Date</b>{{ $tab }}{{ $detail->time }}
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <h5><b>Date</b>{{ $tab }}{{ $detail->date }}</h5>

@@ -207,6 +207,7 @@ class PagesController extends Controller
             $s1 = new PlanDetail();
             $s1->plan_id = $plann->id;
             $s1->date = $request->date[ $i ];
+
             $s1->started_at = $request->sta[ $i ];
             $s1->end_at = $request->end[ $i ];
             $s1->service_id = $request->ser[ $i ];
