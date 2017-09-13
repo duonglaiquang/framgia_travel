@@ -8,8 +8,12 @@
     display: block;
 }
 
+textarea {
+    resize: none;
+}
+
 .gallery {
-    width: 800px;
+    width: 850px;
     position: relative;
     z-index: 2;
     padding: 10px;
@@ -35,7 +39,6 @@
     -ms-flex-preferred-size: 33.333%;
     flex-basis: 33.333%;
     padding: 10px;
-    overflow: hidden;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -89,8 +92,8 @@
 }
 
 .popup figure img {
-    height: 500px;
-    width: 500px;
+    height: 600px;
+    width: 600px;
     position: relative;
     z-index: 2;
     border-radius: 15px;
@@ -778,6 +781,12 @@ footer {
     padding-bottom: 20px;
 }
 
+#changePic {
+    width: 100%;
+    margin-left: 0px;
+    padding-bottom: 20px;
+}
+
 .image-preview-clear {
     display: none;
 }
@@ -849,8 +858,8 @@ figure {
 .remove .fa-remove {
     position: absolute;
     color: red;
-    margin-top: 5px;
-    margin-left: 27%;
+    margin-top: 6px;
+    margin-left: 26%;
     font-size: 22px;
     display: none;
 }
@@ -862,4 +871,19 @@ figure {
 .gallery {
     height: 630px;
     overflow: scroll;
+}
+
+.bootbox-body {
+    font-size: 18px !important;
+    text-align: center !important;
+}
+
+.modal-footer .btn + .btn {
+    margin-left: 19px !important;
+    margin-right: 17% !important;
+}
+
+.profile-user-img {
+    height: 128px !important;
+    width: 128px !important;
 }

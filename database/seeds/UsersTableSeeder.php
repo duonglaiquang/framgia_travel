@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
                     'name'          => 'duong',
                     'password'      => bcrypt('123456'),
                     'gender'        => 'Male',
-                    'level'         => '0',
+                    'level'         => '1',
                     'phone'         => '0943901988',
                     'address'       => '117 Hang Bong, Hoan Kiem, Ha Noi',
                     'date_of_birth' => '19961104',

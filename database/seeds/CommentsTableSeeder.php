@@ -24,10 +24,42 @@ class CommentsTableSeeder extends Seeder
                 ],
 
                 [
-                    'user_id'    => '2',
+                    'user_id'    => '1',
                     'service_id' => '1',
                     'title'      => 'test2',
                     'content'    => 'this is a test string 2',
+                    'rate_point' => '3',
+                ],
+
+                [
+                    'user_id'    => '1',
+                    'service_id' => '1',
+                    'title'      => 'test3',
+                    'content'    => 'this is a test string 3',
+                    'rate_point' => '5',
+                ],
+
+                [
+                    'user_id'    => '1',
+                    'service_id' => '2',
+                    'title'      => 'test1',
+                    'content'    => 'this is a test string 1',
+                    'rate_point' => '4',
+                ],
+
+                [
+                    'user_id'    => '1',
+                    'service_id' => '2',
+                    'title'      => 'test1',
+                    'content'    => 'this is a test string 1',
+                    'rate_point' => '4',
+                ],
+
+                [
+                    'user_id'    => '2',
+                    'service_id' => '2',
+                    'title'      => 'test3',
+                    'content'    => 'this is a test string 3',
                     'rate_point' => '3',
                 ],
 

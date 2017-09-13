@@ -111,6 +111,9 @@ class PagesController extends Controller
             ->where('rate_point', '>', '0')
             ->avg('rate_point');
 
+        $hotel->rate_count = Comment::where('service_id', '=', $hotel->id)
+            ->where('rate_point', '>', '0')->get()->count();
+
         $hotel->comment = Comment::where('service_id', '=', $hotel->id)
             ->get()
             ->count();
@@ -174,15 +177,12 @@ class PagesController extends Controller
             ->leftJoin('services', 'services.id', 'plan_details.service_id')
             ->leftJoin('categories', 'categories.id', 'services.category_id')
             ->leftJoin('provinces', 'provinces.id', 'services.province_id')
-            ->select('provinces.name as pro_name', 'services.name as ser_name', 'categories.name as cat_name', 'services.category_id as type', 'plan_details.title as title', 'plan_details.started_at as date', 'plan_details.end_at as time', 'plan_details.detail as detail')
+            ->select('provinces.name as pro_name', 'services.name as ser_name', 'categories.name as cat_name', 'services.category_id as type', 'plan_details.title as title', 'plan_details.started_at as started_at', 'plan_details.end_at as end_at', 'plan_details.date as date', 'plan_details.detail as detail')
             ->get();
         $choices = $plann->plan_location;
         $provinces = Province::all();
         $types = Category::all();
         $services = Service::all();
-//        $choices = DB::table('plans')->join('plan_locations', 'plans.id', '=', 'plan_locations.plan_id')
-//            ->join('provinces', 'provinces.id', '=', 'plan_locations.province_id')->where('plans.id', '=', $request->id)
-//            ->get();
 
         return view('pages.action.request.edit', compact('plann', 'provinces', 'choices', 'details', 'types', 'services'));
     }
@@ -206,6 +206,8 @@ class PagesController extends Controller
         for ($i = 0; $i < $request->numb; $i++) {
             $s1 = new PlanDetail();
             $s1->plan_id = $plann->id;
+            $s1->date = $request->date[ $i ];
+
             $s1->started_at = $request->sta[ $i ];
             $s1->end_at = $request->end[ $i ];
             $s1->service_id = $request->ser[ $i ];

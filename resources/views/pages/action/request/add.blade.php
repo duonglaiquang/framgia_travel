@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label>Visiting provinces</label> &nbsp;
                     <i class="fa fa-location-arrow"></i>
-                    <select name="proChoice[]" class="form-control select2" multiple>
+                    <select name="proChoice[]" class="form-control select2" required multiple>
                         @foreach($provinces as $province)
                             <option value="{{ $province->id }}">{{ $province->name }}</option>
                         @endforeach
@@ -42,19 +42,19 @@
                     <div class="form-group col-md-6 date">
                         <label>From</label> &nbsp;
                         <i class="fa fa-calendar"></i>
-                        <input name="time_from" type="text" class="form-control" id="datepicker">
+                        <input name="time_from" type="text" class="form-control" id="datepicker" required>
                     </div>
                     <div class="form-group col-md-6 date">
                         <label>To</label> &nbsp;
                         <i class="fa fa-calendar"></i>
-                        <input name="time_to" type="text" class="form-control" id="datepicker2">
+                        <input name="time_to" type="text" class="form-control" id="datepicker2" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Description</label> &nbsp;
                     <i class="fa fa-pencil"></i>
                     <textarea class="form-control" rows="3" name="description" autocomplete="off"
-                              placeholder="Please Enter Description"></textarea>
+                              required  placeholder="Please Enter Description"></textarea>
                 </div>
                 <div class="form-group">
                     <div class="checkbox">
