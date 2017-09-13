@@ -16,12 +16,12 @@
                 <!-- Messages: style can be found in dropdown.less-->
                 <!-- Tasks Menu -->
 
-            <!-- User Account Menu -->
+                <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}"
+                        <img src="/storage/public/{{Auth::user()->profile_pic}}"
                              class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">{{ Auth::user()->name }}</span>
@@ -29,7 +29,7 @@
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}"
+                            <img src="/storage/public/{{Auth::user()->profile_pic}}"
                                  class="img-circle" alt="User Image"/>
                             <p>
                                 {{ Auth::user()->name }}

@@ -35,6 +35,10 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $user->update($request->all());
+        $photo = $request->photo;
+        $filename = $user->id . 'profilePic' . '.png';
+        $photo->storeAs('public', $filename);
+        $user->profile_pic = $filename;
         $user->save();
 
         return redirect(route('user.update', Auth::user()->id))->withInput(['tab' => 'settings']);;

@@ -111,6 +111,9 @@ class PagesController extends Controller
             ->where('rate_point', '>', '0')
             ->avg('rate_point');
 
+        $hotel->rate_count = Comment::where('service_id', '=', $hotel->id)
+            ->where('rate_point', '>', '0')->get()->count();
+
         $hotel->comment = Comment::where('service_id', '=', $hotel->id)
             ->get()
             ->count();

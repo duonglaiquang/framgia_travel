@@ -20,8 +20,7 @@
                     <div class="box box-primary">
                         <div class="box-body box-profile">
                             <img id="img" class="profile-user-img img-responsive img-circle"
-                                 src="{{ asset('bower_components/AdminLTE/dist/img/user3-128x128.jpg') }}"
-                                 alt="User profile picture">
+                                 src="/storage/public/{{$user->profile_pic}}">
 
                             <h2 class="profile-username text-center">{{Auth::user()->name}}</h2>
 
@@ -320,7 +319,7 @@
                                                    <span class="glyphicon glyphicon-folder-open"></span>
                                                      <span class="image-preview-input-title">Browse</span>
                                                       <input type="file" accept="image/png, image/jpeg, image/gif"
-                                                             name="profilePic"/>
+                                                             name="photo"/>
                                                 </div>
                                            </span>
                                             </div>

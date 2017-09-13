@@ -67,13 +67,13 @@
             <span class="fa  fa-chevron-right"></span>
 
             <div class="box1">
-                    <a href={{ route($route_name, [$province, $type]) }}><h4>{{ $route_text }}</h4></a>
+                <a href={{ route($route_name, [$province, $type]) }}><h4>{{ $route_text }}</h4></a>
             </div>
 
             <span class="fa  fa-chevron-right"></span>
 
             <div class="box1">
-                    <a href={{ route($route_namePF, [$province, $type, $hotel->name]) }}><h4>{{ $hotel->name }}</h4></a>
+                <a href={{ route($route_namePF, [$province, $type, $hotel->name]) }}><h4>{{ $hotel->name }}</h4></a>
             </div>
         </div>
 
@@ -168,6 +168,9 @@
                         <h4>Average user rating</h4>
                         <h2 class="bold padding-bottom-7">{{ round($hotel->rate_average,2) }}
                             <small>/ 5</small>
+                        </h2>
+                        <h2>
+                            <small>( {{$hotel->rate_count}} People Have Rated This Place )</small>
                         </h2>
                         <?php
                         $value = round($hotel->rate_average * 2) / 2
@@ -328,9 +331,10 @@
 
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <img src='/images/{{ $user->profile_pic }}' class="img-rounded">
-                                            <div class="review-block-name"><a href="#">{{ $user->name }}</a></div>
-                                            <div class="review-block-date">{{ $comment->created_at }}</div>
+                                            <img src="/storage/public/{{$user->profile_pic}}" class="img-rounded">
+                                            <div class="review-block-name"><h5
+                                                        style="text-align: center">{{ $user->name }}</h5></div>
+                                            <div class="review-block-date">{{ $comment->updated_at }}</div>
                                         </div>
                                         <div class="col-sm-9">
                                             <form accept-charset="UTF-8"

@@ -6,3 +6,9 @@ td {
     vertical-align: middle !important;
     text-align: center !important;
 }
+
+.user-panel>.image>img{
+    max-width: none !important;
+    width: 45px !important;
+    height: 45px !important;
+}

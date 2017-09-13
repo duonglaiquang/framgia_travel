@@ -8,7 +8,7 @@
     display: block;
 }
 
-textarea{
+textarea {
     resize: none;
 }
 
@@ -881,4 +881,9 @@ figure {
 .modal-footer .btn + .btn {
     margin-left: 19px !important;
     margin-right: 17% !important;
+}
+
+.profile-user-img {
+    height: 128px !important;
+    width: 128px !important;
 }
