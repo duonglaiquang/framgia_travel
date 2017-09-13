@@ -14,7 +14,7 @@ class CreateModifyTableV5 extends Migration
     {
         Schema::table('services', function ($table) {
             $table->text('description')->change();
-            $table->float('expected_price')->default(0)->change();
+            $table->string('expected_price')->default(null)->change();
             $table->integer('comment')->nullable()->default(0);
             $table->string('phone')->nullable()->default(null);
             $table->float('rate_average')->nullable()->default(null)->change();
