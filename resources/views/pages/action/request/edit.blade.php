@@ -51,13 +51,13 @@
                         <div class="form-group col-md-6 date">
                             <label>From</label> &nbsp;
                             <i class="fa fa-calendar"></i>
-                            <input name="time_from" type="text" class="form-control" id="datepicker"
+                            <input name="time_from" type="text" class="form-control datepicker"
                                    value="{{ $plann->time_from }}">
                         </div>
                         <div class="form-group col-md-6 date">
                             <label>To</label> &nbsp;
                             <i class="fa fa-calendar"></i>
-                            <input name="time_to" type="text" class="form-control" id="datepicker2"
+                            <input name="time_to" type="text" class="form-control datepicker"
                                    value="{{ $plann->time_to }}">
                         </div>
                     </div>
@@ -94,6 +94,17 @@
                                         break;
                                 }
                                 ?>
+                                <hr>
+                                <div><b>Title</b>{{ $tab }}{{ $detail->title }}</div>
+                                <div><b>Detail</b>{{ $tab }}{{ $detail->detail }}</div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <b>Date</b>{{ $tab }}{{ $detail->date }}
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>Date</b>{{ $tab }}{{ $detail->time }}
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <b>Province</b>{{ $tab }}{{ $detail->pro_name }}
@@ -106,12 +117,14 @@
                                                                    href="{{ route($route_namePF, [$detail->pro_name, $detail->type, $detail->ser_name]) }}">{{ $detail->ser_name }}</a>
                                     </div>
                                 </div>
+                                <hr>
                             @endforeach
                         </div>
                     </div>
                     <div id="expand"></div>
                     <button type="button" id="add"><i class="fa fa-plus"></i></button>
                     <button type="button" id="minus"><i class="fa fa-minus"></i></button>
+                    <span><b><em>Press <i class="fa fa-plus"></i> to add plan</em></b></span>
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
@@ -138,19 +151,12 @@
     {{ HTML::script('bower_components/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.js') }}
     <script>
         (function ($) {
-            $("#dayup").on("click", function () {
-                $("#days").val(parseInt($("#days").val(), 10) + 1);
-            });
-            $("#daydown").on("click", function () {
-                if ($("#days").val() > 0)
-                    $("#days").val(parseInt($("#days").val(), 10) - 1);
-            });
             $(".select2").select2();
-            $('#datepicker').datepicker({
+            $('.datepicker').datepicker({
                 autoclose: true
             });
-            $('#datepicker2').datepicker({
-                autoclose: true
+            $("#timepicker").timepicker({
+                showInputs: false
             });
         })(jQuery);
         var number = 0;
@@ -187,12 +193,33 @@
             number++;
             $("#numb").val(number)
             changes += '<div class="indent"><b>' + number + '</b></div>';
-            changes += '<div class="row roww">';
-            changes += '<div class="form-group col-md-3"> <label>Province</label> &nbsp;';
+            changes += '<div class="row">';
+            changes += '<div class=" form-group col-md-6 date">';
+            changes += '<label>Date</label> &nbsp;';
+            changes += ' <i class="fa fa-calendar"></i>';
+            changes += '<input type="text" value="Date of service" class="form-control datepicker" required name="sta[]">';
+            changes += '</div>';
+            changes += '<div class="col-md-6 bootstrap-timepicker form-group">';
+            changes += '<label>Time</label> &nbsp;';
+            changes += '<i class="fa fa-clock-o"></i>';
+            changes += '<input type="text" class="form-control timepicker" required name="end[]">';
+            changes += '</div></div>';
+            changes += '<div class="group">';
+            changes += '<div class="form-group"> <label>Title</label> &nbsp;';
+            changes += '<i class="fa fa-pencil"></i>';
+            changes += '<textarea class="form-control" name="tit[]" id="tit' + number + '" rows="1" autocomplete="off"></textarea>';
+            changes += '</div>';
+            changes += '<div class="form-group">';
+            changes += '<label>Detail</label> &nbsp;';
+            changes += '<i class="fa fa-pencil"></i>';
+            changes += '<textarea class="form-control" name="des[]" id="des' + number + '" rows="2" autocomplete="off"></textarea>';
+            changes += '</div></div>';
+            changes += '<div class="row">';
+            changes += '<div class="form-group col-md-4"> <label>Province</label> &nbsp;';
             changes += '<select name="pro' + number + '" class="form-group select2 detail" id="pro' + number + '" required data-id="' + number + '">';
             changes += '</select>';
             changes += '</div>';
-            changes += '<div class="form-group col-md-3"> <label>Type</label> &nbsp;';
+            changes += '<div class="form-group col-md-4"> <label>Type</label> &nbsp;';
             changes += '<select name="type' + number + '" class="form-group select2 detaill" id="type' + number + '" required data-id="' + number + '">';
             changes += '<option disabled selected>SELECT</option>';
             changes += '@foreach($types as $type)';
@@ -200,7 +227,7 @@
             changes += '@endforeach';
             changes += '</select>';
             changes += '</div>';
-            changes += '<div class="form-group col-md-6"> <label>Service</label> &nbsp;';
+            changes += '<div class="form-group col-md-4"> <label>Service</label> &nbsp;';
             changes += '<select name="ser[]" class="form-group select2 detaill" id="ser' + number + '" required data-id="' + number + '">';
             changes += '<option disabled selected>SELECT</option>';
             changes += '@foreach($services as $service)';
@@ -209,25 +236,19 @@
             changes += '@endif';
             changes += '@endforeach';
             changes += '</select>';
-            changes += '</div>'
-            changes += '</div>'
-            changes += '<div class="group">';
-            changes += '<div class="form-group"> <label>Title</label> &nbsp;';
-            changes += '<i class="fa fa-pencil"></i>';
-            changes += '<textarea class="form-control" name="tit[]" id="tit' + number + ' rows="1" autocomplete="off"></textarea>';
-            changes += '</div>';
-            changes += '<div class="form-group">';
-            changes += '<label>Detail</label> &nbsp;';
-            changes += '<i class="fa fa-pencil"></i>';
-            changes += '<textarea class="form-control" name="des[]" id="des' + number + ' rows="2" autocomplete="off"></textarea>';
-            changes += '</div>';
-            changes += '</div>'
+            changes += '</div></div>';
             i = number;
             $("#expand").append(changes);
             $("#pro" + i).html(change);
-
+            $('.datepicker').datepicker({
+                autoclose: true
+            });
+            $(".timepicker").timepicker({
+                showInputs: false
+            });
         });
         $("#minus").click(function () {
+            $("#expand > div").last().remove();
             $("#expand > div").last().remove();
             $("#expand > div").last().remove();
             $("#expand > div").last().remove();

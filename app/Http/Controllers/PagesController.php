@@ -174,7 +174,7 @@ class PagesController extends Controller
             ->leftJoin('services', 'services.id', 'plan_details.service_id')
             ->leftJoin('categories', 'categories.id', 'services.category_id')
             ->leftJoin('provinces', 'provinces.id', 'services.province_id')
-            ->select('provinces.name as pro_name', 'services.name as ser_name', 'categories.name as cat_name', 'services.category_id as type')
+            ->select('provinces.name as pro_name', 'services.name as ser_name', 'categories.name as cat_name', 'services.category_id as type', 'plan_details.title as title', 'plan_details.started_at as date', 'plan_details.end_at as time', 'plan_details.detail as detail')
             ->get();
         $choices = $plann->plan_location;
         $provinces = Province::all();
@@ -206,6 +206,8 @@ class PagesController extends Controller
         for ($i = 0; $i < $request->numb; $i++) {
             $s1 = new PlanDetail();
             $s1->plan_id = $plann->id;
+            $s1->started_at = $request->sta[ $i ];
+            $s1->end_at = $request->end[ $i ];
             $s1->service_id = $request->ser[ $i ];
             $s1->title = $request->tit[ $i ];
             $s1->detail = $request->des[ $i ];

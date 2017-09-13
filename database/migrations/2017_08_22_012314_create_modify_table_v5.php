@@ -68,11 +68,6 @@ class CreateModifyTableV5 extends Migration
             $table->string('phone')->nullable()->default(null);
             $table->string('profile_pic')->nullable()->default(null);
         });
-
-        Schema::table('plan_details', function ($table){
-            $table->time('started_at')->nullable()->default(null)->change();
-            $table->time('end_at')->nullable()->default(null)->change();
-        });
     }
 
     /**
