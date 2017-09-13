@@ -51,20 +51,20 @@
                         <div class="form-group col-md-6 date">
                             <label>From</label> &nbsp;
                             <i class="fa fa-calendar"></i>
-                            <input name="time_from" type="text" class="form-control datepicker"
+                            <input name="time_from" type="text" class="form-control datepicker" required
                                    value="{{ $plann->time_from }}">
                         </div>
                         <div class="form-group col-md-6 date">
                             <label>To</label> &nbsp;
                             <i class="fa fa-calendar"></i>
-                            <input name="time_to" type="text" class="form-control datepicker"
+                            <input name="time_to" type="text" class="form-control datepicker" required
                                    value="{{ $plann->time_to }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Description</label> &nbsp;
                         <i class="fa fa-pencil"></i>
-                        <textarea class="form-control" rows="3" name="description"
+                        <textarea class="form-control" rows="3" name="description" required
                                   autocomplete="off">{{ $plann->description }}</textarea>
                     </div>
                     <div class="form-group">
@@ -94,29 +94,31 @@
                                         break;
                                 }
                                 ?>
-                                <hr>
-                                <div><b>Title</b>{{ $tab }}{{ $detail->title }}</div>
-                                <div><b>Detail</b>{{ $tab }}{{ $detail->detail }}</div>
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <b>Date</b>{{ $tab }}{{ $detail->date }}
+                                        <h5><b>Date</b>{{ $tab }}{{ $detail->date }}</h5>
                                     </div>
                                     <div class="col-md-3">
-                                        <b>Date</b>{{ $tab }}{{ $detail->time }}
+                                        <h5><b>From</b>{{ $tab }}{{ $detail->started_at }}</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5><b>To</b>{{ $tab }}{{ $detail->end_at }}</h5>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <b>Province</b>{{ $tab }}{{ $detail->pro_name }}
+                                        <h5><b>Province</b>{{ $tab }}{{ $detail->pro_name }}</h5>
                                     </div>
                                     <div class="col-md-3">
-                                        <b>Type</b>{{ $tab }}{{ $detail->cat_name }}
+                                        <h5><b>Type</b>{{ $tab }}{{ $detail->cat_name }}</h5>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Service</b>{{ $tab }}<a target="_blank"
-                                                                   href="{{ route($route_namePF, [$detail->pro_name, $detail->type, $detail->ser_name]) }}">{{ $detail->ser_name }}</a>
+                                        <h5><b>Service</b>{{ $tab }}<a target="_blank"
+                                                                       href="{{ route($route_namePF, [$detail->pro_name, $detail->type, $detail->ser_name]) }}">{{ $detail->ser_name }}</a>
+                                        </h5>
                                     </div>
                                 </div>
+                                <div><h5><b>Detail</b>{{ $tab }}{{ $detail->detail }}</h5></div>
                                 <hr>
                             @endforeach
                         </div>
@@ -194,26 +196,23 @@
             $("#numb").val(number)
             changes += '<div class="indent"><b>' + number + '</b></div>';
             changes += '<div class="row">';
-            changes += '<div class=" form-group col-md-6 date">';
+            changes += '<div class=" form-group col-md-3 date">';
             changes += '<label>Date</label> &nbsp;';
             changes += ' <i class="fa fa-calendar"></i>';
-            changes += '<input type="text" value="Date of service" class="form-control datepicker" required name="sta[]">';
+            changes += '<input type="text" value="Date of service" class="form-control datepicker" required name="date[]">';
             changes += '</div>';
-            changes += '<div class="col-md-6 bootstrap-timepicker form-group">';
-            changes += '<label>Time</label> &nbsp;';
+            changes += '<div class="col-md-3 bootstrap-timepicker form-group">';
+            changes += '<label>From</label> &nbsp;';
+            changes += '<i class="fa fa-clock-o"></i>';
+            changes += '<input type="text" class="form-control timepicker" required name="sta[]">';
+            changes += '</div>';
+            changes += '<div class="col-md-3 bootstrap-timepicker form-group">';
+            changes += '<label>To</label> &nbsp;';
             changes += '<i class="fa fa-clock-o"></i>';
             changes += '<input type="text" class="form-control timepicker" required name="end[]">';
             changes += '</div></div>';
             changes += '<div class="group">';
-            changes += '<div class="form-group"> <label>Title</label> &nbsp;';
-            changes += '<i class="fa fa-pencil"></i>';
-            changes += '<textarea class="form-control" name="tit[]" id="tit' + number + '" rows="1" autocomplete="off"></textarea>';
-            changes += '</div>';
             changes += '<div class="form-group">';
-            changes += '<label>Detail</label> &nbsp;';
-            changes += '<i class="fa fa-pencil"></i>';
-            changes += '<textarea class="form-control" name="des[]" id="des' + number + '" rows="2" autocomplete="off"></textarea>';
-            changes += '</div></div>';
             changes += '<div class="row">';
             changes += '<div class="form-group col-md-4"> <label>Province</label> &nbsp;';
             changes += '<select name="pro' + number + '" class="form-group select2 detail" id="pro' + number + '" required data-id="' + number + '">';
@@ -236,6 +235,10 @@
             changes += '@endif';
             changes += '@endforeach';
             changes += '</select>';
+            changes += '</div></div>';
+            changes += '<label>Detail</label> &nbsp;';
+            changes += '<i class="fa fa-pencil"></i>';
+            changes += '<textarea class="form-control" name="des[]" id="des' + number + '" rows="2" autocomplete="off"></textarea>';
             changes += '</div></div>';
             i = number;
             $("#expand").append(changes);

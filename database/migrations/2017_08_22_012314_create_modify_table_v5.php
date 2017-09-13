@@ -72,8 +72,8 @@ class CreateModifyTableV5 extends Migration
         });
 
         Schema::table('plan_details', function ($table) {
-            $table->time('started_at')->nullable()->default(null)->change();
-            $table->time('end_at')->nullable()->default(null)->change();
+            $table->string('title')->nullable()->default(null)->change();
+            $table->string('date')->nullable()->default(null);
         });
     }
 

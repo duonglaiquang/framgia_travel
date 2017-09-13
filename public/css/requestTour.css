@@ -2,12 +2,12 @@ body {
     height: auto;
 }
 
-.container{
+.container {
     margin-bottom: 50px;
     overflow: visible;
 }
 
-textarea{
+textarea {
     resize: none;
 }
 
@@ -133,4 +133,8 @@ textarea{
 
 textarea {
     resize: none;
+}
+
+.row {
+    margin-bottom: 10px !important;
 }
