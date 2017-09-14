@@ -30,6 +30,7 @@
     "Respond": "https://github.com/scottjehl/Respond.git",
     "bootstrap-confirmation": "https://github.com/tavicu/bs-confirmation.git",
     "bootstrap-star-rating": "^4.0.2",
-    "jquery-ui": "https://github.com/components/jqueryui.git"
+    "jquery-ui": "https://github.com/components/jqueryui.git",
+    "bootbox": "https://github.com/makeusabrew/bootbox.git"
   }
 }

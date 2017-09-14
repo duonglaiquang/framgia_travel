@@ -18,6 +18,7 @@ class CreateModifyTableV5 extends Migration
             $table->integer('comment')->nullable()->default(0);
             $table->string('phone')->nullable()->default(null);
             $table->float('rate_average')->nullable()->default(null)->change();
+            $table->integer('rate_count')->nullable()->default(null);
         });
 
         Schema::table('provinces', function ($table) {
@@ -57,6 +58,7 @@ class CreateModifyTableV5 extends Migration
             $table->dropColumn('following');
             $table->integer('plan')->nullable()->default(0);
             $table->integer('picture')->nullable()->default(0);
+            $table->string('profile_pic')->default('profile_pic.png')->change();
         });
 
         Schema::table('user_gallerys', function ($table) {
@@ -69,9 +71,9 @@ class CreateModifyTableV5 extends Migration
             $table->string('profile_pic')->nullable()->default(null);
         });
 
-        Schema::table('plan_details', function ($table){
-            $table->time('started_at')->nullable()->default(null)->change();
-            $table->time('end_at')->nullable()->default(null)->change();
+        Schema::table('plan_details', function ($table) {
+            $table->string('title')->nullable()->default(null)->change();
+            $table->string('date')->nullable()->default(null);
         });
     }
 

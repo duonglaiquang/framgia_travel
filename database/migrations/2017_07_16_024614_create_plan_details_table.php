@@ -19,8 +19,8 @@ class CreatePlanDetailsTable extends Migration
                 $table->integer('plan_id')->unsigned();
                 $table->integer('service_id')->unsigned();
                 $table->string('title');
-                $table->time('started_at');
-                $table->time('end_at');
+                $table->string('started_at');
+                $table->string('end_at');
                 $table->string('detail');
                 $table->timestamps();
             });

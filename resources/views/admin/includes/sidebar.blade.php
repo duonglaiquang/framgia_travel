@@ -7,7 +7,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}" class="img-circle"
+                <img src="/storage/public/{{Auth::user()->profile_pic}}" class="img-circle"
                      alt="User Image"/>
             </div>
             <div class="pull-left info">
@@ -18,20 +18,15 @@
         </div>
 
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                <span class="input-group-btn">
-  <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-</span>
-            </div>
-        </form>
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
+            <li class="treeview">
+                <a href="#"><i class="fa fa-circle-o fa-pull-left"></i><span>Dashboard</span></a>
+            </li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-circle-o fa-pull-left"></i><span>Users</span> <i
                             class="fa fa-angle-left pull-right"></i></a>
@@ -55,7 +50,9 @@
                 <a href="#"><i class="fa fa-circle-o fa-pull-left"></i><span>Services</span> <i
                             class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('provinceShowList') }}"><i class="fa fa-list fa-pull-left"></i>Show Services</a>
+                    <li><a href="#"><i class="fa fa-list fa-pull-left"></i>Show Services</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-list fa-pull-left"></i>Add Service</a>
                     </li>
                     <li><a href="{{ route('serviceRequested') }}"><i class="fa fa-plus-square fa-pull-left"></i>Requested Services</a></li>
                 </ul>

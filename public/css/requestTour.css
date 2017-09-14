@@ -2,12 +2,12 @@ body {
     height: auto;
 }
 
-.container{
+.container {
     margin-bottom: 50px;
     overflow: visible;
 }
 
-textarea{
+textarea {
     resize: none;
 }
 
@@ -135,6 +135,57 @@ textarea {
     resize: none;
 }
 
-.roww {
-    margin-bottom: -20px;
+.details .row {
+    margin-bottom: 10px !important;
+}
+
+label {
+    font-size: 12px;
+}
+
+input {
+    text-align: center;
+}
+
+option {
+    text-align: center;
+    font-size: 12px;
+}
+
+select {
+    font-size: 12px;
+}
+
+#Date {
+    margin-left: 6%;
+}
+
+#From {
+    margin-left: 6%;
+}
+
+#To {
+    margin-left: 7%;
+}
+
+#Prov {
+    margin-left: 6%;
+}
+
+#Type {
+    margin-left: 14%;
+}
+
+#Ser {
+    margin-left: 16%;
+}
+
+.bootbox-body {
+    font-size: 18px !important;
+    text-align: center !important;
+}
+
+.modal-footer .btn + .btn {
+    margin-left: 19px !important;
+    margin-right: 17% !important;
 }

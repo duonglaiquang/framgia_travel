@@ -20,8 +20,7 @@
                     <div class="box box-primary">
                         <div class="box-body box-profile">
                             <img id="img" class="profile-user-img img-responsive img-circle"
-                                 src="{{ asset('bower_components/AdminLTE/dist/img/user3-128x128.jpg') }}"
-                                 alt="User profile picture">
+                                 src="/storage/public/{{$user->profile_pic}}">
 
                             <h2 class="profile-username text-center">{{Auth::user()->name}}</h2>
 
@@ -120,12 +119,12 @@
                                             @foreach($photos as $photo)
                                                 <figure>
                                                     <div class="xxx">
-                                                        <a class="remove" href="{{route('deletePic',$photo->id)}}"><i
-                                                                    class="fa fa-fw fa-remove"></i></a>
-                                                        <img id="img" src="/storage/{{$photo->filename}}"
+                                                        <a class="remove" href="{{route('deletePic',$photo->id)}}"
+                                                           onclick="bootbox.confirm();">
+                                                            <i class="fa fa-fw fa-remove"></i></a>
+                                                        <img id="img" src="/storage/public/{{$photo->filename}}"
                                                              class="resize"/>
                                                     </div>
-
                                                 </figure>
                                             @endforeach
                                         </div>
@@ -152,7 +151,8 @@
                                                 <img src='{{ $img }}'/>
                                                 <div class="text">
                                                     <h2>{{ $plan->title }}</h2>
-                                                    <h5 class="animate-text">{{ $plan->time_from }} >>> {{ $plan->time_to }}</h5>
+                                                    <h5 class="animate-text">{{ $plan->time_from }}
+                                                        >>> {{ $plan->time_to }}</h5>
                                                     @foreach($plan->plan_location as $planLocation)
                                                         <h5 class="animate-text">
                                                             <i class="fa fa-hand-o-right"></i>
@@ -303,6 +303,29 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="avatar" class="col-sm-2 control-label">Change Profile Pic</label>
+
+                                        <div class="col-sm-10">
+                                            <div class="input-group image-preview" id="changePic">
+                                                <input type="text" class="form-control image-preview-filename"
+                                                       disabled="disabled">
+
+                                                <span class="input-group-btn">
+                                               <button type="button" class="btn btn-default image-preview-clear">
+                                                 <span class="glyphicon glyphicon-remove"></span> Clear
+                                              </button>
+
+                                               <div class="btn btn-default image-preview-input">
+                                                   <span class="glyphicon glyphicon-folder-open"></span>
+                                                     <span class="image-preview-input-title">Browse</span>
+                                                      <input type="file" accept="image/png, image/jpeg, image/gif"
+                                                             name="photo"/>
+                                                </div>
+                                           </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
                                             <div class="checkbox">
                                                 <label>
@@ -336,11 +359,38 @@
 @section('script')
     {{ HTML::script('bower_components/AdminLTE/dist/js/app.min.js') }}
     {{ HTML::script('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}
+    {{ HTML::script('bower_components/bootbox//bootbox.js') }}
     {{ HTML::script('js/userPF.js', ['type' => 'text/javascript']) }}
     <script>
         //redirect to specific tab
         $(document).ready(function () {
             $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show');
+        });
+        $('.remove').click(function (e) {
+            e.preventDefault();
+            var location = $(this).attr('href');
+            bootbox.confirm({
+                backdrop: true,
+                size: 'small',
+                message: "Confirm Delete This Picture ?",
+                buttons: {
+                    confirm: {
+                        label: '<i class="fa fa-check"></i> Sure',
+                        className: 'btn-success',
+                    },
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> Hol Up',
+                        className: 'btn-danger',
+                    }
+                },
+                callback: function (result) {
+                    console.log(result);
+                    if (result == true) {
+                        window.location.replace(location);
+                    }
+                },
+
+            });
         });
     </script>
 @endsection

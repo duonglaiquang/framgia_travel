@@ -51,20 +51,20 @@
                         <div class="form-group col-md-6 date">
                             <label>From</label> &nbsp;
                             <i class="fa fa-calendar"></i>
-                            <input name="time_from" type="text" class="form-control" id="datepicker"
+                            <input name="time_from" type="text" class="form-control datepicker" required
                                    value="{{ $plann->time_from }}">
                         </div>
                         <div class="form-group col-md-6 date">
                             <label>To</label> &nbsp;
                             <i class="fa fa-calendar"></i>
-                            <input name="time_to" type="text" class="form-control" id="datepicker2"
+                            <input name="time_to" type="text" class="form-control datepicker" required
                                    value="{{ $plann->time_to }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Description</label> &nbsp;
                         <i class="fa fa-pencil"></i>
-                        <textarea class="form-control" rows="3" name="description"
+                        <textarea class="form-control" rows="3" name="description" required
                                   autocomplete="off">{{ $plann->description }}</textarea>
                     </div>
                     <div class="form-group">
@@ -96,22 +96,37 @@
                                 ?>
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <b>Province</b>{{ $tab }}{{ $detail->pro_name }}
+                                        <h5><b>Date</b>{{ $tab }}{{ $detail->date }}</h5>
                                     </div>
                                     <div class="col-md-3">
-                                        <b>Type</b>{{ $tab }}{{ $detail->cat_name }}
+                                        <h5><b>From</b>{{ $tab }}{{ $detail->started_at }}</h5>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Service</b>{{ $tab }}<a target="_blank"
-                                                                   href="{{ route($route_namePF, [$detail->pro_name, $detail->type, $detail->ser_name]) }}">{{ $detail->ser_name }}</a>
+                                    <div class="col-md-3">
+                                        <h5><b>To</b>{{ $tab }}{{ $detail->end_at }}</h5>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5><b>Province</b>{{ $tab }}{{ $detail->pro_name }}</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5><b>Type</b>{{ $tab }}{{ $detail->cat_name }}</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5><b>Service</b>{{ $tab }}<a target="_blank"
+                                                                       href="{{ route($route_namePF, [$detail->pro_name, $detail->type, $detail->ser_name]) }}">{{ $detail->ser_name }}</a>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div><h5><b>Detail</b>{{ $tab }}{{ $detail->detail }}</h5></div>
+                                <hr>
                             @endforeach
                         </div>
                     </div>
                     <div id="expand"></div>
                     <button type="button" id="add"><i class="fa fa-plus"></i></button>
                     <button type="button" id="minus"><i class="fa fa-minus"></i></button>
+                    <span><b><em>Press <i class="fa fa-plus"></i> to add plan</em></b></span>
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
@@ -123,7 +138,7 @@
                     </div>
                     <button type="submit" class="btn btn-success" name="btn" id="btnt" disabled>Save</button>
                     <button type="reset" class="btn btn-warning">Reset</button>
-                    <a id="delete" class="pull-right" href="{{ route('requestDelete', $plann->id) }}">DELETE THIS
+                    <a id="delete" class="pull-right" href="{{ route('requestDelete', $plann->id) }}"  onclick="bootbox.confirm();">DELETE THIS
                         PLAN</a>
                 </form>
             </div>
@@ -136,21 +151,16 @@
     {{ HTML::script('bower_components/AdminLTE/plugins/select2/select2.full.js') }}
     {{ HTML::script('bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js') }}
     {{ HTML::script('bower_components/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.js') }}
+    {{ HTML::script('bower_components/bootbox//bootbox.js') }}
+
     <script>
         (function ($) {
-            $("#dayup").on("click", function () {
-                $("#days").val(parseInt($("#days").val(), 10) + 1);
-            });
-            $("#daydown").on("click", function () {
-                if ($("#days").val() > 0)
-                    $("#days").val(parseInt($("#days").val(), 10) - 1);
-            });
             $(".select2").select2();
-            $('#datepicker').datepicker({
+            $('.datepicker').datepicker({
                 autoclose: true
             });
-            $('#datepicker2').datepicker({
-                autoclose: true
+            $("#timepicker").timepicker({
+                showInputs: false
             });
         })(jQuery);
         var number = 0;
@@ -187,12 +197,30 @@
             number++;
             $("#numb").val(number)
             changes += '<div class="indent"><b>' + number + '</b></div>';
-            changes += '<div class="row roww">';
-            changes += '<div class="form-group col-md-3"> <label>Province</label> &nbsp;';
+            changes += '<div class="row">';
+            changes += '<div class=" form-group col-md-3 date" id="Date">';
+            changes += '<label>Date</label> &nbsp;';
+            changes += ' <i class="fa fa-calendar"></i>';
+            changes += '<input type="text" value="Date of service" class="form-control datepicker" required name="date[]">';
+            changes += '</div>';
+            changes += '<div class="col-md-3 bootstrap-timepicker form-group" id="From">';
+            changes += '<label>From</label> &nbsp;';
+            changes += '<i class="fa fa-clock-o"></i>';
+            changes += '<input type="text" class="form-control timepicker" required name="sta[]">';
+            changes += '</div>';
+            changes += '<div class="col-md-3 bootstrap-timepicker form-group" id="To">';
+            changes += '<label>To</label> &nbsp;';
+            changes += '<i class="fa fa-clock-o"></i>';
+            changes += '<input type="text" class="form-control timepicker" required name="end[]">';
+            changes += '</div></div>';
+            changes += '<div class="group">';
+            changes += '<div class="form-group">';
+            changes += '<div class="row">';
+            changes += '<div class="form-group col-md-2" id="Prov"> <label>Province</label> &nbsp;';
             changes += '<select name="pro' + number + '" class="form-group select2 detail" id="pro' + number + '" required data-id="' + number + '">';
             changes += '</select>';
             changes += '</div>';
-            changes += '<div class="form-group col-md-3"> <label>Type</label> &nbsp;';
+            changes += '<div class="form-group col-md-2" id="Type"> <label>Type</label> &nbsp;';
             changes += '<select name="type' + number + '" class="form-group select2 detaill" id="type' + number + '" required data-id="' + number + '">';
             changes += '<option disabled selected>SELECT</option>';
             changes += '@foreach($types as $type)';
@@ -200,7 +228,7 @@
             changes += '@endforeach';
             changes += '</select>';
             changes += '</div>';
-            changes += '<div class="form-group col-md-6"> <label>Service</label> &nbsp;';
+            changes += '<div class="form-group col-md-2" id="Ser"> <label>Service</label> &nbsp;';
             changes += '<select name="ser[]" class="form-group select2 detaill" id="ser' + number + '" required data-id="' + number + '">';
             changes += '<option disabled selected>SELECT</option>';
             changes += '@foreach($services as $service)';
@@ -209,25 +237,23 @@
             changes += '@endif';
             changes += '@endforeach';
             changes += '</select>';
-            changes += '</div>'
-            changes += '</div>'
-            changes += '<div class="group">';
-            changes += '<div class="form-group"> <label>Title</label> &nbsp;';
+            changes += '</div></div>';
+            changes += '<label style="margin-left: 6%">Detail</label> &nbsp;';
             changes += '<i class="fa fa-pencil"></i>';
-            changes += '<textarea class="form-control" name="tit[]" id="tit' + number + ' rows="1" autocomplete="off"></textarea>';
-            changes += '</div>';
-            changes += '<div class="form-group">';
-            changes += '<label>Detail</label> &nbsp;';
-            changes += '<i class="fa fa-pencil"></i>';
-            changes += '<textarea class="form-control" name="des[]" id="des' + number + ' rows="2" autocomplete="off"></textarea>';
-            changes += '</div>';
-            changes += '</div>'
+            changes += '<textarea class="form-control" name="des[]" id="des' + number + '" rows="2" autocomplete="off" style="width: 88%;margin: auto"></textarea>';
+            changes += '</div></div>';
             i = number;
             $("#expand").append(changes);
             $("#pro" + i).html(change);
-
+            $('.datepicker').datepicker({
+                autoclose: true
+            });
+            $(".timepicker").timepicker({
+                showInputs: false
+            });
         });
         $("#minus").click(function () {
+            $("#expand > div").last().remove();
             $("#expand > div").last().remove();
             $("#expand > div").last().remove();
             $("#expand > div").last().remove();
@@ -271,6 +297,33 @@
             var province_id = $('select[name=pro' + id + ']').val();
 
             call_service(province_id, type_id, id);
+        });
+
+        $('#delete').click(function (e) {
+            e.preventDefault();
+            var location = $(this).attr('href');
+            bootbox.confirm({
+                backdrop: true,
+                size: 'small',
+                message: "Confirm Delete This Plan ?",
+                buttons: {
+                    confirm: {
+                        label: '<i class="fa fa-check"></i> Sure',
+                        className: 'btn-success',
+                    },
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> Hol Up',
+                        className: 'btn-danger',
+                    }
+                },
+                callback: function (result) {
+                    console.log(result);
+                    if (result == true) {
+                        window.location.replace(location);
+                    }
+                },
+
+            });
         });
     </script>
 @endsection

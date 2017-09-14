@@ -197,15 +197,15 @@ $(document).ready(function () {
     $('.btn-div').slideUp("fast");
 
     $('.edit1').on('click', function () {
-        $('.edit1').attr('disabled','disabled');
-        $('.edit1').css('cursor','not-allowed');
+        $('.edit1').attr('disabled', 'disabled');
+        $('.edit1').css('cursor', 'not-allowed');
 
         edit = $(this).parent('.review-block').find('.edit');
         title = $(this).parent('.review-block').find('#edit-title');
         content = $(this).parent('.review-block').find('#edit-content');
-        rate=$(this).parent('.review-block').find('.rating-container');
+        rate = $(this).parent('.review-block').find('.rating-container');
 
-        rate.removeAttr('rating-disabled');
+        rate.removeClass('rating-disabled');
 
         edit.attr("readonly", false);
         edit.css({
@@ -230,7 +230,7 @@ $(document).ready(function () {
 
             $('.btn-div').slideUp("slow");
             $('.edit1').removeAttr('disabled');
-            $('.edit1').css('cursor','pointer');
+            $('.edit1').css('cursor', 'pointer');
         });
 
     })

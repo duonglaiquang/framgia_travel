@@ -15,8 +15,9 @@
                             <th>ID</th>
                             <th>Province</th>
                             <th>Description</th>
-                            <th>BG URL</th>
-                            <th>IMG URL</th>
+                            <th>Hotel</th>
+                            <th>Restaurant</th>
+                            <th>Activity</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -26,8 +27,9 @@
                                 <td>{{$province->id}}</td>
                                 <td>{{$province->name}}</td>
                                 <td>{{$province->description}}</td>
-                                <td>{{$province->bg_url}}</td>
-                                <td>{{$province->img_url}}</td>
+                                <td>{{$province->hotel}}</td>
+                                <td>{{$province->restaurant}}</td>
+                                <td>{{$province->amusement}}</td>
                                 <td><a href="{{ route('provinceDelete', $province->id) }}" title="Delete"><i
                                                 class="fa fa-fw fa-ban fa-pull-left"></i></a>
                                     <a href="{{ route('provinceGetEdit', $province->id) }}"><i
