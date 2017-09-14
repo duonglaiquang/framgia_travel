@@ -5,31 +5,30 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Provinces
-                        <small>Edit</small>
+                    <h1 class="page-header" style="text-align: center">Edit Provinces
                     </h1>
                 </div>
-                <div class="col-lg-7" style="padding-bottom:120px">
+                <div class="col-lg-9" style="padding-bottom:120px;float: none;margin: auto">
                     <form action="" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
-                            <label>Province</label>
+                            <label>Name</label>
                             <input class="form-control" name="name" required autocomplete="off"
                                    value="{{ $province->name }}"/>
                         </div>
                         <div class="form-group">
-                            <label>Background URL</label>
+                            <label>Background Image</label>
                             <input class="form-control" name="bg_url" autocomplete="off"
                                    value="{{ $province->bg_url }}"/>
                         </div>
                         <div class="form-group">
-                            <label>Image URL</label>
+                            <label>Profile Image</label>
                             <input class="form-control" name="img_url" required autocomplete="off"
                                    value="{{ $province->img_url }}"/>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" rows="3" name="description" autocomplete="off">{{ $province->description }}
+                            <textarea class="form-control" rows="5" name="description" autocomplete="off">{{ $province->description }}
                             </textarea>
                         </div>
                         <div class="form-group">
@@ -41,7 +40,7 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success" name="btn" id="btnt" disabled>Edit</button>
+                        <button type="submit" class="btn btn-success" name="btn" id="btnt" disabled>SAVE</button>
                     </form>
                 </div>
             </div>

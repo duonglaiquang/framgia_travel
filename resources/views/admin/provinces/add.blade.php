@@ -5,31 +5,30 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Provinces
-                        <small>Add</small>
+                    <h1 class="page-header" style="text-align: center">Add Provinces
                     </h1>
                 </div>
-                <div class="col-lg-7" style="padding-bottom:120px">
+                <div class="col-lg-9" style="padding-bottom:120px;float: none;margin: auto">
                     <form action="{{ route('provincePostAdd') }}" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
-                            <label>Province</label>
+                            <label>Name</label>
                             <input class="form-control" name="name" required autocomplete="off"
                                    placeholder="Please Enter Province"/>
                         </div>
                         <div class="form-group">
-                            <label>Background URL</label>
+                            <label>Background Image</label>
                             <input class="form-control" name="bg_url" autocomplete="off"
-                                   placeholder="Please Enter URL"/>
+                                   placeholder="Add Url"/>
                         </div>
                         <div class="form-group">
-                            <label>Image URL</label>
+                            <label>Profile Image</label>
                             <input class="form-control" name="img_url" required autocomplete="off"
-                                   placeholder="Please Enter URL"/>
+                                   placeholder="Add Url"/>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" rows="3" name="description" autocomplete="off"
+                            <textarea class="form-control" rows="5" name="description" autocomplete="off"
                                       placeholder="Please Enter Description"></textarea>
                         </div>
                         <div class="form-group">
@@ -40,9 +39,10 @@
                                     Are you sure to add this province
                                 </label>
                             </div>
-                        </div>
+
                         <button type="submit" class="btn btn-success" name="btn" id="btnt" disabled>Add</button>
                         <button type="reset" class="btn btn-warning">Reset</button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -37,7 +37,9 @@ class UserController extends Controller
         $user->update($request->all());
         $photo = $request->photo;
         $filename = $user->id . 'profilePic' . '.png';
-        $photo->storeAs('public', $filename);
+        if ($photo != "") {
+            $photo->storeAs('public', $filename);
+        }
         $user->profile_pic = $filename;
         $user->save();
 

@@ -46,6 +46,16 @@ class AdminController extends Controller
     public function provinceList()
     {
         $provinces = Province::all();
+        foreach ($provinces as $province) {
+            $province->hotel = Service::where('province_id', '=', $province->id)->where('category_id', '=', 1)->get()
+                ->count();
+            $province->restaurant = Service::where('province_id', '=', $province->id)->where('category_id', '=', 2)
+                ->get()
+                ->count();
+            $province->amusement = Service::where('province_id', '=', $province->id)->where('category_id', '=', 3)->get()
+                ->count();
+            $province->save();
+        }
 
         return view('admin.provinces.list', compact('provinces'));
     }
@@ -126,5 +136,12 @@ class AdminController extends Controller
         $Rservice->save();
 
         return redirect(route('serviceRequested'));
+    }
+
+    public function serviceList()
+    {
+        $services = Service::all();
+
+        return view('admin.services.list', compact('services'));
     }
 }

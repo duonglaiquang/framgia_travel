@@ -25,8 +25,7 @@
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview">
-                <a href="#"><i class="fa fa-circle-o fa-pull-left"></i><span>Dashboard</span> <i
-                            class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-circle-o fa-pull-left"></i><span>Dashboard</span></a>
             </li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-circle-o fa-pull-left"></i><span>Users</span> <i
@@ -51,9 +50,9 @@
                 <a href="#"><i class="fa fa-circle-o fa-pull-left"></i><span>Services</span> <i
                             class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('provinceShowList') }}"><i class="fa fa-list fa-pull-left"></i>Show Services</a>
+                    <li><a href="#"><i class="fa fa-list fa-pull-left"></i>Show Services</a>
                     </li>
-                    <li><a href=""><i class="fa fa-list fa-pull-left"></i>Add Service</a>
+                    <li><a href="#"><i class="fa fa-list fa-pull-left"></i>Add Service</a>
                     </li>
                     <li><a href="{{ route('serviceRequested') }}"><i class="fa fa-plus-square fa-pull-left"></i>Requested Services</a></li>
                 </ul>

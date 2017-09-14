@@ -23,12 +23,6 @@
     @include('admin.includes.sidebar')
 
     <div class="content-wrapper">
-        <section class="content-header">
-            <h1>
-                Welcome <b><em>{{ Auth::user()->name }}</em></b>
-                <small>{{ $page_description or null }}</small>
-            </h1>
-        </section>
         <section class="content">
             @yield('contents')
         </section>

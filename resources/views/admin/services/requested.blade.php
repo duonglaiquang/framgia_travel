@@ -45,13 +45,15 @@
                                     <td><span class="label label-danger">Canceled</span></td>
                                 @endif
                                 <td>
-                                    <a href="{{route('approved',$service->id)}}">
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                    </a>
+                                    @if($service->status == 0)
+                                        <a href="{{route('approved',$service->id)}}">
+                                            <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
+                                        </a>
 
-                                    <a href="{{route('canceled',$service->id)}}">
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-remove"></i></button>
-                                    </a>
+                                        <a href="{{route('canceled',$service->id)}}">
+                                            <button class="btn btn-danger btn-sm"><i class="fa fa-remove"></i></button>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
