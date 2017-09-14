@@ -58,8 +58,8 @@ Route::group(['prefix' => '/action', 'middleware' => ['IsUser', 'auth']], functi
     Route::post('/request', ['as' => 'requestPost', 'uses' => 'PagesController@requestPost']);
     Route::get('/request/{id}/edit', ['as' => 'requestEditGet', 'uses' => 'PagesController@requestEditGet']);
     Route::post('/request/{id}/edit', ['as' => 'requestEditPost', 'uses' => 'PagesController@requestEditPost']);
-    Route::get('/request%Service', ['as' => 'service.request', 'uses' => 'PagesController@requestService']);
-    Route::post('/request%Service', ['as' => 'service.request.post', 'uses' => 'PagesController@requestServicePost']);
+    Route::get('/requestService', ['as' => 'service.request', 'uses' => 'PagesController@requestService']);
+    Route::post('/requestService', ['as' => 'service.request.post', 'uses' => 'PagesController@requestServicePost']);
     Route::get('/request/{id}/delete', ['as' => 'requestDelete', 'uses' => 'PagesController@requestDelete']);
 });
 
